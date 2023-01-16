@@ -24,9 +24,9 @@ namespace Weedwacker.GameServer.Systems.Avatar
         [BsonIgnore] public ulong Guid { get; private set; }           // Player unique Avatar id. Generated each session
         [BsonIgnore] public uint EntityId => AsEntity.EntityId;
 
-        [BsonElement] public uint Level { get; private set; } = 1;
-        public int Exp;
-        [BsonElement] public uint PromoteLevel { get; private set; } = 0;
+        [BsonElement] public uint Level { get; set; } = 1;
+        public uint Exp;
+        [BsonElement] public uint PromoteLevel { get; set; } = 0;
         public int Satiation; // ?
         public int SatiationPenalty; // ?
         [BsonElement] public LifeState LifeState { get; private set; } = LifeState.LIFE_ALIVE;

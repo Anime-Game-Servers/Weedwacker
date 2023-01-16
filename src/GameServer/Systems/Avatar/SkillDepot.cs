@@ -23,7 +23,8 @@ namespace Weedwacker.GameServer.Systems.Avatar
         [BsonElement] public SortedList<uint, uint> Skills { get; private set; } = new(); // <skillId,level>
         [BsonElement] public SortedList<uint, uint> SubSkills { get; private set; } = new(); // <skillId,level>
         [BsonElement] public SortedList<uint, uint> SkillExtraChargeMap { get; private set; } = new(); // Charges
-        [BsonElement] public HashSet<ProudSkillData> InherentProudSkillOpens { get; private set; } = new();
+        [BsonIgnore] public HashSet<ProudSkillData> InherentProudSkillOpens { get; private set; } = new(); // convenient to keep
+        [BsonElement] public HashSet<uint> InherentProudSkillIds { get; private set; } = new();
         [BsonIgnore] public IEnumerable<ProudSkillData> TeamOpens => InherentProudSkillOpens.Where(w => w.effectiveForTeam == 1);
         [BsonElement] public HashSet<uint> Talents { get; private set; } = new(); // talentId. last digit of id = constellationRank.
         [BsonIgnore] public Dictionary<string, HashSet<string>> UnlockedTalentParams = new(); // <abilityName, talentParams> Added by ConfigTalent UnlockTalentParam
@@ -78,13 +79,14 @@ namespace Weedwacker.GameServer.Systems.Avatar
                 if (skillId != 0) Skills.Add(skillId, 1);
             }
 
-            var inherentProudSkillGroups = avatarInfo.SkillDepotData[depotId].inherentProudSkillOpens.Where(w => w.needAvatarPromoteLevel <= 1).ToDictionary(q => q.proudSkillGroupId).Keys.ToList();
+            var inherentProudSkillGroups = avatarInfo.SkillDepotData[depotId].inherentProudSkillOpens.Where(w => w.proudSkillGroupId != null && (w.needAvatarPromoteLevel < avatar.PromoteLevel || w.needAvatarPromoteLevel is null)).ToDictionary(q => q.proudSkillGroupId).Keys.ToList();
             foreach (int group in inherentProudSkillGroups)
             {
                 var idList = avatarInfo.ProudSkillData[depotId].Where(w => w.Value.proudSkillGroupId == group).ToDictionary(q => q.Key).Keys.ToList();
                 foreach (uint id in idList)
                 {
-                    InherentProudSkillOpens.Add(avatarInfo.ProudSkillData[depotId][id]);
+                    InherentProudSkillOpens.Add(avatarInfo.ProudSkillData[DepotId][id]);
+                    InherentProudSkillIds.Add(id);
                 }
             }
 
@@ -95,7 +97,10 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             Abilities = new();
             AbilitySpecials = new();
+            ActiveDynamicAbilities = new();
             ProudSkillExtraLevelMap = new();
+            UnlockedTalentParams = new();
+           
             foreach (var configAbility in Character.Data.AbilityConfigMap[DepotId])
             {
                 ConfigAbility config = configAbility.Default;
@@ -121,15 +126,21 @@ namespace Weedwacker.GameServer.Systems.Avatar
                     }
                 }
             }
-
+           
         }
 
         public async Task OnLoadAsync(Player.Player owner, Avatar avatar)
         {
             Owner = owner;
             Character = avatar;
+            InherentProudSkillOpens = new();
+            foreach (uint proudSkillId in InherentProudSkillIds)
+            {
+                InherentProudSkillOpens.Add(Character.Data.ProudSkillData[DepotId][proudSkillId]);
+            }
             InitializeConfig();
         }
+
         public uint GetCoreProudSkillLevel()
         {
             return (uint)Talents.Count;
@@ -210,6 +221,18 @@ namespace Weedwacker.GameServer.Systems.Avatar
                 config.Apply(Character.AsEntity.AbilityManager, talentData.paramList);
             }
         }
+
+        public void AddProudSkill(uint proudSkillId)
+        {
+            var proudSkillData = Character.Data.ProudSkillData[DepotId][proudSkillId];
+            InherentProudSkillOpens.Add(proudSkillData);
+            InherentProudSkillIds.Add(proudSkillId);
+            foreach (BaseConfigTalent config in Character.Data.ConfigTalentMap[DepotId][proudSkillData.openConfig])
+            {
+                config.Apply(Character.AsEntity.AbilityManager, proudSkillData.paramList);
+            }
+        }
+
         public async Task<bool> UnlockConstellation(uint talentId, bool skipPayment = false)
         {
             // Get talent

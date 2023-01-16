@@ -12,7 +12,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
     typeof(PromoteTab), typeof(QuestTab))]
     internal class MaterialsTab : InventoryTab
     {
-        private string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_MATERIAL}.{nameof(MaterialsTab)}.{nameof(Items)}";
+        private static string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_MATERIAL}.{nameof(MaterialsTab)}.{nameof(Items)}";
         [BsonIgnore] public new const int InventoryLimit = 2000;
 
         public MaterialsTab(Player.Player owner, InventoryManager inventory) : base(owner, inventory) { }

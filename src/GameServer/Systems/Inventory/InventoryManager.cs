@@ -206,7 +206,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
                 {
                     if (GameData.ItemDataMap[itemData.id].itemType == ItemType.ITEM_MATERIAL)
                     {
-                        if (!(SubInventories[ItemType.ITEM_MATERIAL] as MaterialSubInv).PromoteTab.Items.TryGetValue(itemData.id, out GameItem? material))
+                        if (!(SubInventories[ItemType.ITEM_MATERIAL] as MaterialSubInv).TryGetItemInSubInvById(itemData.id, out GameItem? material)) //Local specialties are outside of the promote tab
                             return false;
                         if (material.Count < itemData.count) return false; // insufficient materials
                         else materials.Add(material as MaterialItem, itemData.count);

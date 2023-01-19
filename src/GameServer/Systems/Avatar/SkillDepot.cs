@@ -23,7 +23,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
         [BsonElement] public SortedList<uint, uint> Skills { get; private set; } = new(); // <skillId,level>
         [BsonElement] public SortedList<uint, uint> SubSkills { get; private set; } = new(); // <skillId,level>
         [BsonElement] public SortedList<uint, uint> SkillExtraChargeMap { get; private set; } = new(); // Charges
-        [BsonIgnore] public HashSet<ProudSkillData> InherentProudSkillOpens { get; private set; } = new(); // convenient to keep
+        [BsonIgnore] public IEnumerable<ProudSkillData> InherentProudSkillOpens => Character.Data.ProudSkillData[DepotId].Where(w => InherentProudSkillIds.Contains(w.Key)).Select(w => w.Value); // convenient to keep
         [BsonElement] public HashSet<uint> InherentProudSkillIds { get; private set; } = new();
         [BsonIgnore] public IEnumerable<ProudSkillData> TeamOpens => InherentProudSkillOpens.Where(w => w.effectiveForTeam == 1);
         [BsonElement] public HashSet<uint> Talents { get; private set; } = new(); // talentId. last digit of id = constellationRank.
@@ -85,7 +85,6 @@ namespace Weedwacker.GameServer.Systems.Avatar
                 var idList = avatarInfo.ProudSkillData[depotId].Where(w => w.Value.proudSkillGroupId == group).ToDictionary(q => q.Key).Keys.ToList();
                 foreach (uint id in idList)
                 {
-                    InherentProudSkillOpens.Add(avatarInfo.ProudSkillData[DepotId][id]);
                     InherentProudSkillIds.Add(id);
                 }
             }
@@ -133,11 +132,6 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             Owner = owner;
             Character = avatar;
-            InherentProudSkillOpens = new();
-            foreach (uint proudSkillId in InherentProudSkillIds)
-            {
-                InherentProudSkillOpens.Add(Character.Data.ProudSkillData[DepotId][proudSkillId]);
-            }
             InitializeConfig();
         }
 
@@ -225,7 +219,6 @@ namespace Weedwacker.GameServer.Systems.Avatar
         public void AddProudSkill(uint proudSkillId)
         {
             var proudSkillData = Character.Data.ProudSkillData[DepotId][proudSkillId];
-            InherentProudSkillOpens.Add(proudSkillData);
             InherentProudSkillIds.Add(proudSkillId);
             foreach (BaseConfigTalent config in Character.Data.ConfigTalentMap[DepotId][proudSkillData.openConfig])
             {

@@ -15,9 +15,9 @@ namespace Weedwacker.GameServer.Packet.Send
                 EntityId = avatar.EntityId,
                 SkillDepotId = avatar.CurSkillDepot.DepotId
             };
-            foreach(var proudSkill in avatar.CurSkillDepot.InherentProudSkillOpens)
+            foreach(uint id in avatar.CurSkillDepot.InherentProudSkillIds)
             {
-                proto.ProudSkillList.Add(proudSkill.proudSkillId);
+                proto.ProudSkillList.Add(id);
             }
             Data = proto.ToByteArray();
         }

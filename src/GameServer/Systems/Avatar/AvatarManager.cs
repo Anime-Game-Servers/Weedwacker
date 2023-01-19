@@ -90,14 +90,15 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             Avatar avatar = AvatarsGuid[avatarGuid];
             var matData = GameData.ItemDataMap[itemId] as MaterialData;
-            var promoteData = avatar.Data.PromoteData[avatar.PromoteLevel];
-            if (promoteData is null || avatar.Level == promoteData.unlockMaxLevel)
+            if (!avatar.Data.PromoteData.TryGetValue(avatar.PromoteLevel, out AvatarPromoteData promoteData) || avatar.Level == promoteData.unlockMaxLevel)
                 return null;
             uint expGain = 0;         
             foreach(var x in matData.itemUse.Where(o => o.useOp == ItemUseOp.ITEM_USE_ADD_EXP)) expGain += uint.Parse(x.useParam[0]) * count;
-            List<ItemParamData> costItems = new();
-            costItems.Add(new ItemParamData(itemId, (int)count));
-            costItems.Add(new ItemParamData(202, (int)expGain / 5));
+            List<ItemParamData> costItems = new()
+            {
+                new ItemParamData(itemId, (int)count),
+                new ItemParamData(202, (int)expGain / 5)
+            };
             if (await Owner.Inventory.PayPromoteCostAsync(costItems, ActionReason.AvatarUpgrade))
             {
                 uint oldLevel = avatar.Level;
@@ -135,8 +136,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
             var currentPromoteData = avatar.Data.PromoteData[avatar.PromoteLevel];
             if (!avatar.Data.PromoteData.TryGetValue(avatar.PromoteLevel + 1, out var promoteData) || Owner.PlayerProperties[PlayerProperty.PROP_PLAYER_LEVEL] < promoteData.requiredPlayerLevel)
                 return;
-            List<ItemParamData> costItems = new(promoteData.costItems.Where(o => o.id != 0)); //some promotedatas in the excel seem to have landmines without an id -_-
-            costItems.Add(new ItemParamData(202, (int)promoteData.scoinCost));
+            IEnumerable<ItemParamData> costItems = promoteData.costItems.Where(o => o.id != 0).Append(new ItemParamData(202, (int)promoteData.scoinCost)); //some promotedatas in the excel seem to have landmines without an id -_-
             if (await Owner.Inventory.PayPromoteCostAsync(costItems, ActionReason.AvatarPromote))
             {
                 avatar.PromoteLevel += 1;

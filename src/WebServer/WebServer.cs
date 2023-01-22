@@ -31,6 +31,7 @@ namespace Weedwacker.WebServer
         };
         static readonly Dictionary<string, IHandler> GetRoutings = new()
         {
+            {"/extensions/combo/verify", new ComboTokenVerify()},
             {"/hk4e_global/combo/granter/api/getConfig", new ComboGetConfig()},
             {"/combo/box/api/config/sdk/combo", new ConfigSDKCombo()},
             {"/combo/box/api/config/sw/precache", new PreCache()},

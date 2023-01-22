@@ -1,11 +1,8 @@
-﻿using System.Text;
+﻿using System.Net;
 using System.Timers;
-using Newtonsoft.Json;
 using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.BinOut.Ability.Temp;
 using Weedwacker.GameServer.Systems.Avatar;
 using Weedwacker.GameServer.Systems.World;
-using Weedwacker.Shared.Authentication;
 using Weedwacker.Shared.Network.Proto;
 using Weedwacker.Shared.Utils;
 using Weedwacker.Shared.Utils.Configuration;
@@ -23,17 +20,12 @@ namespace Weedwacker.GameServer
         private static HashSet<World> Worlds = new();
         public static SortedList<uint, AvatarCompiledData> AvatarInfo = new(); // <avatarId,data>
         public static Dictionary<uint, string> AbilityNameHashMap;
+
         public static async Task<bool> VerifyToken(string accountUid, string token)
         {
-            var req = JsonConvert.SerializeObject(new VerifyTokenRequestJson() { uid = accountUid, token = token });
-            var contentData = new StringContent(req, Encoding.UTF8, "application/json");
-            var rsp = await client.PostAsync(Configuration.Server.WebServerUrl + "/hk4e_global/mdk/shield/api/verify", contentData);
-            var result = JsonConvert.DeserializeObject<LoginResultJson>(await rsp.Content.ReadAsStringAsync());
-            if (result.message == "OK")
-            {
-                return true;
-            }
-            return false;
+            var rsp = await client.GetAsync(Configuration.Server.WebServerUrl + $"/extensions/combo/verify?uid={accountUid}&combo_token={token}");
+
+            return rsp.StatusCode == HttpStatusCode.OK;
         }
 
         internal static void RegisterWorld(World world)

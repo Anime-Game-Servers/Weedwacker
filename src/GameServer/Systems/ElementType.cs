@@ -1,176 +1,99 @@
-﻿using Newtonsoft.Json;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.Shared.Utils;
 
 namespace Weedwacker.GameServer.Systems
 {
+    [BsonKnownTypes(typeof(None), typeof(Fire), typeof(Water), typeof(Wind), typeof(Ice), typeof(Rock), typeof(Electric), typeof(Grass), typeof(Default), typeof(Frozen), typeof(AntiFire))]
     public class ElementType
-    {
-        [JsonProperty]
-        public readonly Enums.ElementType Type;
-        [JsonProperty]
-        public readonly int TeamResonanceId;
-        [JsonProperty]
-        public readonly FightProperty CurEnergyProp;
-        public float CurEnergy = 0;
-        [JsonProperty]
-        public readonly FightProperty MaxEnergyProp;
+    {      
         public float MaxEnergy = 0;
-        [JsonProperty]
-        public readonly int DepotValue;
-        [JsonProperty]
-        public readonly int ConfigHash;
+        public float CurEnergy = 0;
+        [BsonIgnore]
+        public virtual Enums.ElementType Type => Enums.ElementType.None;
+        [BsonIgnore]
+        public virtual FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_FIRE_ENERGY;
+        [BsonIgnore]
+        public virtual FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_FIRE_ENERGY;
+        [BsonIgnore]
+        public virtual int DepotValue => 0;
     }
 
     public class None : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.None;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_FIRE_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_FIRE_ENERGY;
     }
 
     public class Fire : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Fire;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10101;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_FIRE_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_FIRE_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 2;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Fire_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_FIRE_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_FIRE_ENERGY;
+        public override int DepotValue => 2;
+        public override Enums.ElementType Type => Enums.ElementType.Fire;
+
     }
 
     public class Water : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Water;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10201;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_WATER_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_WATER_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 3;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Water_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_WATER_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_WATER_ENERGY;
+        public override int DepotValue => 3;
+        public override Enums.ElementType Type => Enums.ElementType.Water;
     }
+
     public class Wind : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Wind;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10301;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_WIND_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_WIND_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 4;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Wind_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_WIND_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_WIND_ENERGY;
+        public override int DepotValue => 4;
+        public override Enums.ElementType Type => Enums.ElementType.Wind;
     }
+
     public class Ice : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Ice;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10601;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_ICE_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_ICE_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 5;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Ice_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_ICE_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_ICE_ENERGY;
+        public override int DepotValue => 5;
+        public override Enums.ElementType Type => Enums.ElementType.Ice;
     }
+
     public class Rock : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Rock;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10701;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_ROCK_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_ROCK_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 6;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Rock_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_ROCK_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_ROCK_ENERGY;
+        public override int DepotValue => 6;
+        public override Enums.ElementType Type => Enums.ElementType.Rock;
     }
 
     public class Electric : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Electric;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10401;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_ELEC_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_ELEC_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 7;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Electric_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_ELEC_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_ELEC_ENERGY;
+        public override int DepotValue => 7;
+        public override Enums.ElementType Type => Enums.ElementType.Electric;
     }
+
     public class Grass : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Grass;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10501;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_GRASS_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_GRASS_ENERGY;
-        [JsonProperty]
-        public new readonly int DepotValue = 8;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_Grass_Lv2");
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_GRASS_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_GRASS_ENERGY;
+        public override int DepotValue => 8;
+        public override Enums.ElementType Type => Enums.ElementType.Grass;
     }
 
     public class Default : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Default;
-        [JsonProperty]
-        public new readonly int TeamResonanceId = 10801;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_FIRE_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_FIRE_ENERGY;
-        [JsonProperty]
-        public new readonly ulong ConfigHash = Utils.AbilityHash("TeamResonance_AllDifferent");
+        public override Enums.ElementType Type => Enums.ElementType.Default;
     }
 
     public class Frozen : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.Frozen;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_ICE_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_ICE_ENERGY;
+        public override Enums.ElementType Type => Enums.ElementType.Frozen;
+        public override FightProperty CurEnergyProp => FightProperty.FIGHT_PROP_CUR_ICE_ENERGY;
+        public override FightProperty MaxEnergyProp => FightProperty.FIGHT_PROP_MAX_ICE_ENERGY;
     }
 
     public class AntiFire : ElementType
     {
-        [JsonProperty]
-        public new readonly Enums.ElementType Type = Enums.ElementType.AntiFire;
-        [JsonProperty]
-        public new readonly FightProperty CurEnergyProp = FightProperty.FIGHT_PROP_CUR_FIRE_ENERGY;
-        [JsonProperty]
-        public new readonly FightProperty MaxEnergyProp = FightProperty.FIGHT_PROP_MAX_FIRE_ENERGY;
+        public override Enums.ElementType Type => Enums.ElementType.AntiFire;
     }
 }

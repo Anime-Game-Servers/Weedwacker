@@ -182,13 +182,14 @@ namespace Weedwacker.GameServer.Systems.Avatar
             {
                 CurSkillDepot.Element.CurEnergy = currentEnergy;
                 FightProp[CurSkillDepot.Element.CurEnergyProp] = currentEnergy;
+                FightProp[CurSkillDepot.Element.MaxEnergyProp] = CurSkillDepot.Element.MaxEnergy;
 
                 // false = used in RecalcStatsAsync or is in Tower team
                 if (update)
                 {
                     // Update
                     var filter = Builders<AvatarManager>.Filter.Where(w => w.OwnerId == Owner.GameUid);
-                    var updateQuery = Builders<AvatarManager>.Update.Set($"{nameof(AvatarManager.Avatars)}.{AvatarId}.{CurSkillDepot.Element.CurEnergyProp}", currentEnergy);
+                    var updateQuery = Builders<AvatarManager>.Update.Set($"{nameof(AvatarManager.Avatars)}.{AvatarId}.{nameof(SkillDepots)}.{CurrentDepotId}.{nameof(CurSkillDepot.Element)}.{nameof(CurSkillDepot.Element.CurEnergy)}", currentEnergy);
                     await DatabaseManager.UpdateAvatarsAsync(filter, updateQuery);
 
                     await Owner.SendPacketAsync(new PacketAvatarFightPropUpdateNotify(this, CurSkillDepot.Element.CurEnergyProp));
@@ -354,7 +355,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
             FightProp[FightProperty.FIGHT_PROP_CRITICAL_HURT] = Data.BaseCriticalHurt;
             FightProp[FightProperty.FIGHT_PROP_CHARGE_EFFICIENCY] = 1f;
 
-
+            
             foreach (FightPropData fightPropData in promoteData.addProps)
             {
                 FightProp[fightPropData.propType] = FightProp.GetValueOrDefault(fightPropData.propType) + fightPropData.value;

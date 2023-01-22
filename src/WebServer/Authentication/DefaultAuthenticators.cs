@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using System.Security.Cryptography;
-using System.Text;
+using Microsoft.AspNetCore.Http;
 using Weedwacker.Shared.Authentication;
 using Weedwacker.Shared.Utils;
 using Weedwacker.WebServer.Authentication.Objects;
@@ -122,54 +119,40 @@ namespace Weedwacker.WebServer.Authentication
     }
 
     /// <summary>
-    /// Handles the authentication request from the game when using a game token.
+    /// Handles the authentication request from the game server when using a combo token.
     /// </summary>
-    public class GameTokenAuthenticator : IAuthenticator<LoginResultJson>
+    public class ComboTokenAuthenticator : IAuthenticator<bool>
     {
-        public async Task<LoginResultJson> Authenticate(AuthenticationRequest request)
+        public async Task<bool> Authenticate(AuthenticationRequest request)
         {
-            var response = new LoginResultJson();
+            HttpContext context = request.Context!;
 
-            var requestData = request.TokenRequest;
-
-            bool successfulLogin;
-            string address = request.Context.Connection.RemoteIpAddress.ToString();
-            string loggerMessage;
+            string address = context.Connection.RemoteIpAddress.ToString();
 
             // Log the attempt.
             Logger.WriteLine($"Verifying session key from {address}");
 
+            var uid = context.Request.Query["uid"];
+            var comboToken = context.Request.Query["combo_token"];
+
+            if (uid.Count != 1 || comboToken.Count != 1)
+            {
+                Logger.WriteLine("Verification request was formatted incorrectly.");
+                return false;
+            }
+
             // Get account from database.
-            Account? account = await DatabaseManager.GetAccountByIdAsync(requestData.uid);
+            Account? account = await DatabaseManager.GetAccountByIdAsync(uid);
 
             // Check if account exists/token is valid.
-            successfulLogin = account != null && account.Token.Equals(requestData.token);
+            bool successfulLogin = account != null && account.Token.Equals(comboToken);
 
-            // Set response data.
-            if (successfulLogin)
-            {
-                response.message = "OK";
-                response.data.account.uid = account.Id.ToString();
-                response.data.account.token = account.Token;
-                response.data.account.email = account.Email;
-
-                // Log the login.
-                loggerMessage = $"Successfully Verified session key for uid: {requestData.uid}";
-            }
-            else
-            {
-                response.retcode = -111;
-                response.message = "Game account cache information error.";
-                response.data = null;
-
-                // Log the failure.
-                loggerMessage = $"failed verify token from: {address}.";
-            }
-
-
+            string loggerMessage = successfulLogin
+                ? $"Successfully Verified session key for uid: {uid}"
+                : $"Failed verify token from: {address}.";
 
             Logger.WriteLine(loggerMessage);
-            return response;
+            return successfulLogin;
         }
     }
 

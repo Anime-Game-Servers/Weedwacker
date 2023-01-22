@@ -35,10 +35,10 @@ namespace Weedwacker.WebServer.Authentication
         IAuthenticator<LoginResultJson> GetPasswordAuthenticator();
 
         ///<summary>
-        ///This is the authenticator used for game token authentication.
+        ///This is the authenticator used for combo token authentication.
         ///</summary>
         ///<returns>An authenticator.</returns>
-        IAuthenticator<LoginResultJson> GetGameTokenAuthenticator();
+        IAuthenticator<bool> GetComboTokenAuthenticator();
         ///<summary>
         ///This is the authenticator used for token authentication.
         ///</summary>

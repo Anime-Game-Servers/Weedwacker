@@ -1,10 +1,11 @@
 ﻿using Weedwacker.Shared.Network.Proto;
+using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
 namespace Weedwacker.GameServer.Systems.World
 {
     internal class MpPlayRewardEntity : ScriptGadgetEntity // wtf is this supposed to be?
     {
-        protected MpPlayRewardEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal MpPlayRewardEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

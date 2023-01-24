@@ -1,10 +1,11 @@
-﻿using Weedwacker.Shared.Network.Proto;
+﻿using Weedwacker.GameServer.Systems.Script.Scene;
+using Weedwacker.Shared.Network.Proto;
 
 namespace Weedwacker.GameServer.Systems.World
 {
     internal class BlossomChestEntity : ScriptGadgetEntity
     {
-        protected BlossomChestEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal BlossomChestEntity(Scene? scene, SceneGroup.Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

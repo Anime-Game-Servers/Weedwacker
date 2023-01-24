@@ -1,5 +1,6 @@
 ﻿using System;
 using Weedwacker.Shared.Network.Proto;
+using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
 namespace Weedwacker.GameServer.Systems.World
 {
@@ -7,7 +8,7 @@ namespace Weedwacker.GameServer.Systems.World
     {
         private uint ItemId;
         private bool IsForbidGuest;
-        protected GatherGadgetEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal GatherGadgetEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

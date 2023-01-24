@@ -49,7 +49,7 @@ namespace Weedwacker.GameServer.Data
         public static AbilityPathData AbilityPathMap { get; private set; }
 
         public readonly static Dictionary<uint, AvatarHeroEntityData> AvatarHeroEntityDataMap = new();
-        public readonly static Dictionary<uint, BlossomChestData> BlossomChestDataMap = new();
+        public readonly static Dictionary<uint, BlossomChestData> BlossomChestDataMap = new(); // id
         public readonly static ConcurrentDictionary<string, ConfigAbilityContainer[]> ConfigAbilityMap = new(); // file name
         public readonly static ConcurrentDictionary<string, ConfigAbilityContainer[]> ConfigAbilityActivityMap = new(); // file name
         public readonly static ConcurrentDictionary<string, ConfigAbilityContainer[]> ConfigAbilityAnimalMap = new(); // file name

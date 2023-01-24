@@ -1,10 +1,11 @@
 ﻿using Weedwacker.Shared.Network.Proto;
+using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
 namespace Weedwacker.GameServer.Systems.World
 {
     internal class GeneralRewardEntity : ScriptGadgetEntity
     {
-        protected GeneralRewardEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal GeneralRewardEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

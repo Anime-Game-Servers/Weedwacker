@@ -1,4 +1,5 @@
 ﻿using Weedwacker.Shared.Network.Proto;
+using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
 namespace Weedwacker.GameServer.Systems.World
 {
@@ -6,7 +7,7 @@ namespace Weedwacker.GameServer.Systems.World
     {
         private uint WeatherAreaId;
 
-        protected WeatherGadgetEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal WeatherGadgetEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

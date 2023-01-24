@@ -1,4 +1,5 @@
 ﻿using Weedwacker.Shared.Network.Proto;
+using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
 namespace Weedwacker.GameServer.Systems.World
 {
@@ -7,7 +8,7 @@ namespace Weedwacker.GameServer.Systems.World
         public HashSet<uint> WorktopOptions;
         private bool IsGuestCanOperate = false;
 
-        public GadgetWorktopEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal GadgetWorktopEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

@@ -5,7 +5,7 @@ namespace Weedwacker.GameServer.Systems.World
 {
     internal class VehicleEntity : ScriptGadgetEntity
     {
-        protected VehicleEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId, blockId, groupId, configId)
+        internal VehicleEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

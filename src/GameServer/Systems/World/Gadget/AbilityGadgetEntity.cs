@@ -1,4 +1,5 @@
 ﻿using Weedwacker.Shared.Network.Proto;
+using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
 namespace Weedwacker.GameServer.Systems.World
 {
@@ -7,7 +8,7 @@ namespace Weedwacker.GameServer.Systems.World
         private uint CampId;
         private uint CampType;
         private uint TargetEntityId;
-        protected AbilityGadgetEntity(Scene? scene, uint gadgetId) : base(scene, gadgetId)
+        internal AbilityGadgetEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
 

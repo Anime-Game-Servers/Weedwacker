@@ -41,7 +41,7 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
                 }
                 foreach(uint configId in init_suite.gadgets)
                 {
-                    var gadget = await BaseGadgetEntity.CreateGadgetAsync(scene, scene.World.Host, gadgets[configId].gadget_id, BlockId, group_id, configId);
+                    var gadget = await BaseGadgetEntity.CreateGadgetAsync(scene, scene.World.Host, gadgets[configId]);
                     if(gadget != null) entities.Add(gadget);
                 }
 
@@ -96,12 +96,33 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
             public readonly Vector3 pos;
             public readonly Vector3 rot;
 
-            protected SpawnInfo(LuaTable table)
+            //Meta fields
+            public readonly uint SceneId;
+            public readonly uint BlockId;
+            public readonly uint GroupId;
+
+            protected SpawnInfo(LuaTable table, SceneGroup group)
             {
                 config_id = (uint?)(long?)table[$"{nameof(config_id)}"] ?? 0;
                 area_id = (uint?)(long?)table[$"{nameof(area_id)}"] ?? 0;
-                pos = new Vector3((float?)(double?)table[$"{nameof(pos)}.x"] ?? 0, (float?)(double?)table[$"{nameof(pos)}.y"] ?? 0, (float?)(double?)table[$"{nameof(pos)}.z"] ?? 0);
-                rot = new Vector3((float?)(double?)table[$"{nameof(rot)}.x"] ?? 0, (float?)(double?)table[$"{nameof(rot)}.y"] ?? 0, (float?)(double?)table[$"{nameof(rot)}.z"] ?? 0);
+                pos = new Vector3(GetNum(table[$"{nameof(pos)}.x"]) ?? 0, GetNum(table[$"{nameof(pos)}.y"]) ?? 0, GetNum(table[$"{nameof(pos)}.z"]) ?? 0);
+                rot = new Vector3(GetNum(table[$"{nameof(rot)}.x"]) ?? 0, GetNum(table[$"{nameof(rot)}.y"]) ?? 0, GetNum(table[$"{nameof(rot)}.z"]) ?? 0);
+
+                SceneId = group.SceneId;
+                BlockId = group.BlockId;
+                GroupId = group.group_id;
+
+                static float? GetNum(object num)
+                {
+                    if(num.GetType() == typeof(System.Double?) || num.GetType() == typeof(System.Double))
+                    {
+                        return (float?)(double?)num;
+                    }
+                    else
+                    {
+                        return (uint?)(long?)num;
+                    }
+                }
             }
         }
 
@@ -140,7 +161,7 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
             public readonly string? drop_tag;
             public readonly uint pose_id;
 
-            public Monster(LuaTable table) : base(table)
+            public Monster(LuaTable table, SceneGroup group) : base(table, group)
             {
                 monster_id = (uint)(long)table[$"{nameof(monster_id)}"];
                 level = (uint?)(long?)table[$"{nameof(level)}"] ?? 0;
@@ -154,7 +175,7 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
             public readonly uint npc_id;
             public readonly uint room;
 
-            public Npc(LuaTable table) : base(table)
+            public Npc(LuaTable table, SceneGroup group) : base(table, group)
             {
                 npc_id = (uint?)(long?)table[$"{nameof(npc_id)}"] ?? 0;
                 room = (uint?)(long?)table[$"{nameof(room)}"] ?? 0;
@@ -171,11 +192,17 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
             public readonly bool isOneoff;
             public readonly bool persistent;
             public readonly Explore? explore;
+            public readonly BossChest? boss_chest;
+            public readonly uint chest_drop_id;
+            public readonly uint drop_count;
+            public readonly bool is_blossom_chest;
 
-            public Gadget(LuaTable table) : base(table)
+            public Gadget(LuaTable table, SceneGroup group) : base(table, group)
             {
                 if (table[$"{nameof(explore)}"] != null)
                     explore = new(table[$"{nameof(explore)}"] as LuaTable);
+                if (table[$"{nameof(boss_chest)}"] != null)
+                    boss_chest = new(table[$"{nameof(boss_chest)}"] as LuaTable);
                 gadget_id = (uint?)(long?)table[$"{nameof(gadget_id)}"] ?? 0;
                 level = (uint?)(long?)table[$"{nameof(level)}"] ?? 0;
                 drop_tag = (string?)table[$"{nameof(drop_tag)}"] ?? "";
@@ -183,6 +210,9 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
                 showcutscene = (bool?)table[$"{nameof(showcutscene)}"] ?? false;
                 isOneoff = (bool?)table[$"{nameof(isOneoff)}"] ?? false;
                 persistent = (bool?)table[$"{nameof(persistent)}"] ?? false;
+                is_blossom_chest = (bool?)table[$"{nameof(is_blossom_chest)}"] ?? false;
+                chest_drop_id = (uint?)(long?)table[$"{nameof(chest_drop_id)}"] ?? 0;
+                drop_count = (uint?)(long?)table[$"{nameof(drop_count)}"] ?? 0;
             }
 
             public class Explore
@@ -194,6 +224,22 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
                 {
                     name = (string?)table[$"{nameof(name)}"] ?? "";
                     exp = (uint?)(long?)table[$"{nameof(exp)}"] ?? 0;
+                }
+            }
+
+            public class BossChest
+            {
+                public readonly uint monster_config_id;
+                public readonly uint resin;
+                public readonly uint life_time;
+                public readonly uint take_num;
+
+                public BossChest(LuaTable table)
+                {
+                    monster_config_id = (uint?)(long?)table[$"{nameof(monster_config_id)}"] ?? 0;
+                    resin = (uint?)(long?)table[$"{nameof(resin)}"] ?? 0;
+                    life_time = (uint?)(long?)table[$"{nameof(life_time)}"] ?? 0;
+                    take_num = (uint?)(long?)table[$"{nameof(take_num)}"] ?? 0;
                 }
             }
         }
@@ -287,12 +333,12 @@ namespace Weedwacker.GameServer.Systems.Script.Scene
             if (LuaState[$"_SCENE_GROUP{group_id}.{nameof(monsters)}"] != null)
             {
                 var table = LuaState.GetTableDict(LuaState.GetTable($"_SCENE_GROUP{group_id}.{nameof(monsters)}"));
-                monsters = new SortedDictionary<uint, Monster>(table.ToDictionary(w => (uint)(long)(w.Value as LuaTable)["config_id"], w => new Monster(w.Value as LuaTable)));
+                monsters = new SortedDictionary<uint, Monster>(table.ToDictionary(w => (uint)(long)(w.Value as LuaTable)["config_id"], w => new Monster(w.Value as LuaTable, this)));
             }
             if (LuaState[$"_SCENE_GROUP{group_id}.{nameof(npcs)}"] != null)
-                npcs = new SortedList<uint, Npc>(LuaState.GetTableDict(LuaState.GetTable($"_SCENE_GROUP{group_id}.{nameof(npcs)}")).ToDictionary(w => (uint)(long)w.Key, w => new Npc(w.Value as LuaTable)));
+                npcs = new SortedList<uint, Npc>(LuaState.GetTableDict(LuaState.GetTable($"_SCENE_GROUP{group_id}.{nameof(npcs)}")).ToDictionary(w => (uint)(long)w.Key, w => new Npc(w.Value as LuaTable, this)));
             if (LuaState[$"_SCENE_GROUP{group_id}.{nameof(gadgets)}"] != null)
-                gadgets = LuaState.GetTableDict(LuaState.GetTable($"_SCENE_GROUP{group_id}.{nameof(gadgets)}")).ToDictionary(w => (uint)(long)w.Key, w => new Gadget(w.Value as LuaTable)).ToDictionary(w => w.Value.config_id, w => w.Value);
+                gadgets = LuaState.GetTableDict(LuaState.GetTable($"_SCENE_GROUP{group_id}.{nameof(gadgets)}")).ToDictionary(w => (uint)(long)w.Key, w => new Gadget(w.Value as LuaTable, this)).ToDictionary(w => w.Value.config_id, w => w.Value);
             if (LuaState[$"_SCENE_GROUP{group_id}.{nameof(regions)}"] != null)
                 regions = new List<Region>(LuaState.GetTableDict(LuaState.GetTable($"_SCENE_GROUP{group_id}.{nameof(regions)}")).Values.Select(w => new Region(w as LuaTable)));
             if (LuaState[$"_SCENE_GROUP{group_id}.{nameof(triggers)}"] != null)

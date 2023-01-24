@@ -1,6 +1,7 @@
 ﻿using Weedwacker.GameServer.Data;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Systems.Script.Scene;
 using Weedwacker.Shared.Network.Proto;
 
 namespace Weedwacker.GameServer.Systems.World
@@ -12,11 +13,11 @@ namespace Weedwacker.GameServer.Systems.World
         public uint GroupId { get; set; }
         public uint ConfigId { get; set; }
 
-        protected ScriptGadgetEntity(Scene? scene, uint gadgetId, uint blockId, uint groupId, uint configId) : base(scene, gadgetId)
+        protected ScriptGadgetEntity(Scene? scene, SceneGroup.Gadget spawnInfo) : base(scene, spawnInfo)
         {
-            BlockId = blockId;
-            GroupId = groupId;
-            ConfigId = configId;
+            BlockId = spawnInfo.BlockId;
+            GroupId = spawnInfo.GroupId;
+            ConfigId = spawnInfo.config_id;
         }
 
         public async void SetGadgetState(int state)

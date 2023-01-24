@@ -63,7 +63,7 @@ namespace Weedwacker.WebServer
                         Name = region.Name,
                         Title = region.Title,
                         Type = "DEV_PUBLIC",
-                        DispatchUrl = dispatchDomain + "/query_cur_region/" + region.Name
+                        DispatchUrl = (WebServer.Configuration.Server.EnforceEncryption ? "https" : "http") + $"://{region.Ip}/query_cur_region/{region.Name}"
                     };
                     usedNames.Add(region.Name);
                     servers.Add(identifier);

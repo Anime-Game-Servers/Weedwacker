@@ -41,6 +41,8 @@ namespace Weedwacker.GameServer.Systems.World
 					{
 						return new ChestEntity(scene, spawnInfo);
 					}
+				case EntityType.Platform:
+					return new PlatformEntity(scene, spawnInfo);
 				default:
 					Logger.DebugWriteWarningLine($"Unhandled Script Gadget entity type: {excel.type}, gadgetId: {gadgetId}");
 					return null;

@@ -77,7 +77,7 @@ namespace Weedwacker.GameServer.Systems.World
         public virtual async Task DamageAsync(float amount, uint attackerId = 0)
         {
             // Check if the entity has properties.
-            if (!FightProps.ContainsKey(FightProperty.FIGHT_PROP_CUR_HP)) return;
+            if (FightProps == null || !FightProps.ContainsKey(FightProperty.FIGHT_PROP_CUR_HP)) return;
 
             float curHp = FightProps[FightProperty.FIGHT_PROP_CUR_HP];
             if (!float.IsPositiveInfinity(curHp) || curHp <= amount)

@@ -7,15 +7,15 @@ namespace Weedwacker.GameServer.Enums
     public enum ElementType
     {
         None,
+        Fire = 1,
+        Water = 2,
+        Grass = 3,
+        Electric = 4,
+        Ice = 5,  
+        Frozen = 6,
+        Wind = 7,
+        Rock = 8,
         AntiFire,
-        Fire = 2,
-        Water = 3,
-        Wind = 4,
-        Ice = 5,
-        Rock = 6,
-        Electric = 7,
-        Grass = 8,
-        Frozen,
         Default = 255,
         VehicleMuteIce, //wtf
     }

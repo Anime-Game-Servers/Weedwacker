@@ -128,6 +128,8 @@ namespace Weedwacker.GameServer.Systems.World
 
         public async Task AddEnergyAsync(float amount, PropChangeReason reason, bool isFlat = false)
         {
+            if (Avatar.CurSkillDepot.Element is null || Avatar.LifeState == LifeState.LIFE_DEAD)
+                return;
             float curEnergy = Avatar.GetCurrentEnergy();
             float maxEnergy = Avatar.CurSkillDepot.Element.MaxEnergy;
 

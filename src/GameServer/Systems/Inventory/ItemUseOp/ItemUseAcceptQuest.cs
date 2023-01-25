@@ -7,7 +7,7 @@
         {
         }
 
-        internal override Task<bool> Use()
+        internal override async Task<bool> Use(uint count = 1)
         {
             throw new NotImplementedException();
         }

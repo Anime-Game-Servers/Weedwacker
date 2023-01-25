@@ -1,4 +1,7 @@
-﻿using System;
+using System;
+using Weedwacker.GameServer.Data;
+using Weedwacker.GameServer.Data.Excel;
+using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Network.Proto;
 using static Weedwacker.GameServer.Systems.Script.Scene.SceneGroup;
 
@@ -11,6 +14,7 @@ namespace Weedwacker.GameServer.Systems.World
         internal GatherGadgetEntity(Scene? scene, Gadget spawnInfo) : base(scene, spawnInfo)
         {
         }
+
 
         public override SceneEntityInfo ToProto()
         {

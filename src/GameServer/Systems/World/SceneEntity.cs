@@ -12,7 +12,7 @@ namespace Weedwacker.GameServer.Systems.World
         public virtual Vector3 Position { get; protected set; }
         public virtual Vector3 Rotation { get; protected set; }
         public Vector3 Speed { get; protected set; }
-
+        public virtual InteractType InteractType => InteractType.None;
         public LifeState LiveState { get; protected set; }
         public MotionState MotionState { get; protected set; }
         public Dictionary<FightProperty, float> FightProps { get; protected set; }

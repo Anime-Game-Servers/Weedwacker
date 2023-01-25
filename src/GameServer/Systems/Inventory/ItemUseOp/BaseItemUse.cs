@@ -13,6 +13,6 @@ namespace Weedwacker.GameServer.Systems.Inventory.ItemUseOp
             User = user;
             ItemData = (MaterialData)GameData.ItemDataMap[itemId];
         }
-        internal abstract Task<bool> Use();
+        internal abstract Task<bool> Use(uint count = 1);
     }
 }

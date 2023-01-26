@@ -55,7 +55,7 @@ namespace Weedwacker.GameServer.Enums
         }
     }
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum QuestCond
+    public enum QuestCond
     {
         QUEST_COND_NONE = 0,
         QUEST_COND_STATE_EQUAL = 1,
@@ -136,8 +136,8 @@ namespace Weedwacker.GameServer.Enums
         QUEST_COND_SCENE_POINT_UNLOCK = 76,
         QUEST_COND_SCENE_LEVEL_TAG_EQ = 77,
     }
-
-    internal enum QuestContent
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum QuestContent
     {
         QUEST_CONTENT_NONE = 0,
         QUEST_CONTENT_KILL_MONSTER = 1,
@@ -213,8 +213,8 @@ namespace Weedwacker.GameServer.Enums
         QUEST_CONTENT_IRODORI_POETRY_REACH_MIN_PROGRESS = 152,
         QUEST_CONTENT_IRODORI_POETRY_FINISH_FILL_POETRY = 153,
     }
-
-    internal enum QuestExec
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum QuestExec
     {
         QUEST_EXEC_NONE = 0,
         QUEST_EXEC_DEL_PACK_ITEM = 1,

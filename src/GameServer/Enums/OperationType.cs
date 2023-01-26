@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    internal enum OperationType
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum OperationType
     {
         NONE,
         OR

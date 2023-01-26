@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    internal enum TriggerFlag
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum TriggerFlag
     {
         None,
         NoReviveRegion,

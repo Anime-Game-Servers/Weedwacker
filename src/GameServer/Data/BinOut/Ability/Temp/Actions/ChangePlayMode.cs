@@ -6,6 +6,6 @@ namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
     internal class ChangePlayMode : ConfigAbilityAction
     {
         [JsonProperty] public readonly bool? canBeHandledOnRecover;
-        [JsonProperty] public readonly PlayMode? toPlayMode;
+        [JsonProperty] public readonly BinPlayMode? toPlayMode;
     }
 }

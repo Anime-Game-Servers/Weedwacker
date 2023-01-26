@@ -9,6 +9,7 @@ using Weedwacker.GameServer.Data.BinOut.AbilityPath;
 using Weedwacker.GameServer.Data.BinOut.Avatar;
 using Weedwacker.GameServer.Data.BinOut.Gadget;
 using Weedwacker.GameServer.Data.BinOut.GadgetPath;
+using Weedwacker.GameServer.Data.BinOut.Quest;
 using Weedwacker.GameServer.Data.BinOut.Scene.Point;
 using Weedwacker.GameServer.Data.BinOut.Scene.SceneNpcBorn;
 using Weedwacker.GameServer.Data.BinOut.Talent;
@@ -73,6 +74,7 @@ namespace Weedwacker.GameServer.Data
         public static GlobalCombatData GlobalCombatData { get; private set; }
         public readonly static Dictionary<uint, HomeWorldFurnitureData> HomeWorldFurnitureDataMap = new(); // id
         public readonly static Dictionary<uint, ItemData> ItemDataMap = new(); // id ItemData is subclassed, and loaded as MaterialData, ReliquaryData, and WeaponData
+        public readonly static ConcurrentDictionary<uint, MainQuestData> MainQuestDataMap = new(); // id
         public readonly static Dictionary<uint, MonsterCurveData> MonsterCurveDataMap = new(); // level
         public readonly static Dictionary<uint, MonsterData> MonsterDataMap = new(); // id
         public readonly static Dictionary<uint, MonsterDescribeData> MonsterDescribeDataMap = new(); // id
@@ -340,6 +342,7 @@ namespace Weedwacker.GameServer.Data
                 LoadBinOutFolder(Path.Combine(binPath, "Talent", "AvatarTalents"), AvatarTalentConfigDataMap, false),
                 LoadBinOutFolder(Path.Combine(binPath, "Avatar"), ConfigAvatarMap, false),
                 LoadBinOutFolder(Path.Combine(binPath, "Gadget"), ConfigGadgetMap, true),
+                LoadBinOutFolder(Path.Combine(binPath, "Quest"), q => q.id, MainQuestDataMap),
                 LoadBinOutFolder(Path.Combine(binPath, "Talent", "EquipTalents"), WeaponAffixConfigDataMap),
                 LoadBinOutFolder(Path.Combine(binPath, "Talent", "RelicTalents"), RelicAffixConfigDataMap),
                 LoadBinOutFolder(Path.Combine(binPath, "Talent", "TeamTalents"), TeamResonanceConfigDataMap),

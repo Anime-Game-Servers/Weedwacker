@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    internal enum TowerType
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum TowerType
     {
         None,
         Simple,

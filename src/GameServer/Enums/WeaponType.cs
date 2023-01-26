@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 namespace Weedwacker.GameServer.Enums
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum WeaponType
+    public enum WeaponType
     {
         WEAPON_NONE = 0,
         WEAPON_SWORD_ONE_HAND = 1,

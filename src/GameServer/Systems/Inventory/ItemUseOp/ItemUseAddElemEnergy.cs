@@ -7,24 +7,24 @@ namespace Weedwacker.GameServer.Systems.Inventory.ItemUseOp
     [ItemUse(Enums.ItemUseOp.ITEM_USE_ADD_ELEM_ENERGY)]
     internal class ItemUseAddElemEnergy : BaseItemUse
     {
-        private readonly float energy = 0;
-        private readonly Enums.ElementType element = Enums.ElementType.None;
-        private readonly float altEnergy = 0;
+        private readonly float Energy = 0;
+        private readonly Enums.ElementType Element = Enums.ElementType.None;
+        private readonly float AltEnergy = 0;
         public ItemUseAddElemEnergy(Player.Player user, uint itemId) : base(user, itemId)
         {
             if(int.TryParse(ItemData.itemUse.Where(w => w.useOp == Enums.ItemUseOp.ITEM_USE_ADD_ELEM_ENERGY).First().useParam[0], out int elementID))
             {
-                element = (Enums.ElementType)elementID;
+                Element = (Enums.ElementType)elementID;
             }
-            float.TryParse(ItemData.itemUse.Where(w => w.useOp == Enums.ItemUseOp.ITEM_USE_ADD_ELEM_ENERGY).First().useParam[1], out energy);
-            float.TryParse(ItemData.itemUse.Where(w => w.useOp == Enums.ItemUseOp.ITEM_USE_ADD_ELEM_ENERGY).First().useParam[2], out altEnergy);
+            float.TryParse(ItemData.itemUse.Where(w => w.useOp == Enums.ItemUseOp.ITEM_USE_ADD_ELEM_ENERGY).First().useParam[1], out Energy);
+            float.TryParse(ItemData.itemUse.Where(w => w.useOp == Enums.ItemUseOp.ITEM_USE_ADD_ELEM_ENERGY).First().useParam[2], out AltEnergy);
         }
         internal override async Task<bool> Use(uint count = 1)
         {
             switch (ItemData.useTarget)
             {
                 case ItemUseTarget.ITEM_USE_TARGET_CUR_AVATAR:
-                    float energyAmount = User.TeamManager.CurrentAvatarEntity.Avatar.CurSkillDepot.Element?.Type == element ? energy : altEnergy;
+                    float energyAmount = User.TeamManager.CurrentAvatarEntity.Avatar.CurSkillDepot.Element?.Type == Element ? Energy : AltEnergy;
                     await User.TeamManager.CurrentAvatarEntity.AddEnergyAsync(energyAmount * count, Shared.Network.Proto.PropChangeReason.EnergyBall);
                     break;
                 case ItemUseTarget.ITEM_USE_TARGET_CUR_TEAM:
@@ -33,7 +33,7 @@ namespace Weedwacker.GameServer.Systems.Inventory.ItemUseOp
                     {
                         if (avatar.Value.Avatar.CurSkillDepot.Element is null)
                             continue;
-                        float amount = avatar.Value.Avatar.CurSkillDepot.Element.Type == element ? energy : altEnergy;
+                        float amount = avatar.Value.Avatar.CurSkillDepot.Element.Type == Element ? Energy : AltEnergy;
                         if (avatar.Key == User.TeamManager.CurrentCharacterIndex || ItemData.materialType == MaterialType.MATERIAL_FOOD) //The food items do not care for off field chars
                         {
                             await avatar.Value.AddEnergyAsync(amount * count, Shared.Network.Proto.PropChangeReason.EnergyBall);

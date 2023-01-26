@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    internal enum CombatPropertyIndex
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum CombatPropertyIndex
     {
         hp,
         attack,

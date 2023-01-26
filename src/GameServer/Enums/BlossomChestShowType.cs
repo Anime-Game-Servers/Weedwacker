@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    internal enum BlossomChestShowType
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum BlossomChestShowType
     {
         BLOSSOM_CHEST_SHOWTYPE_BLOSSOM,
         BLOSSOM_CHEST_SHOWTYPE_NO_RESIN

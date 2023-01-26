@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    internal enum BlossomRefreshType
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum BlossomRefreshType
     {
         BLOSSOM_REFRESH_NONE,
         BLOSSOM_REFRESH_SCOIN,

@@ -1,6 +1,10 @@
-﻿namespace Weedwacker.GameServer.Enums
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Weedwacker.GameServer.Enums
 {
-    public enum EventType
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum EventType
     {
         EVENT_NONE = 0,
         EVENT_ANY_MONSTER_DIE = 1,

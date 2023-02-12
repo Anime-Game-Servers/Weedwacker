@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByIsTargetCamp : ConfigAbilityPredicate
 {
-    internal class ByIsTargetCamp : BasePredicate
-    {
-        [JsonProperty] public readonly string campBaseOn;
-        [JsonProperty] public readonly TargetType campTargetType;
-    }
+	public AbilityTargetting campBaseOn;
+	public TargetType campTargetType;
 }

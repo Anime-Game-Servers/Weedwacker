@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddChargeBarValue : ConfigAbilityAction
 {
-    internal class AddChargeBarValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly object value;
-    }
+	public object value;
+	public bool randomInRange;
+	public object maxValue;
+	public object minValue;
 }

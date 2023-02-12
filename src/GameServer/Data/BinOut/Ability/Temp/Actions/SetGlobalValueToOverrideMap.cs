@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetGlobalValueToOverrideMap : ConfigAbilityAction
 {
-    internal class SetGlobalValueToOverrideMap : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly string overrideMapKey;
-    }
+	public AbilityFormula abilityFormula;
+	public bool isFromOwner;
+	public string globalValueKey;
+	public string overrideMapKey;
 }

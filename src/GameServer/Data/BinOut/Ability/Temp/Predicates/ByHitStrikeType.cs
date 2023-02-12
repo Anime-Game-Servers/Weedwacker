@@ -1,6 +1,9 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
+
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHitStrikeType : ConfigAbilityPredicate
 {
-    internal class ByHitStrikeType : BasePredicate
-    {
-    }
+	public StrikeType strikeType;
 }

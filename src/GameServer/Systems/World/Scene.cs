@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using Octree;
 using Weedwacker.GameServer.Data;
 using Weedwacker.GameServer.Data.BinOut.Scene.Point;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Enums;
@@ -217,9 +218,9 @@ namespace Weedwacker.GameServer.Systems.World
                 return;
             }
 
-            if (teamManager.CurrentAvatarEntity.FightProps[FightProperty.FIGHT_PROP_CUR_HP] <= 0f)
+            if (teamManager.CurrentAvatarEntity.FightProps[FightPropType.FIGHT_PROP_CUR_HP] <= 0f)
             {
-                teamManager.                CurrentAvatarEntity.FightProps[FightProperty.FIGHT_PROP_CUR_HP] = 1f;
+                teamManager.                CurrentAvatarEntity.FightProps[FightPropType.FIGHT_PROP_CUR_HP] = 1f;
             }
 
             await AddEntityAsync(teamManager.CurrentAvatarEntity);
@@ -236,10 +237,10 @@ namespace Weedwacker.GameServer.Systems.World
             foreach (AvatarEntity entity in player.TeamManager.ActiveTeam.Values)
             {
                 entity.FightProps[
-                        FightProperty.FIGHT_PROP_CUR_HP] =
-                    entity.FightProps[FightProperty.FIGHT_PROP_MAX_HP] * 0.4f;
+                        FightPropType.FIGHT_PROP_CUR_HP] =
+                    entity.FightProps[FightPropType.FIGHT_PROP_MAX_HP] * 0.4f;
 
-                await player.SendPacketAsync(new PacketAvatarFightPropUpdateNotify(entity.Avatar, FightProperty.FIGHT_PROP_CUR_HP));
+                await player.SendPacketAsync(new PacketAvatarFightPropUpdateNotify(entity.Avatar, FightPropType.FIGHT_PROP_CUR_HP));
                 await player.SendPacketAsync(new PacketAvatarLifeStateChangeNotify(entity.Avatar));
             }
             Vector3 respawnPos = GetRespawnPosition(player);
@@ -469,9 +470,9 @@ namespace Weedwacker.GameServer.Systems.World
             }
         }
 
-        public async Task AddItemEntity(uint itemId, int amount, SceneEntity bornForm)
+        public async Task AddItemEntity(uint itemId, uint amount, SceneEntity bornForm)
         {
-            if (!GameData.ItemDataMap.TryGetValue(itemId, out ItemData itemData))
+            if (!GameData.ItemDataMap.TryGetValue(itemId, out ItemConfig itemData))
             {
                 return;
             }

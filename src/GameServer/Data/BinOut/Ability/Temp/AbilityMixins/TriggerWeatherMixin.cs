@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class TriggerWeatherMixin : ConfigAbilityMixin
 {
-    internal class TriggerWeatherMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly TriggerType type;
-        [JsonProperty] public readonly string weatherPattern;
-        [JsonProperty] public readonly float transDuration;
-        [JsonProperty] public readonly float duration;
-    }
+	public TriggerWeatherType type;
+	public uint areaId;
+	public string weatherPattern;
+	public float transDuration;
+	public float duration;
 }

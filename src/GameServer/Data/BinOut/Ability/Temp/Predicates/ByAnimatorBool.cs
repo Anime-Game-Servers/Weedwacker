@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByAnimatorBool : ConfigAbilityPredicate
 {
-    internal class ByAnimatorBool : BasePredicate
-    {
-        [JsonProperty] public readonly bool value;
-        [JsonProperty] public readonly string parameter;
-    }
+	public bool value;
+	public string parameter;
 }

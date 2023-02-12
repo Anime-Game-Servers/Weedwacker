@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ModifyVehicleSkillCD : ConfigAbilityAction
 {
-    internal class ModifyVehicleSkillCD : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int skillID;
-        [JsonProperty] public readonly int cdDelta;
-    }
+	public uint skillID;
+	public object cdDelta;
+	public object cdRatio;
 }

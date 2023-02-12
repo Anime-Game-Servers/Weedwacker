@@ -1,23 +1,30 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DiePatternSwitchMixin : ConfigAbilityMixin
 {
-    internal class DiePatternSwitchMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string priority;
-        [JsonProperty] public readonly bool startDieEndAtOnce;
-        [JsonProperty] public readonly bool ignoreElementDie;
-        [JsonProperty] public readonly bool notSendDieTrigger;
-        [JsonProperty] public readonly string dieDisappearEffect;
-        [JsonProperty] public readonly float dieDisappearEffectDelay;
-        [JsonProperty] public readonly float dieEndTime;
-        [JsonProperty] public readonly float dieForceDisappearTime;
-        [JsonProperty] public readonly float dieModelFadeDelay;
-        [JsonProperty] public readonly bool muteHitBox;
-        [JsonProperty] public readonly bool dieDenyLockOn;
-        [JsonProperty] public readonly bool dieIsGhostToEnemy;
-        [JsonProperty] public readonly bool dieIgnoreTriggerBullet;
-        [JsonProperty] public readonly bool muteBillboard;
-        [JsonProperty] public readonly bool mutePushCollider;
-    }
+	public DiePatternSwitchMixinPriority priority;
+	public bool hasAnimatorDie;
+	public bool muteAllShaderDieEff;
+	public bool fallWhenAirDie;
+	public float dieEndTime;
+	public float dieForceDisappearTime;
+	public string dieDisappearEffect;
+	public float dieDisappearEffectDelay;
+	public E_ShaderData dieShaderData;
+	public float dieShaderEnableDurationTime;
+	public float dieShaderDisableDurationTime;
+	public float dieModelFadeDelay;
+	public float ragDollDieEndTimeDelay;
+	public bool startDieEndAtOnce;
+	public bool notSendDieTrigger;
+	public bool ignoreElementDie;
+	public bool muteHitBox;
+	public bool dieDenyLockOn;
+	public bool dieIsGhostToEnemy;
+	public bool dieIgnoreTriggerBullet;
+	public bool muteBillboard;
+	public bool mutePushCollider;
 }

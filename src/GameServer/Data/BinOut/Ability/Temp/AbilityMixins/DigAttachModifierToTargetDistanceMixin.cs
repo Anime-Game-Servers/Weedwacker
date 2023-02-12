@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DigAttachModifierToTargetDistanceMixin : ConfigAbilityMixin
 {
-    internal class DigAttachModifierToTargetDistanceMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly int targetID;
-		[JsonProperty] public readonly float distance;
-		[JsonProperty] public readonly ConfigAbilityAction[] foundActionArray;
-		[JsonProperty] public readonly ConfigAbilityAction[] unfoundActionArray;
-    }
+	public uint targetID;
+	public float distance;
+	public string unfoundEffectPattern;
+	public string foundEffectPattern;
+	public ConfigAbilityAction[] unfoundActionArray;
+	public ConfigAbilityAction[] foundActionArray;
 }

@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireGainCrystalSeedEvent : ConfigAbilityAction
 {
-    internal class FireGainCrystalSeedEvent : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly ElementType elementType;
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public ElementType elementType;
 }

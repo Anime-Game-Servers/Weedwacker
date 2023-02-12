@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+﻿namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public abstract class ConfigEffectAttachShape
 {
-    internal abstract class ConfigEffectAttachShape
-    {
-    }
 }

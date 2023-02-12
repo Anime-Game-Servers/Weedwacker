@@ -1,26 +1,26 @@
 ﻿using System.Numerics;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Network.Proto;
 
 namespace Weedwacker.GameServer.Systems.World
 {
-    internal abstract class SceneEntity : BaseEntity
+    public abstract class SceneEntity : BaseEntity
     {
-        public readonly Scene? Scene;
+        internal readonly Scene? Scene;
 
-        public virtual Vector3 Position { get; protected set; }
-        public virtual Vector3 Rotation { get; protected set; }
-        public Vector3 Speed { get; protected set; }
-        public virtual InteractType InteractType => InteractType.None;
-        public LifeState LiveState { get; protected set; }
-        public MotionState MotionState { get; protected set; }
-        public Dictionary<FightProperty, float> FightProps { get; protected set; }
-        public uint LastMoveSceneTimeMs;
-        public uint LastMoveReliableSeq;
+		public virtual Vector3 Position { get; protected set; }
+		public virtual Vector3 Rotation { get; protected set; }
+		public Vector3 Speed { get; protected set; }
+		internal virtual InteractType InteractType => InteractType.None;
+		public LifeState LiveState { get; protected set; }
+		public MotionState MotionState { get; protected set; }
+		public Dictionary<FightPropType, float> FightProps { get; protected set; }
+		internal uint LastMoveSceneTimeMs;
+		internal uint LastMoveReliableSeq;
 
         public bool LockHP;
-        public World? World
+        internal World? World
         {
             get
             {
@@ -44,7 +44,7 @@ namespace Weedwacker.GameServer.Systems.World
             }
         }
 
-        public SceneEntity(Scene? scene)
+        internal SceneEntity(Scene? scene)
         {
             Scene = scene;
             MotionState = MotionState.None;
@@ -59,8 +59,8 @@ namespace Weedwacker.GameServer.Systems.World
 
         public virtual async Task<float> HealAsync(float amount)
         {
-            float curHp = FightProps[FightProperty.FIGHT_PROP_CUR_HP];
-            float maxHp = FightProps[FightProperty.FIGHT_PROP_MAX_HP];
+            float curHp = FightProps[FightPropType.FIGHT_PROP_CUR_HP];
+            float maxHp = FightProps[FightPropType.FIGHT_PROP_MAX_HP];
 
             if (curHp >= maxHp)
             {
@@ -68,8 +68,8 @@ namespace Weedwacker.GameServer.Systems.World
             }
 
             float healed = Math.Min(maxHp - curHp, amount);
-            FightProps[FightProperty.FIGHT_PROP_CUR_HP] += healed;
-            await Scene.BroadcastPacketAsync(new PacketEntityFightPropUpdateNotify(this, FightProperty.FIGHT_PROP_CUR_HP));
+            FightProps[FightPropType.FIGHT_PROP_CUR_HP] += healed;
+            await Scene.BroadcastPacketAsync(new PacketEntityFightPropUpdateNotify(this, FightPropType.FIGHT_PROP_CUR_HP));
 
             return healed;
         }
@@ -77,25 +77,25 @@ namespace Weedwacker.GameServer.Systems.World
         public virtual async Task DamageAsync(float amount, uint attackerId = 0)
         {
             // Check if the entity has properties.
-            if (FightProps == null || !FightProps.ContainsKey(FightProperty.FIGHT_PROP_CUR_HP)) return;
+            if (FightProps == null || !FightProps.ContainsKey(FightPropType.FIGHT_PROP_CUR_HP)) return;
 
-            float curHp = FightProps[FightProperty.FIGHT_PROP_CUR_HP];
+            float curHp = FightProps[FightPropType.FIGHT_PROP_CUR_HP];
             if (!float.IsPositiveInfinity(curHp) || curHp <= amount)
             {
                 // Add negative HP to the current HP property.
-                FightProps[FightProperty.FIGHT_PROP_CUR_HP] -= amount;
+                FightProps[FightPropType.FIGHT_PROP_CUR_HP] -= amount;
             }
 
             // Check if dead
             bool isDead = false;
-            if (FightProps[FightProperty.FIGHT_PROP_CUR_HP] <= 0f)
+            if (FightProps[FightPropType.FIGHT_PROP_CUR_HP] <= 0f)
             {
-                FightProps[FightProperty.FIGHT_PROP_CUR_HP] = 0f;
+                FightProps[FightPropType.FIGHT_PROP_CUR_HP] = 0f;
                 isDead = true;
             }
 
             // Packets
-            await Scene.BroadcastPacketAsync(new PacketEntityFightPropUpdateNotify(this, FightProperty.FIGHT_PROP_CUR_HP));
+            await Scene.BroadcastPacketAsync(new PacketEntityFightPropUpdateNotify(this, FightPropType.FIGHT_PROP_CUR_HP));
 
             // Check if dead.
             if (isDead)
@@ -107,14 +107,14 @@ namespace Weedwacker.GameServer.Systems.World
         public virtual async Task SetHealthAsync(float newHP)
         {
             // Check if the entity has properties.
-            if (!FightProps.ContainsKey(FightProperty.FIGHT_PROP_CUR_HP)
-                || !FightProps.ContainsKey(FightProperty.FIGHT_PROP_MAX_HP)) return;
+            if (!FightProps.ContainsKey(FightPropType.FIGHT_PROP_CUR_HP)
+                || !FightProps.ContainsKey(FightPropType.FIGHT_PROP_MAX_HP)) return;
 
-            FightProps[FightProperty.FIGHT_PROP_CUR_HP] = Math.Min(newHP,
-                FightProps[FightProperty.FIGHT_PROP_MAX_HP]);
+            FightProps[FightPropType.FIGHT_PROP_CUR_HP] = Math.Min(newHP,
+                FightProps[FightPropType.FIGHT_PROP_MAX_HP]);
 
             // Packets
-            await Scene.BroadcastPacketAsync(new PacketEntityFightPropUpdateNotify(this, FightProperty.FIGHT_PROP_CUR_HP));
+            await Scene.BroadcastPacketAsync(new PacketEntityFightPropUpdateNotify(this, FightPropType.FIGHT_PROP_CUR_HP));
 
             if (newHP == 0f)
                 await OnDeathAsync(default);
@@ -128,7 +128,7 @@ namespace Weedwacker.GameServer.Systems.World
             if (moveInfo.MotionInfo.Rot != null)
                 Rotation = new Vector3(moveInfo.MotionInfo.Rot.X, moveInfo.MotionInfo.Rot.Y, moveInfo.MotionInfo.Rot.Z);
         }
-        public virtual async Task OnInteractAsync(Player.Player player, GadgetInteractReq interactReq)
+        internal virtual async Task OnInteractAsync(Player.Player player, GadgetInteractReq interactReq)
         {
 
         }
@@ -137,7 +137,7 @@ namespace Weedwacker.GameServer.Systems.World
 
         }
 
-        public virtual async Task OnDeathAsync(uint killerId = default, PlayerDieType dieType = PlayerDieType.KillByMonster)
+        public virtual async Task OnDeathAsync(uint killerId = default, Shared.Network.Proto.PlayerDieType dieType = Shared.Network.Proto.PlayerDieType.KillByMonster)
         {
 
         }

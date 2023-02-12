@@ -3,12 +3,12 @@ using Weedwacker.GameServer.Systems.Ability;
 
 namespace Weedwacker.GameServer.Data.BinOut.Talent
 {
-    internal class UnlockTalentParam : BaseConfigTalent
+    internal class UnlockTalentParam : ConfigTalentMixin
     {
-        [JsonProperty] public readonly string abilityName;
-        [JsonProperty] public readonly string talentParam;
+        public string abilityName;
+        public string talentParam;
 
-        public override void Apply(BaseAbilityManager abilityManager, double[] paramList)
+        public override void Apply(BaseAbilityManager abilityManager, float[] paramList)
         {
             if (abilityManager.UnlockedTalentParams.ContainsKey(abilityName))
                 abilityManager.UnlockedTalentParams[abilityName].Add(talentParam);

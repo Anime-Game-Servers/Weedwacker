@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class UseItem : ConfigAbilityAction
 {
-    internal class UseItem : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int itemId;
-        [JsonProperty] public readonly int itemNum;
-    }
+	public uint itemId;
+	public uint itemNum;
 }

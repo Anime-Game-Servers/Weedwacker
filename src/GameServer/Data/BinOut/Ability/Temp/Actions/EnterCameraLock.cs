@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnterCameraLock : ConfigAbilityAction
 {
-    internal class EnterCameraLock : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string transName;
-        [JsonProperty] public readonly string cfgPath;
-    }
+	public string transName;
+	public string cfgPath;
 }

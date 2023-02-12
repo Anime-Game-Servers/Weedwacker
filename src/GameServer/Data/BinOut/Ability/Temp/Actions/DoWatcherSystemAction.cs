@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DoWatcherSystemAction : ConfigAbilityAction
 {
-    internal class DoWatcherSystemAction : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly int watcherId;
-        [JsonProperty] public readonly bool authorityOnly;
-    }
+	public uint watcherId;
+	public bool authorityOnly;
+	public bool inThreatListOnly;
 }

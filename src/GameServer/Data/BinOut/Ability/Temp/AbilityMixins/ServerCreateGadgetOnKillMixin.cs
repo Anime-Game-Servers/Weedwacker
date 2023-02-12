@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ServerCreateGadgetOnKillMixin : ConfigAbilityMixin
 {
-    internal class ServerCreateGadgetOnKillMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int[] gadgetIDList;
-        [JsonProperty] public readonly int campID;
-        [JsonProperty] public readonly TargetType campTargetType;
-        [JsonProperty] public readonly bool randomCreate;
-    }
+	public uint[] gadgetIDList;
+	public uint campID;
+	public TargetType campTargetType;
+	public bool randomCreate;
+	public bool useOriginOwnerAsGadgetOwner;
+	public bool lifeByOwnerIsAlive;
 }

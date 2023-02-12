@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class EffectChangeAlphaMixin : ConfigAbilityMixin
 {
-    internal class EffectChangeAlphaMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly float startDuration;
-        [JsonProperty] public readonly float endDuration;
-    }
+	public AbilityTargetting target;
+	public SelectTargets otherTargets;
+	public ConfigAbilityPredicate[] predicates;
+	public float startDuration;
+	public float endDuration;
 }

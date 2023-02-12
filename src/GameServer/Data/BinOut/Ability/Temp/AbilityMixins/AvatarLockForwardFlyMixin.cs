@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AvatarLockForwardFlyMixin : ConfigAbilityMixin
 {
-    internal class AvatarLockForwardFlyMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly Dictionary<string, float> worldForward;
-		[JsonProperty] public readonly float flySpeedScale;
-		[JsonProperty] public readonly float flyBackSpeedScale;
-		[JsonProperty] public readonly Dictionary<string, float> eularRawInput;
-    }
+	public Vector worldForward;
+	public float flySpeedScale;
+	public float flyBackSpeedScale;
+	public Vector eularRawInput;
 }

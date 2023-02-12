@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared
+namespace Weedwacker.GameServer.Data.BinOut.Shared;
+
+public class ConfigWwiseString
 {
-    internal class ConfigWwiseString
-    {
-        [JsonProperty] public readonly string text;
-    }
+	public string text;
 }

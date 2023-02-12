@@ -1,20 +1,18 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("ShopExcelConfigData.json")]
+public class ShopData
 {
-    [Resource("ShopExcelConfigData.json")]
-    internal class ShopData
-    {
-        [JsonProperty] public readonly uint shopId;
-        [JsonProperty] public readonly ShopType shopType;
-        [JsonProperty] public readonly ShopRefreshType refreshType;
-        [JsonProperty] public readonly int refreshParam;
-        [JsonProperty] public readonly OpenStateType openStateType;
-        [JsonProperty] public readonly uint cityId;
-        [JsonProperty] public readonly uint cityDiscountLevel;
-        [JsonProperty] public readonly int scoinDiscountRate;
-        [JsonProperty] public readonly uint vipFuncId;
-
-    }
+	public uint shopId;
+	public ShopType shopType;
+	public ShopRefreshType refreshType;
+	public uint refreshParam;
+	public OpenStateType openStateType;
+	public uint cityId;
+	public uint cityDiscountLevel;
+	public uint scoinDiscountRate;
+	public uint vipFuncID;
 }

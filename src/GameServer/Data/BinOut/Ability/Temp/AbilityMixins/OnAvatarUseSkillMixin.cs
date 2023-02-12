@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class OnAvatarUseSkillMixin : ConfigAbilityMixin
 {
-    internal class OnAvatarUseSkillMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ConfigAbilityAction[] onTriggerSkill;
-        [JsonProperty] public readonly float clearSkillIdDelay;
-    }
+	public ConfigAbilityAction[] onTriggerNormalAttack;
+	public ConfigAbilityAction[] onTriggerSkill;
+	public ConfigAbilityAction[] onTriggerUltimateSkill;
+	public bool useSkillStart;
+	public float clearSkillIdDelay;
 }

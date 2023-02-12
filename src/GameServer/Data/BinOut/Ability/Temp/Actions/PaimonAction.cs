@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class PaimonAction : ConfigAbilityAction
 {
-    internal class PaimonAction : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string from;
-        [JsonProperty] public readonly string actionName;
-    }
+	public PaimonRequestFrom from;
+	public PaimonSkill actionName;
 }

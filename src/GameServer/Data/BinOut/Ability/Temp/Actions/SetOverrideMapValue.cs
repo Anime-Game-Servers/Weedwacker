@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetOverrideMapValue : ConfigAbilityAction
 {
-    internal class SetOverrideMapValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly object value;
-        [JsonProperty] public readonly string overrideMapKey;
-    }
+	public object value;
+	public string overrideMapKey;
 }

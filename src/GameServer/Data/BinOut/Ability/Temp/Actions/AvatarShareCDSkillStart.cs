@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarShareCDSkillStart : ConfigAbilityAction
 {
-    internal class AvatarShareCDSkillStart : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int skillID;
-        [JsonProperty] public readonly int shareCDType;
-    }
+	public uint skillID;
+	public uint shareCDType;
 }

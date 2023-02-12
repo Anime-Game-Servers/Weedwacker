@@ -1,0 +1,37 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum MarkOrder : int
+{
+	None = 0,
+	LocalPlayer = 1,
+	OtherPlayer = 2,
+	QuestMain = 3,
+	QuestBranch = 4,
+	Radar = 5,
+	TransportGoddess = 6,
+	Dungeon = 7,
+	QuestEvent = 8,
+	QuestActivity = 9,
+	QuestWorld = 10,
+	QuestRandom = 11,
+	Ore = 12,
+	Activity = 13,
+	Custom = 14,
+	Monster = 15,
+	TransportOther = 16,
+	NpcAdventure = 17,
+	NpcActivity = 18,
+	Area = 19,
+	Default = 20,
+	NpcOther = 21,
+	Vehicle = 22,
+	QuestAcception = 23,
+	HomeworldMainHouse = 1001,
+	HomeworldFarmField = 1002,
+	HomeworldFurnitureSuite = 1003,
+	HomeworldDjinn = 1004,
+	HomeworldNpc = 1005,
+	HomeworldTransPoint = 1006,
+	HomeworldSafePoint = 1007,
+}

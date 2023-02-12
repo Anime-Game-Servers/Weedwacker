@@ -1,5 +1,5 @@
 ﻿using Google.Protobuf;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.Shared.Network.Proto;
 
 namespace Weedwacker.GameServer.Packet.Send

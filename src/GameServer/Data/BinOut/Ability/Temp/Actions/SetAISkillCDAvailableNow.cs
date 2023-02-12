@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetAISkillCDAvailableNow : ConfigAbilityAction
 {
-    internal class SetAISkillCDAvailableNow : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int[] skillIDs;
-    }
+	public uint[] skillIDs;
 }

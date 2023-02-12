@@ -1,14 +1,15 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class FishingAimParabolaMixin : ConfigAbilityMixin
 {
-    internal class FishingAimParabolaMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly float minAngle;
-        [JsonProperty] public readonly float maxAngle;
-        [JsonProperty] public readonly float minRange;
-        [JsonProperty] public readonly float maxRange;
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-    }
+	public float minAngle;
+	public float maxAngle;
+	public float minRange;
+	public float maxRange;
+	public string globalValueKey;
+	public SelectTargets otherTargets;
+	public AbilityTargetting target;
 }

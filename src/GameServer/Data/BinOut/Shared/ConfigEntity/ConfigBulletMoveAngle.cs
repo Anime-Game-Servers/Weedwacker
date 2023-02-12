@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+﻿namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public abstract class ConfigBulletMoveAngle
 {
-    internal abstract class ConfigBulletMoveAngle
-    {
-    }
 }

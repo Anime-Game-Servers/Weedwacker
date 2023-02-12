@@ -1,19 +1,26 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class MultiBadmintonShootMixin : ConfigAbilityMixin
 {
-    internal class MultiBadmintonShootMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float minInterval;
-        [JsonProperty] public readonly float maxInterval;
-        [JsonProperty] public readonly int extraShootInterval;
-        [JsonProperty] public readonly string[] extraShootTag;
-        [JsonProperty] public readonly int normalBulletID;
-        [JsonProperty] public readonly int tresBulletID;
-        [JsonProperty] public readonly string[] traceTarget;
-        [JsonProperty] public readonly int perChangeWeight;
-        [JsonProperty] public readonly ConfigBornType born;
-        [JsonProperty] public readonly BaseBulletType[] bullets;
-    }
+	public float minInterval;
+	public float maxInterval;
+	public float extraShootInterval;
+	public string[] extraShootTag;
+	public MultiBadmintonBullet[] bullets;
+	public int tresBulletID;
+	public int normalBulletID;
+	public int traceBulletID;
+	public string[] traceTarget;
+	public int perChangeWeight;
+	public ConfigBornType born;
+
+	public class MultiBadmintonBullet
+	{
+		public uint bulletID;
+		public int weight;
+		public int speed;
+	}
 }

@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetIsGhostToEnemy : ConfigAbilityPredicate
 {
-    internal class ByTargetIsGhostToEnemy : BasePredicate
-    {
-    }
 }

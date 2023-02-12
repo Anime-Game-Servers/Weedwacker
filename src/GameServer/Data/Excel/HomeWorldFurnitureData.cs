@@ -1,29 +1,34 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("HomeWorldFurnitureExcelConfigData.json")]
+public class HomeWorldFurnitureData : ItemConfig
 {
-    [Resource("HomeWorldFurnitureExcelConfigData.json")]
-    internal class HomeWorldFurnitureData : ItemData
-    {
-        /*
-         * THE RESOURCE DATA
-         * 
-         * 
-         * 
-         *     IS KINDA
-         * 
-         * 
-         *      JUNK
-         */
-        [JsonProperty]
-        public readonly int comfort;
-        [JsonProperty]
-        public readonly string jsonName;
-        [JsonProperty]
-        public readonly int[]? furnType;
-        [JsonProperty]
-        public readonly int[]? furnitureGadgetID;
-
-        //public readonly int roomSceneId;
-    }
+	public uint[] furnitureGadgetID;
+	public uint[] furnType;
+	public FurnitureDeploySurfaceType surfaceType;
+	public uint arrangeLimit;
+	public uint isSpecialFurniture;
+	public SpeicalFurnitureType specialFurnitureType;
+	public uint roomSceneID;
+	public uint gridStyle;
+	public uint comfort;
+	public uint stackLimit;
+	public uint cost;
+	public uint discountCost;
+	public uint isCombinableLight;
+	public float height;
+	public uint canFloat;
+	public uint isUnique;
+	public string itemIcon;
+	public string effectIcon;
+	public float clampDistance;
+	public float editorClampDistance;
+	public uint deployGlitchIndex;
+	public uint rankLevel;
+	public string jsonName;
+	public uint pushTipsId;
+	public GroupRecordType groupRecordType;
 }

@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class ConfigAirflowField : ConfigConstForceField
 {
-    internal class ConfigAirflowField : BasePoint
-    {
-        [JsonProperty] public readonly float velocity;
-        [JsonProperty] public readonly EffectType stayEffect;
-        [JsonProperty] public readonly EffectType enterEffect;
-    }
+	public float scale;
+	public string stayEffect;
+	public string enterEffect;
+	public bool autoFly;
+	public bool forceHor;
 }

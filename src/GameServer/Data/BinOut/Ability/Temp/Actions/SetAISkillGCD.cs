@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetAISkillGCD : ConfigAbilityAction
 {
-    internal class SetAISkillGCD : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float value;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public float value;
 }

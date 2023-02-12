@@ -1,18 +1,26 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class WindZoneMixin : ConfigAbilityMixin
 {
-    internal class WindZoneMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string shapeName;
-        [JsonProperty] public readonly ConfigBornType born;
-        [JsonProperty] public readonly object strength;
-        [JsonProperty] public readonly object attenuation;
-        [JsonProperty] public readonly float innerRadius;
-        [JsonProperty] public readonly TargetType targetType;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly string modifierName;
-    }
+	public string shapeName;
+	public ConfigBornType born;
+	public object strength;
+	public object attenuation;
+	public object innerRadius;
+	public bool reverse;
+	public TargetType targetType;
+	public ConfigAbilityPredicate[] predicates;
+	public string modifierName;
+	public uint maxNum;
+	public float forceGrowth;
+	public float forceFallen;
+	public Vector offset;
+	public VelocityForceType forceType;
+	public float thinkInterval;
+	public ConfigAbilityAction[] onThinkInterval;
+	public float overrideWeight;
 }

@@ -1,21 +1,24 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("ReliquaryExcelConfigData.json")]
+public class ReliquaryData : ItemConfig
 {
-    [Resource("ReliquaryExcelConfigData.json")]
-    internal class ReliquaryData : ItemData
-    {
-        [JsonProperty] public readonly EquipType equipType;
-        [JsonProperty] public readonly string showPic;
-        [JsonProperty] public readonly uint mainPropDepotId;
-        [JsonProperty] public readonly uint appendPropDepotId;
-        [JsonProperty] public readonly int[]? addPropLevels;
-        [JsonProperty] public readonly uint appendPropNum;
-        [JsonProperty] public readonly uint baseConvExp;
-        [JsonProperty] public readonly uint maxLevel;
-        [JsonProperty] public readonly int weight;
-        [JsonProperty] public readonly uint setId;
-        [JsonProperty] public readonly uint gadgetId;
-    }
+	public EquipType equipType;
+	public string showPic;
+	public uint rankLevel;
+	public uint mainPropDepotId;
+	public uint appendPropDepotId;
+	public uint appendPropNum;
+	public uint setId;
+	public uint[] addPropLevels;
+	public uint baseConvExp;
+	public uint maxLevel;
+	public uint storyId;
+	public MaterialDestroyType destroyRule;
+	public uint[] destroyReturnMaterial;
+	public uint[] destroyReturnMaterialCount;
+	public uint initialLockState;
 }

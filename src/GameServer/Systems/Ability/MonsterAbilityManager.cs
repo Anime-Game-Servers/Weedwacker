@@ -6,7 +6,7 @@ namespace Weedwacker.GameServer.Systems.Ability
 {
     internal class MonsterAbilityManager : BaseAbilityManager
     {
-        public override Dictionary<uint, Dictionary<uint, float>?>? AbilitySpecials => throw new NotImplementedException();
+        public override Dictionary<uint, Dictionary<uint, object>?>? AbilitySpecials => throw new NotImplementedException();
 
         public override HashSet<string> ActiveDynamicAbilities => throw new NotImplementedException();
         public override Dictionary<string, HashSet<string>> UnlockedTalentParams => throw new NotImplementedException();

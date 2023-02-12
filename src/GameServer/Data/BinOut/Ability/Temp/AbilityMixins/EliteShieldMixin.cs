@@ -1,14 +1,18 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class EliteShieldMixin : ConfigAbilityMixin
 {
-    internal class EliteShieldMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string shieldType;
-        [JsonProperty] public readonly float shieldAngle;
-        [JsonProperty] public readonly object shieldHPRatio;
-        [JsonProperty] public readonly object shieldHP;
-        [JsonProperty] public readonly string showDamageText;
-        [JsonProperty] public readonly ConfigAbilityAction[] onShieldBroken;
-    }
+	public string shieldType;
+	public object shieldAngle;
+	public object shieldHPRatio;
+	public object shieldHP;
+	public string costShieldRatioName;
+	public string showDamageText;
+	public ConfigAbilityAction[] onShieldBroken;
+	public object amountByGetDamage;
+	public bool targetMuteHitEffect;
+	public bool infiniteShield;
+	public object healLimitedByCasterMaxHPRatio;
 }

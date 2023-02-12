@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ReplaceFaceAnimationMixin : ConfigAbilityMixin
 {
-    internal class ReplaceFaceAnimationMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string oldFaceAnimations;
-        [JsonProperty] public readonly string newFaceAnimations;
-    }
+	public string[] oldFaceAnimations;
+	public string[] newFaceAnimations;
 }

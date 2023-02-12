@@ -1,13 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttackCostElementMixin : ConfigAbilityMixin
 {
-    internal class AttackCostElementMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string strikeType;
-        [JsonProperty] public readonly float strikeCostRatio;
-        [JsonProperty] public readonly ElementType costElementType;
-        [JsonProperty] public readonly string costType;
-    }
+	public StrikeType strikeType;
+	public ElementType elementType;
+	public AttackType attackType;
+	public float strikeCostRatio;
+	public float attackCostRatio;
+	public float elementCostRatio;
+	public ElementType costElementType;
+	public AttackCostType costType;
 }

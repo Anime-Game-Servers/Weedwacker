@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ReviveAvatar : HealHP
 {
-    internal class ReviveAvatar : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly string amountByTargetMaxHPRatio;
-    }
 }

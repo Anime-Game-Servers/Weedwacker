@@ -1,11 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class WatcherSystemMixin : ConfigAbilityMixin
 {
-    internal class WatcherSystemMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string mixinType;
-        [JsonProperty] public readonly int watcherId;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public uint watcherId;
+	public WatcherSystemMixinType mixinType;
+	public WatcherSystemListenType listenEntityType;
+	public string listenStateId;
+	public ConfigAbilityPredicate[] predicates;
 }

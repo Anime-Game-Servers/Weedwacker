@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.GameServer.Systems.Ability;
@@ -15,7 +16,7 @@ namespace Weedwacker.GameServer.Systems.World
         public readonly Avatar.Avatar Avatar;
         public TeamInfo TeamInfo { get; private set; }
         public uint KilledBy { get; protected set; }
-        public PlayerDieType KilledType { get; protected set; }
+        public Shared.Network.Proto.PlayerDieType KilledType { get; protected set; }
         public override Vector3 Position { get => Avatar.Owner.Position; protected set => Avatar.Owner.Position = value; }
         public override Vector3 Rotation { get => Avatar.Owner.Rotation; protected set => Avatar.Owner.Rotation = value; }
         private float CachedLandingSpeed = 0;
@@ -78,7 +79,7 @@ namespace Weedwacker.GameServer.Systems.World
         {
         }
 
-        public override async Task OnDeathAsync(uint killerId = default, PlayerDieType dieType = PlayerDieType.KillByMonster)
+        public override async Task OnDeathAsync(uint killerId = default, Shared.Network.Proto.PlayerDieType dieType = Shared.Network.Proto.PlayerDieType.KillByMonster)
         {
             KilledBy = killerId;
             KilledType = dieType;
@@ -99,7 +100,7 @@ namespace Weedwacker.GameServer.Systems.World
             if (healed > 0f)
             {
                 await Scene.BroadcastPacketAsync(
-                    new PacketEntityFightPropChangeReasonNotify(this, FightProperty.FIGHT_PROP_CUR_HP, healed, PropChangeReason.Ability, ChangeHpReason.AddAbility)
+                    new PacketEntityFightPropChangeReasonNotify(this, FightPropType.FIGHT_PROP_CUR_HP, healed, PropChangeReason.Ability, ChangeHpReason.AddAbility)
                 );
             }
 
@@ -109,7 +110,7 @@ namespace Weedwacker.GameServer.Systems.World
         public async Task ClearEnergy(ChangeEnergyReason reason)
         {
             // Fight props.
-            FightProperty curEnergyProp = Avatar.CurSkillDepot.Element.CurEnergyProp;
+            FightPropType curEnergyProp = Avatar.CurSkillDepot.Element.CurEnergyProp;
 
             // Get max energy.
             float maxEnergy = Avatar.CurSkillDepot.Element.MaxEnergy;
@@ -134,7 +135,7 @@ namespace Weedwacker.GameServer.Systems.World
             float maxEnergy = Avatar.CurSkillDepot.Element.MaxEnergy;
 
             // Get energy recharge.
-            float energyRecharge = Avatar.FightProp[FightProperty.FIGHT_PROP_CHARGE_EFFICIENCY];
+            float energyRecharge = Avatar.FightProp[FightPropType.FIGHT_PROP_CHARGE_EFFICIENCY];
 
             // Scale amount by energy recharge, if the amount is not flat.
             if (!isFlat)

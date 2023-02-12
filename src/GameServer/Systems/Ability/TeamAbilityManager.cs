@@ -11,7 +11,7 @@ namespace Weedwacker.GameServer.Systems.Ability
 
         protected override Dictionary<uint, ConfigAbility> ConfigAbilityHashMap { get => throw new NotImplementedException(); }
         public override Dictionary<string, HashSet<string>> UnlockedTalentParams => throw new NotImplementedException();
-        public override Dictionary<uint, Dictionary<uint, float>?>? AbilitySpecials => (Owner as TeamManager).CurrentTeamInfo.AbilitySpecials;
+        public override Dictionary<uint, Dictionary<uint, object>?>? AbilitySpecials => (Owner as TeamManager).CurrentTeamInfo.AbilitySpecials;
 
         public override HashSet<string> ActiveDynamicAbilities => throw new NotImplementedException();
     }

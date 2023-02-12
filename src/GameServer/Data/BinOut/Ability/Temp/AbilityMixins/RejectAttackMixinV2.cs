@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class RejectAttackMixinV2 : ConfigAbilityMixin
 {
-    internal class RejectAttackMixinV2 : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] attackTags;
-        [JsonProperty] public readonly float limitTime;
-    }
+	public string[] attackTags;
+	public float limitTime;
+	public RejectEventType type;
+	public bool isWhiteList;
 }

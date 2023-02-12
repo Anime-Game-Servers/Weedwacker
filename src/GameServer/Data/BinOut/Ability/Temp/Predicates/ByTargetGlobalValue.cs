@@ -1,11 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetGlobalValue : ConfigAbilityPredicate
 {
-    internal class ByTargetGlobalValue : BasePredicate
-    {
-        [JsonProperty] public readonly string key;
-        [JsonProperty] public readonly object value;
-        [JsonProperty] public readonly bool forceByCaster;
-    }
+	public string key;
+	public object value;
+	public object maxValue;
+	public bool forceByCaster;
+	public RelationType compareType;
 }

@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class CostStaminaMixin : ConfigAbilityMixin
 {
-    internal class CostStaminaMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly object costStaminaDelta;
-        [JsonProperty] public readonly ConfigAbilityAction[] onStaminaEmpty;
-    }
+	public object costStaminaDelta;
+	public object costStaminaRatio;
+	public ConfigAbilityAction[] onStaminaEmpty;
 }

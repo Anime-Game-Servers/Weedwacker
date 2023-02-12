@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByPoseIDMixin : ConfigAbilityMixin
 {
-    internal class DoActionByPoseIDMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int[] poseIDs;
-        [JsonProperty] public readonly ConfigAbilityAction[] enterActions;
-    }
+	public int[] poseIDs;
+	public ConfigAbilityPredicate[] enterPredicates;
+	public ConfigAbilityPredicate[] exitPredicates;
+	public ConfigAbilityAction[] enterActions;
+	public ConfigAbilityAction[] exitActions;
 }

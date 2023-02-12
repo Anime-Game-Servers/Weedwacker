@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class PersonalSceneJumpPoint : ConfigScenePoint
 {
-    internal class PersonalSceneJumpPoint : BasePoint
-    {
-        [JsonProperty] public readonly uint tranSceneId;
-        [JsonProperty] public readonly Dictionary<string, float> triggerSize;
-        [JsonProperty] public readonly float closeTime;
-    }
+	public uint tranSceneId;
+	public string titleTextID;
+	public Vector triggerSize;
+	public float open_time;
+	public float close_time;
+	public bool isHomeworldDoor;
 }

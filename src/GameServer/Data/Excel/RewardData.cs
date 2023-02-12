@@ -1,12 +1,25 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.Common;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("RewardExcelConfigData.json")]
+public class RewardData : OutputControlConfig
 {
-    [Resource("RewardExcelConfigData.json")]
-    public class RewardData
-    {
-        [JsonProperty] public readonly uint rewardId;
-        [JsonProperty] public readonly ItemParamData[] rewardItemList;
-    }
+	public uint rewardId;
+	public uint hcoin;
+	public uint scoin;
+	public uint playerExp;
+	public uint avatarExp;
+	public uint fetterExp;
+	public uint resin;
+	public RewardItemConfig[] rewardItemList;
+
+	public class RewardItemConfig
+	{
+		public uint itemId;
+		public uint itemCount;
+	}
+}
+public abstract class OutputControlConfig
+{
 }

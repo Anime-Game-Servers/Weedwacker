@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ReviveDeadAvatar : ReviveAvatar
 {
-    internal class ReviveDeadAvatar : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly object amountByTargetMaxHPRatio;
-        [JsonProperty] public readonly bool isReviveOtherPlayerAvatar;
-        [JsonProperty] public readonly int overtime;
-        [JsonProperty] public readonly float cdRatio;
-        [JsonProperty] public readonly float rayCount;
-    }
+	public bool isReviveOtherPlayerAvatar;
+	public uint skillID;
+	public object cdRatio;
+	public float range;
 }

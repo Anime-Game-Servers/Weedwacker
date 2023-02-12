@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetPositionToSelfPosition : RelationalOperationPredicate
 {
-    internal class ByTargetPositionToSelfPosition : BasePredicate
-    {
-        [JsonProperty] public readonly LogicType logic;
-        [JsonProperty] public readonly CompareType? compareType;
-        [JsonProperty] public readonly object value;
-    }
+	public TargetPosToSelfPosType compareType;
+	public object value;
 }

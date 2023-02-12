@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class Randomed : ConfigAbilityAction
 {
-    internal class Randomed : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly object chance;
-        [JsonProperty] public readonly ConfigAbilityAction[] successActions;
-        [JsonProperty] public readonly ConfigAbilityAction[] failActions;
-    }
+	public object chance;
+	public ConfigAbilityAction[] successActions;
+	public ConfigAbilityAction[] failActions;
 }

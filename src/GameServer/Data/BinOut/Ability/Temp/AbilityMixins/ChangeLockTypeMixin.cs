@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ChangeLockTypeMixin : ConfigAbilityMixin
 {
-    internal class ChangeLockTypeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float overrideRange;
-        [JsonProperty] public readonly string lockType;
-    }
+	public string lockType;
+	public float overrideRange;
+	public float overrideNormalPri;
+	public float overrideCombatPri;
 }

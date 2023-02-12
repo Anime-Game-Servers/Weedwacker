@@ -1,0 +1,10 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum QTEStepButtonSlideDirectType : int
+{
+	QTE_STEP_BUTTON_SLIDE_DIRECT_UP = 0,
+	QTE_STEP_BUTTON_SLIDE_DIRECT_DOWN = 1,
+	QTE_STEP_BUTTON_SLIDE_DIRECT_LEFT = 2,
+	QTE_STEP_BUTTON_SLIDE_DIRECT_RIGHT = 3,
+}

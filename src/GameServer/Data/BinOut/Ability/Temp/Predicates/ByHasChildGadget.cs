@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHasChildGadget : ConfigAbilityPredicate
 {
-    internal class ByHasChildGadget : BasePredicate
-    {
-        [JsonProperty] public readonly int[] configIdArray;
-        [JsonProperty] public readonly string compareType;
-    }
+	public uint[] configIdArray;
+	public uint value;
+	public RelationType compareType;
+	public bool forceByCaster;
+	public bool checkEntityAlive;
 }

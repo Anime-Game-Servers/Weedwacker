@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ElectricCoreLineMixin : ConfigAbilityMixin
 {
-    internal class ElectricCoreLineMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string activateSkillKey;
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public SelectTargets otherTargets;
+	public string activateSkillKey;
+	public ConfigAbilityPredicate[] predicates;
 }

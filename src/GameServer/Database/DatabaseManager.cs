@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Options;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Systems.Avatar;
 using Weedwacker.GameServer.Systems.Inventory;
@@ -43,7 +44,7 @@ namespace Weedwacker.GameServer.Database
         public static async Task Initialize()
         {
             BsonSerializer.RegisterSerializer(new EnumSerializer<PlayerProperty>(BsonType.String));
-            BsonSerializer.RegisterSerializer(new EnumSerializer<FightProperty>(BsonType.String));
+            BsonSerializer.RegisterSerializer(new EnumSerializer<FightPropType>(BsonType.String));
             BsonSerializer.RegisterSerializer(new EnumSerializer<ItemType>(BsonType.String));
             BsonSerializer.RegisterSerializer(new EnumSerializer<LifeState>(BsonType.String));
             BsonSerializer.RegisterSerializer(new EnumSerializer<OpenStateType>(BsonType.String));

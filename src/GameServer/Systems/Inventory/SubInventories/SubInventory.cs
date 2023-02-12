@@ -16,9 +16,9 @@ namespace Weedwacker.GameServer.Systems.Inventory
         }
 
         // return null if no update item
-        public abstract Task<GameItem?> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0);
+        public abstract Task<GameItem?> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0);
         // Delete if count reaches 0
-        internal abstract Task<bool> RemoveItemAsync(GameItem item, int count = 1);
+        internal abstract Task<bool> RemoveItemAsync(GameItem item, uint count = 1);
 
         // Called by DatabaseManager
         public abstract Task OnLoadAsync(Player.Player owner, InventoryManager inventory);

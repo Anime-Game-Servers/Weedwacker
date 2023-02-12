@@ -1,15 +1,13 @@
-﻿using System.Numerics;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("AvatarHeroEntityExcelConfigData.json")]
+public class AvatarHeroEntityData
 {
-    [Resource("AvatarHeroEntityExcelConfigData.json")]
-    internal class AvatarHeroEntityData
-    {
-        [JsonProperty] public readonly uint avatarId;
-        [JsonProperty] public readonly BigInteger prefabPathHashSuffix;
-        [JsonProperty] public readonly uint prefabPathHashPre;
-        [JsonProperty] public readonly long animatorConfigPathHashSuffix;
-        [JsonProperty] public readonly uint animatorConfigPathHashPre;
-    }
+	public uint avatarId;
+	public byte prefabPathHashPre;
+	public uint prefabPathHashSuffix;
+	public byte animatorConfigPathHashPre;
+	public uint animatorConfigPathHashSuffix;
 }

@@ -1,13 +1,17 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByEventMixin : ConfigAbilityMixin
 {
-    internal class DoActionByEventMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly AvatarEventType onEvent;
-        [JsonProperty] public readonly string type;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly ConfigAbilityAction[] actions;
-    }
+	public AvatarStageType type;
+	public OnEventType onEvent;
+	public uint[] pickItemConfigIDs;
+	public uint skillReadyID;
+	public ConfigAbilityPredicate[] predicates;
+	public ConfigAbilityAction[] actions;
+	public ConfigAbilityStateToActions[] onAbilityStateAdded;
+	public ConfigAbilityStateToActions[] onAbilityStateRemoved;
+	public string costEnergyDeltaName;
 }

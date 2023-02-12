@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Gadget
-{
-    internal class ConfigTransPointEntity : ConfigGadget
-    {
-        [JsonProperty] public readonly TransPointUpdateMaterial[] updateMaterialList;
+namespace Weedwacker.GameServer.Data.BinOut.Gadget;
 
-        public class TransPointUpdateMaterial
-        {
-            [JsonProperty] public readonly int level;
-            [JsonProperty] public readonly string matPath;
-            [JsonProperty] public readonly string[] transforms;
-        }
-    }
+public class ConfigTransPointEntity : ConfigGadget
+{
+	public TransPointUpdateMaterial[] updateMaterialList;
+
+	public class TransPointUpdateMaterial
+	{
+		public uint level;
+		public string matPath;
+		public string[] transforms;
+	}
 }

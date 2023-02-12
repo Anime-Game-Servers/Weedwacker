@@ -1,31 +1,44 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.Common;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("MaterialExcelConfigData.json")]
+public class MaterialData : ItemConfig
 {
-    [Resource("MaterialExcelConfigData.json")]
-    internal class MaterialData : ItemData
-    {
-        [JsonProperty] public readonly ulong interactionTitleTextMapHash;
-        [JsonProperty] public readonly MaterialType materialType;
-        [JsonProperty] public readonly uint stackLimit;
-        [JsonProperty] public readonly uint maxUseCount;
-        [JsonProperty] public readonly bool useOnGain;
-        [JsonProperty] public readonly bool noFirstGetHint;
-        [JsonProperty] public readonly ItemUseTarget useTarget;
-        [JsonProperty] public readonly List<ItemUseData>? itemUse;
-        [JsonProperty] public readonly FoodQuality foodQuality;
-        [JsonProperty] public readonly ulong effectDescTextMapHash;
-        [JsonProperty] public readonly ulong specialDescTextMapHash;
-        [JsonProperty] public readonly ulong typeDescTextMapHash;
-        [JsonProperty] public readonly string effectIcon;
-        [JsonProperty] public readonly string effectName;
-        [JsonProperty] public readonly string[] picPath;
-        [JsonProperty] public readonly bool isSplitDrop;
-        [JsonProperty] public readonly bool closeBagAfterUsed;
-        [JsonProperty] public readonly int[]? satiationParams;
-        [JsonProperty] public readonly bool isForceGetHint;
-        [JsonProperty] public readonly uint gadgetId;
-    }
+	public uint interactionTitleTextMapHash;
+	public MaterialType materialType;
+	public uint cdTime;
+	public uint cdGroup;
+	public uint stackLimit;
+	public uint maxUseCount;
+	public bool useOnGain;
+	public bool noFirstGetHint;
+	public bool playGainEffect;
+	public ItemUseTarget useTarget;
+	public ItemUseConfig[] itemUse;
+	public uint rankLevel;
+	public FoodQualityType foodQuality;
+	public uint effectDescTextMapHash;
+	public uint specialDescTextMapHash;
+	public uint typeDescTextMapHash;
+	public string effectIcon;
+	public uint effectGadgetID;
+	public string effectName;
+	public string[] picPath;
+	public bool isSplitDrop;
+	public bool closeBagAfterUsed;
+	public uint[] satiationParams;
+	public MaterialDestroyType destroyRule;
+	public uint[] destroyReturnMaterial;
+	public uint[] destroyReturnMaterialCount;
+	public uint setID;
+	public bool isHidden;
+	public bool isForceGetHint;
+
+	public class ItemUseConfig
+	{
+		public ItemUseOp useOp;
+		public string[] useParam;
+	}
 }

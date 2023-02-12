@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DoBlinkByGlobalPos : ConfigAbilityAction
 {
-    internal class DoBlinkByGlobalPos : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string positionKey;
-    }
+	public string positionKey;
+	public string directionKey;
+	public bool useGlobalUp;
 }

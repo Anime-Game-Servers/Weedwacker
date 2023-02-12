@@ -1,17 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddElementDurability : ConfigAbilityAction
 {
-    internal class AddElementDurability : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly object value;
-        [JsonProperty] public readonly BasePredicate[]? predicates;
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly bool useLimitRange;
-        [JsonProperty] public readonly object maxValue;
-        [JsonProperty] public readonly float minValue;
-    }
+	public object value;
+	public string modifierName;
+	public ElementType elementType;
+	public SortModifierType sortModifier;
+	public bool useLimitRange;
+	public object maxValue;
+	public object minValue;
 }

@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
+
+public class SelectTargetsByLCTrigger : SelectTargets
 {
-    internal class SelectTargetsByLCTrigger : BaseSelectTargetType
-    {
-        [JsonProperty] public readonly TargetType campTargetType;
-        [JsonProperty] public readonly string sortType;
-        [JsonProperty] public readonly int topLimit;
-    }
+	public TargetType campTargetType;
 }

@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByGainCrystalSeedMixin : ConfigAbilityMixin
 {
-    internal class DoActionByGainCrystalSeedMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ElementType[] elementTypes;
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly ConfigAbilityAction[] actions;
-    }
+	public ElementType[] elementTypes;
+	public ConfigAbilityAction[] actions;
 }

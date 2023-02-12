@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class SceneBuildingPoint : ConfigScenePoint
 {
-    internal class SceneBuildingPoint : BasePoint
-    {
-        [JsonProperty] public readonly BuildingType buildingType;
-    }
+	public SceneBuildingType buildingType;
+	public ushort fogId;
+	public bool showOnLockedArea;
 }

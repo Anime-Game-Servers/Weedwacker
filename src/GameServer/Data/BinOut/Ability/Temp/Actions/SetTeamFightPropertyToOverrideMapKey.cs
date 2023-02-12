@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+public class SetTeamFightPropertyToOverrideMapKey : ConfigAbilityAction
 {
-    internal class SetTeamFightPropertyToOverrideMapKey : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string fightProperty;
-        [JsonProperty] public readonly string overrideMapKey;
-    }
+	public string fightProperty;
+	public string overrideMapKey;
 }

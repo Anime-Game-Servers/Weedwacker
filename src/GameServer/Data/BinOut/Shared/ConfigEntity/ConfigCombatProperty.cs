@@ -1,31 +1,31 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
 namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
 {
-    internal class ConfigCombatProperty
-    {
-        [JsonProperty] public readonly EndureType endureType;
-        [JsonProperty] public readonly bool useCreatorProperty;
-        [JsonProperty] public readonly CombatPropertyIndex[] useCreatorPropertyPartly;
-        [JsonProperty] public readonly bool useCreatorBuffedProperty;
-        [JsonProperty] public readonly bool useAbilityProperty;
-        [JsonProperty] public readonly float hp;
-        [JsonProperty] public readonly float attack;
-        [JsonProperty] public readonly float defense;
-        [JsonProperty] public readonly int level;
-        [JsonProperty] public readonly LevelOption levelOption;
-        [JsonProperty] public readonly float weight;
-        [JsonProperty] public readonly float endureShake;
-        [JsonProperty] public readonly bool isInvincible;
-        [JsonProperty] public readonly bool isLockHp;
-        [JsonProperty] public readonly bool isLockHpNoHeal;
-        [JsonProperty] public readonly bool isNoHeal;
-        [JsonProperty] public readonly bool isGhostToAllied;
-        [JsonProperty] public readonly bool isGhostToEnemy;
-        [JsonProperty] public readonly bool canTriggerBullet;
-        [JsonProperty] public readonly bool denyElementStick;
-        [JsonProperty] public readonly bool ignorePurgeRate;
-        [JsonProperty] public readonly bool ignoreDamageToSelf;
-    }
+	public class ConfigCombatProperty
+	{
+		public EndureType endureType;
+		public bool useCreatorProperty;
+		public /*CombatPropertyIndex[]*/ bool useCreatorPropertyPartly; //idfk anymore
+		public bool useCreatorBuffedProperty;
+		public bool useAbilityProperty;
+		public float HP;
+		public float attack;
+		public float defense;
+		public int level;
+		public LevelOption levelOption;
+		public float weight;
+		public float endureShake;
+		public bool isInvincible;
+		public bool isLockHP;
+		public bool isLockHPNoHeal;
+		public bool isNoHeal;
+		public bool isGhostToAllied;
+		public bool isGhostToEnemy;
+		public bool canTriggerBullet;
+		public bool denyElementStick;
+		public bool ignorePurgeRate;
+		public bool ignoreDamageToSelf;
+	}
 }

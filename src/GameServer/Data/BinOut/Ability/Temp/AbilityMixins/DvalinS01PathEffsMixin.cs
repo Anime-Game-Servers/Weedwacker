@@ -1,25 +1,26 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
-{
-    internal class DvalinS01PathEffsMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int effectStart;
-        [JsonProperty] public readonly int effectEnd;
-        [JsonProperty] public readonly DvalinS01PathEffsInfo[] effInfos;
-    }
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
 
-    internal class DvalinS01PathEffsInfo
-    {
-        [JsonProperty] public readonly int flyState;
-        [JsonProperty] public readonly string effectName;
-        [JsonProperty] public readonly float intervalMax;
-        [JsonProperty] public readonly float intervalMin;
-        [JsonProperty] public readonly int numMax;
-        [JsonProperty] public readonly int numMin;
-        [JsonProperty] public readonly float rangeMax;
-        [JsonProperty] public readonly float rangeMin;
-        [JsonProperty] public readonly float eularMax;
-        [JsonProperty] public readonly float eularMin;
-    }
+public class DvalinS01PathEffsMixin : ConfigAbilityMixin
+{
+	public int effectStart;
+	public int effectEnd;
+	public DvalinS01PathEffsInfo[] effInfos;
+}
+
+public class DvalinS01PathEffsInfo
+{
+	public int flyState;
+	public string effectName;
+	public bool pathCenter;
+	public int intervalMax;
+	public int intervalMin;
+	public int numMax;
+	public int numMin;
+	public float rangeMax;
+	public float rangeMin;
+	public float eularMax;
+	public float eularMin;
+	public float yScale;
 }

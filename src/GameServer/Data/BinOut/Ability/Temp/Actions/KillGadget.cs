@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class KillGadget : ConfigAbilityAction
 {
-    internal class KillGadget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BaseSelectTargetType gadgetInfo;
-    }
+	public SelectTargetsByChildren gadgetInfo;
 }

@@ -1,12 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByEnergyChangeMixin : ConfigAbilityMixin
 {
-    internal class DoActionByEnergyChangeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ElementType[] elementTypes;
-        [JsonProperty] public readonly bool doWhenEnergyMax;
-        [JsonProperty] public readonly ConfigAbilityAction[] onGainEnergyByBall;
-    }
+	public AvatarStageType type;
+	public ElementType[] elementTypes;
+	public bool doWhenEnergyMax;
+	public ConfigAbilityAction[] onGainEnergyByBall;
+	public ConfigAbilityAction[] onGainEnergyByOther;
+	public ConfigAbilityAction[] onGainEnergyByAll;
+	public ConfigAbilityAction[] onGainEnergyMax;
 }

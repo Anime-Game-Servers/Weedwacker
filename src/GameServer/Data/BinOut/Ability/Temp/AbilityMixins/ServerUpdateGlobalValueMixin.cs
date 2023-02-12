@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ServerUpdateGlobalValueMixin : ConfigAbilityMixin
 {
-    internal class ServerUpdateGlobalValueMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string key;
-    }
+	public string key;
+	public bool useLimitRange;
+	public object maxValue;
+	public object minValue;
 }

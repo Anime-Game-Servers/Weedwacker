@@ -1,10 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class HealHP : ConfigAbilityAction
 {
-    internal class HealHP : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public object? amount;
-    }
+	public object amount;
+	public object amountByCasterMaxHPRatio;
+	public object amountByTargetMaxHPRatio;
+	public object amountByTargetCurrentHPRatio;
+	public object amountByCasterAttackRatio;
+	public bool muteHealEffect;
+	public float healRatio;
+	public bool ignoreAbilityProperty;
 }

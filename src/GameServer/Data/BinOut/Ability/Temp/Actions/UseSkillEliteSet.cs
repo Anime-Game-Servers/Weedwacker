@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class UseSkillEliteSet : ConfigAbilityAction
 {
-    internal class UseSkillEliteSet : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int skillEliteSetID;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public byte skillEliteSetID;
 }

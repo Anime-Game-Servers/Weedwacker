@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHasFeatureTag : ConfigAbilityPredicate
 {
-    internal class ByHasFeatureTag : BasePredicate
-    {
-        [JsonProperty] public readonly int[] featureTagIDs;
-    }
+	public uint[] featureTagIDs;
 }

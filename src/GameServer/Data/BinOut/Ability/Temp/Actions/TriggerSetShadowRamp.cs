@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerSetShadowRamp : ConfigAbilityAction
 {
-    internal class TriggerSetShadowRamp : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool useShadowRamp;
-        [JsonProperty] public readonly bool? doOffStage;
-        [JsonProperty] public readonly string[] specialMats;
-    }
+	public bool useShadowRamp;
+	public string[] specialMats;
 }

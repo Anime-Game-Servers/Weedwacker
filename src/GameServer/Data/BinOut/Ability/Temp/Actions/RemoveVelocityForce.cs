@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class RemoveVelocityForce : ConfigAbilityAction
 {
-    internal class RemoveVelocityForce : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly VelocityForceType[] forces;
-    }
+	public VelocityForceType[] forces;
 }

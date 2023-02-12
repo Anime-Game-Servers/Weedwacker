@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionOnGlobalValueChangeMixin : ConfigAbilityMixin
 {
-    internal class DoActionOnGlobalValueChangeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly ConfigAbilityAction[] actions;
-    }
+	public string globalValueKey;
+	public ConfigAbilityAction[] actions;
+	public bool isDelay;
+	public float delayTime;
 }

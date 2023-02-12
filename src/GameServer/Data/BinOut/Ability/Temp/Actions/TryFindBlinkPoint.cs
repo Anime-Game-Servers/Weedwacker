@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TryFindBlinkPoint : ConfigAbilityAction
 {
-    internal class TryFindBlinkPoint : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly float forwardAngle;
-        [JsonProperty] public readonly float minRange;
-        [JsonProperty] public readonly float maxRange;
-    }
+	public float forwardAngle;
+	public float minRange;
+	public float maxRange;
+	public float limitY;
+	public bool ignoreWater;
+	public bool checkInCamera;
 }

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.Common;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
@@ -64,7 +64,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
         public Task<WeaponItem> UpgradeWeaponAsync(ulong targetWeaponGuid, IEnumerable<ulong> foodWeaponGuidList, IEnumerable<ItemParam> itemParamList) =>
             (SubInventories[ItemType.ITEM_WEAPON] as WeaponTab).UpgradeWeaponAsync(targetWeaponGuid, foodWeaponGuidList, itemParamList);
 
-        public async Task<bool> RemoveItemByParamData(ItemParamData itemData)
+        public async Task<bool> RemoveItemByParamData(IdCountConfig itemData)
         {
             bool result = false;
             switch (GameData.ItemDataMap[itemData.id].itemType)
@@ -103,20 +103,20 @@ namespace Weedwacker.GameServer.Systems.Inventory
             return result;
         }
         // Used by reward lists
-        public Task<GameItem?> AddItemByParamDataAsync(ItemParamData itemParam, ActionReason reason) =>
+        public Task<GameItem?> AddItemByParamDataAsync(IdCountConfig itemParam, ActionReason reason) =>
             AddItemByIdAsync(itemParam.id, itemParam.count, reason);
         
-        public Task<List<GameItem>?> AddItemByParamDataManyAsync(IEnumerable<ItemParamData> items, ActionReason reason) =>
+        public Task<List<GameItem>?> AddItemByParamDataManyAsync(IEnumerable<IdCountConfig> items, ActionReason reason) =>
             AddItemByIdManyAsync(items.Select(x => Tuple.Create(x.id, x.count)).ToList());
 
-        public Task<GameItem?> AddItemByGuidAsync(ulong guid, int count = 1, ActionReason reason = ActionReason.None) =>
+        public Task<GameItem?> AddItemByGuidAsync(ulong guid, uint count = 1, ActionReason reason = ActionReason.None) =>
             AddItemByIdAsync(GuidMap[guid].ItemId, count, reason);
 
-        public async Task<List<GameItem>?> AddItemByIdManyAsync(IEnumerable<Tuple<uint, int>> idAndCount, ActionReason reason = ActionReason.None)
+        public async Task<List<GameItem>?> AddItemByIdManyAsync(IEnumerable<Tuple<uint, uint>> idAndCount, ActionReason reason = ActionReason.None)
         {
             List<GameItem> updatedItems = new();
 
-            foreach (Tuple<uint, int> item in idAndCount)
+            foreach (Tuple<uint, uint> item in idAndCount)
             {
                 //Add but don't notify the player yet
                 GameItem? gameItem = await AddItemByIdAsync(item.Item1, item.Item2, ActionReason.None, false);
@@ -138,9 +138,9 @@ namespace Weedwacker.GameServer.Systems.Inventory
 
             return updatedItems;
         }
-        public async Task<GameItem?> AddItemByIdAsync(uint itemId, int count = 1, ActionReason reason = ActionReason.None, bool notifyClient = true, uint level = 1, uint refinement = 0)
+        public async Task<GameItem?> AddItemByIdAsync(uint itemId, uint count = 1, ActionReason reason = ActionReason.None, bool notifyClient = true, uint level = 1, uint refinement = 0)
         {
-            ItemData itemData = GameData.ItemDataMap[itemId];
+            ItemConfig itemData = GameData.ItemDataMap[itemId];
 
             if (itemData == null)
             {
@@ -198,11 +198,11 @@ namespace Weedwacker.GameServer.Systems.Inventory
             return updatedItem;
         }
 
-        public async Task<bool> PayPromoteCostAsync(IEnumerable<ItemParamData> costItems, ActionReason reason = ActionReason.None)
+        public async Task<bool> PayPromoteCostAsync(IEnumerable<IdCountConfig> costItems, ActionReason reason = ActionReason.None)
         {
-            Dictionary<MaterialItem, int> materials = new();
-            Dictionary<uint, int> virtualItems = new();
-                foreach (ItemParamData itemData in costItems)
+            Dictionary<MaterialItem, uint> materials = new();
+            Dictionary<uint, uint> virtualItems = new();
+                foreach (IdCountConfig itemData in costItems)
                 {
                     if (GameData.ItemDataMap[itemData.id].itemType == ItemType.ITEM_MATERIAL)
                     {
@@ -222,18 +222,18 @@ namespace Weedwacker.GameServer.Systems.Inventory
             foreach (uint item in virtualItems.Keys) await PayVirtualItemByIdAsync(item, virtualItems[item]);
             return true;
         }
-        private async Task<bool> AddVirtualItemByIdAsync(uint itemId, int count)
+        private async Task<bool> AddVirtualItemByIdAsync(uint itemId, uint count)
         {
             switch (itemId)
             {
                 case 102: // Adventure exp
-                    return await Owner.ExpManager.AddAdventureExp(count);
+                    return await Owner.ExpManager.AddAdventureExp((int)count);
                 case 105: // Companionship exp
-                    return await Owner.ExpManager.AddCompanionshipExp(count);
+                    return await Owner.ExpManager.AddCompanionshipExp((int)count);
                 case 106: // Resin
-                    return await Owner.ResinManager.AddResinAsync(count);
+                    return await Owner.ResinManager.AddResinAsync((int)count);
                 case 107:  // Legendary Key
-                    return await Owner.PropManager.AddLegendaryKeyAsync(count);
+                    return await Owner.PropManager.AddLegendaryKeyAsync((int)count);
                 case 114: // Iron Coin
                     //TODO
                     return false;
@@ -241,19 +241,19 @@ namespace Weedwacker.GameServer.Systems.Inventory
                     //TODO
                     return false;
                 case 201: // Primogem
-                    return await Owner.PropManager.AddPrimogemsAsync(count);
+                    return await Owner.PropManager.AddPrimogemsAsync((int)count);
                 case 202: // Mora
-                    return await Owner.PropManager.AddMoraAsync(count);
+                    return await Owner.PropManager.AddMoraAsync((int)count);
                 case 203: // Genesis Crystals
-                    return await Owner.PropManager.AddGenesisCrystalsAsync(count);
+                    return await Owner.PropManager.AddGenesisCrystalsAsync((int)count);
                 case 204: // Home Coin
-                    return await Owner.PropManager.AddHomeCoinAsync(count);
+                    return await Owner.PropManager.AddHomeCoinAsync((int)count);
                 default:
                     Logger.WriteErrorLine($"Unknown Virtual Item: {itemId}");
                     return false;
             }
         }
-        public async Task<bool> PayVirtualItemByIdAsync(uint itemId, int count, ActionReason reason = ActionReason.None)
+        public async Task<bool> PayVirtualItemByIdAsync(uint itemId, uint count, ActionReason reason = ActionReason.None)
         {
             switch (itemId)
             {
@@ -264,39 +264,39 @@ namespace Weedwacker.GameServer.Systems.Inventory
                     //TODO
                     return false;
                 case 201:  // Primogem
-                    return await Owner.PropManager.UsePrimogemsAsync(count);
+                    return await Owner.PropManager.UsePrimogemsAsync((int)count);
                 case 202:  // Mora
-                    return await Owner.PropManager.PayMoraAsync(count);
+                    return await Owner.PropManager.PayMoraAsync((int)count);
                 case 203:  // Genesis Crystals
-                    return await Owner.PropManager.UseGenesisCrystalsAsync(count);
+                    return await Owner.PropManager.UseGenesisCrystalsAsync((int)count);
                 case 106:  // Resin
-                    return await Owner.ResinManager.UseResinAsync(count);
+                    return await Owner.ResinManager.UseResinAsync((int)count);
                 case 107:  // LegendaryKey
-                    return await Owner.PropManager.UseLegendaryKeyAsync(count);
+                    return await Owner.PropManager.UseLegendaryKeyAsync((int)count);
                 case 204:  // Home Coin
-                    return await Owner.PropManager.PayHomeCoinAsync(count);
+                    return await Owner.PropManager.PayHomeCoinAsync((int)count);
                 default:
                     Logger.WriteErrorLine($"Unknown Virtual Item: {itemId}");
                     return false;
             }
         }
-        public Task<bool> PayVirtualItemByParamDataAsync(ItemParamData costItem) => PayVirtualItemByIdAsync(costItem.id, costItem.count);
-        public async Task<bool> PayVirtualItemByParamDataManyAsync(IEnumerable<ItemParamData> costItems, int quantity = 1, ActionReason reason = ActionReason.None)
+        public Task<bool> PayVirtualItemByParamDataAsync(IdCountConfig costItem) => PayVirtualItemByIdAsync(costItem.id, costItem.count);
+        public async Task<bool> PayVirtualItemByParamDataManyAsync(IEnumerable<IdCountConfig> costItems, int quantity = 1, ActionReason reason = ActionReason.None)
         {
             // Make sure player has requisite items
-            foreach (ItemParamData cost in costItems)
+            foreach (IdCountConfig cost in costItems)
                 if (GetVirtualItemValue(cost.id) < (cost.count * quantity))
                     return false;
             // All costs are satisfied, now remove them all
-            foreach (ItemParamData cost in costItems)
+            foreach (IdCountConfig cost in costItems)
             {
-                await PayVirtualItemByIdAsync(cost.id, cost.count * quantity);
+                await PayVirtualItemByIdAsync(cost.id, (uint)(cost.count * quantity));
             }
 
             return true;
         }
 
-        public async Task<bool> RemoveItemByGuidAsync(ulong guid, int count = 1)
+        public async Task<bool> RemoveItemByGuidAsync(ulong guid, uint count = 1)
         {
             if (!GuidMap.ContainsKey(guid)) //TryGetValue(guid, out GameItem? item) appears to occasionally return false despite a key being present
             {

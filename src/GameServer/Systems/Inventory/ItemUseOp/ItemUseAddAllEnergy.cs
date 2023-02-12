@@ -1,15 +1,16 @@
-﻿using Weedwacker.GameServer.Enums;
+﻿using Weedwacker.GameServer.Data.Enums;
+using Weedwacker.GameServer.Enums;
 
 namespace Weedwacker.GameServer.Systems.Inventory.ItemUseOp
 {
-    [ItemUse(Enums.ItemUseOp.ITEM_USE_ADD_ALL_ENERGY)]
+    [ItemUse(Data.Enums.ItemUseOp.ITEM_USE_ADD_ALL_ENERGY)]
     internal class ItemUseAddAllEnergy : BaseItemUse
     {
         private readonly float Energy;
 
         public ItemUseAddAllEnergy(Player.Player user, uint itemId) : base(user, itemId)
         {
-            if(!float.TryParse(ItemData.itemUse.Where(w => w.useOp == Enums.ItemUseOp.ITEM_USE_ADD_ALL_ENERGY).First().useParam[0], out Energy))
+            if(!float.TryParse(ItemData.itemUse.Where(w => w.useOp == Data.Enums.ItemUseOp.ITEM_USE_ADD_ALL_ENERGY).First().useParam[0], out Energy))
             {
                 Energy = 0;
             }

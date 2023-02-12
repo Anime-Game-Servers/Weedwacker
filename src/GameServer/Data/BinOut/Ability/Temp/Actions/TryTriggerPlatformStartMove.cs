@@ -1,11 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TryTriggerPlatformStartMove : ConfigAbilityAction
 {
-    internal class TryTriggerPlatformStartMove : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float detectHeight;
-        [JsonProperty] public readonly float detectWidth;
-        [JsonProperty] public readonly ConfigAbilityAction[] failActions;
-    }
+	public float detectHeight;
+	public float detectWidth;
+	public bool enableRotationOffset;
+	public ConfigAbilityAction[] failActions;
+	public bool forceReset;
+	public bool forceTrigger;
 }

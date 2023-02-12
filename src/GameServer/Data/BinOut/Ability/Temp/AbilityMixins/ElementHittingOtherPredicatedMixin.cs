@@ -1,17 +1,17 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ElementHittingOtherPredicatedMixin : ConfigAbilityMixin
 {
-    internal class ElementHittingOtherPredicatedMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly BasePredicate[] prePredicates;
-        [JsonProperty] public readonly ElementPredicateds[] elementBatchPredicateds;
+	public ConfigAbilityPredicate[] prePredicates;
+	public ElementBatchPredicated[] elementBatchPredicateds;
 
-        public class ElementPredicateds
-        {
-            [JsonProperty] public readonly ElementType[] elementTypeArr;
-            [JsonProperty] public readonly ConfigAbilityAction[] successActions;
-        }
-    }
+	public class ElementBatchPredicated
+	{
+		public ElementType[] elementTypeArr;
+		public ConfigAbilityAction[] successActions;
+		public ConfigAbilityAction[] failActions;
+	}
 }

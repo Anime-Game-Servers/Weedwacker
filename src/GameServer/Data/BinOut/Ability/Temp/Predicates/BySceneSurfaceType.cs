@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class BySceneSurfaceType : ConfigAbilityPredicate
 {
-    internal class BySceneSurfaceType : BasePredicate
-    {
-        [JsonProperty] public readonly ElementType[] filters;
-    }
+	public SceneSurfaceType[] filters;
+	public bool include;
+	public Vector offset;
 }

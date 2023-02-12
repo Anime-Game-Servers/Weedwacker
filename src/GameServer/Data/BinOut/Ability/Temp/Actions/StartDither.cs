@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class StartDither : ConfigAbilityAction
 {
-    internal class StartDither : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float duration;
-    }
+	public float duration;
+	public bool reverse;
 }

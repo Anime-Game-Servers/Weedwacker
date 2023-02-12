@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ManipulateStrafeStamina : ConfigAbilityAction
 {
-    internal class ManipulateStrafeStamina : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string ratio;
-    }
+	public string ratio;
 }

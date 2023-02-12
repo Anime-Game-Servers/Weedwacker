@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
+
+public class SelectTargetsByChildren : SelectTargets
 {
-    internal class SelectTargetsByChildren : BaseSelectTargetType
-    {
-        [JsonProperty] public readonly int configID;
-        [JsonProperty] public readonly string sortType;
-    }
+	public uint configID;
 }

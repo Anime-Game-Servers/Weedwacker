@@ -1,9 +1,8 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.Common;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Database;
-using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Network.Proto;
 using Weedwacker.Shared.Utils;
@@ -39,22 +38,22 @@ namespace Weedwacker.GameServer.Systems.Avatar
             Owner = owner;
             Avatar = avatar;
 
-            FetterStates.Add(FetterInfoData.fetterId, new FetterData() { FetterId = (uint)FetterInfoData.fetterId, FetterState = DEFAULT_STATE });
+            FetterStates.Add(FetterInfoData.fetter_id, new FetterData() { FetterId = FetterInfoData.fetter_id, FetterState = DEFAULT_STATE });
             foreach (FetterStoryData storyData in FetterStoryData.Values)
             {
-                FetterStates.Add(storyData.fetterId, new FetterData() { FetterId = (uint)storyData.fetterId, FetterState = DEFAULT_STATE });
+                FetterStates.Add(storyData.fetter_id, new FetterData() { FetterId = storyData.fetter_id, FetterState = DEFAULT_STATE });
             }
             foreach (FettersData fettersData in FettersData.Values)
             {
-                FetterStates.Add(fettersData.fetterId, new FetterData() { FetterId = (uint)fettersData.fetterId, FetterState = DEFAULT_STATE });
+                FetterStates.Add(fettersData.fetter_id, new FetterData() { FetterId = fettersData.fetter_id, FetterState = DEFAULT_STATE });
             }
             foreach (PhotographPosenameData poseData in PhotographPosenameData.Values)
             {
-                FetterStates.Add(poseData.fetterId, new FetterData() { FetterId = (uint)poseData.fetterId, FetterState = DEFAULT_STATE });
+                FetterStates.Add(poseData.fetter_id, new FetterData() { FetterId = poseData.fetter_id, FetterState = DEFAULT_STATE });
             }
             foreach (PhotographExpressionData expressionData in PhotographExpressionData.Values)
             {
-                FetterStates.Add(expressionData.fetterId, new FetterData() { FetterId = expressionData.fetterId, FetterState = DEFAULT_STATE });
+                FetterStates.Add(expressionData.fetter_id, new FetterData() { FetterId = expressionData.fetter_id, FetterState = DEFAULT_STATE });
             }
         }
 
@@ -66,50 +65,50 @@ namespace Weedwacker.GameServer.Systems.Avatar
 
         private async Task<FetterSystem> InitializeAsync()
         {
-            var allFetters = FetterStoryData.Values.Concat<FetterBaseClass>(FettersData.Values).Concat(PhotographPosenameData.Values).Concat(PhotographExpressionData.Values).Append(FetterInfoData);
-            var notOpen = allFetters.Where(w => FetterStates[w.fetterId].FetterState == 1);
+            var allFetters = FetterStoryData.Values.Concat<FetterConfig>(FettersData.Values).Concat(PhotographPosenameData.Values).Concat(PhotographExpressionData.Values).Append(FetterInfoData);
+            var notOpen = allFetters.Where(w => FetterStates[w.fetter_id].FetterState == 1);
             foreach (var fetter in notOpen)
             {
                 if (fetter.openConds != null)
                     await EvaluateFetterState(fetter, true, false);
-                else FetterStates[fetter.fetterId].FetterState++;
+                else FetterStates[fetter.fetter_id].FetterState++;
             }
-            var open = allFetters.Where(w => FetterStates[w.fetterId].FetterState == 2);
+            var open = allFetters.Where(w => FetterStates[w.fetter_id].FetterState == 2);
             foreach (var fetter in open)
             {
                 if (fetter.finishConds != null)
                     await EvaluateFetterState(fetter, false, false);
-                else FetterStates[fetter.fetterId].FetterState++;
+                else FetterStates[fetter.fetter_id].FetterState++;
             }
 
             return this;
         }
 
-        private async Task<uint> EvaluateFetterState(FetterBaseClass fetter, bool openOrFinish, bool notifyPlayer) // Returns: fetterState
+        private async Task<uint> EvaluateFetterState(FetterConfig fetter, bool openOrFinish, bool notifyPlayer) // Returns: fetterState
         {
             if (openOrFinish ? fetter.openConds.Length == 0 : fetter.finishConds.Length == 0)
             {
-                FetterStates[fetter.fetterId] = new FetterData()
+                FetterStates[fetter.fetter_id] = new FetterData()
                 {
-                    FetterId = (uint)fetter.fetterId,
-                    FetterState = ++FetterStates[fetter.fetterId].FetterState
+                    FetterId = fetter.fetter_id,
+                    FetterState = ++FetterStates[fetter.fetter_id].FetterState
                 };
             }
             else
             {
-                var fetterProto = new FetterData() { FetterId = (uint)fetter.fetterId };
+                var fetterProto = new FetterData() { FetterId = fetter.fetter_id };
                 int resultLength = openOrFinish ? fetter.openConds.Length : fetter.finishConds.Length;
                 Task<bool>[] condEvaluation = new Task<bool>[resultLength];
                 for (int i = 0; i < resultLength; i++)
                 {
                     var cond = openOrFinish ? fetter.openConds[i] : fetter.finishConds[i];
-                    condEvaluation[i] = EvaluateFetterCond(fetter.fetterId, cond);
+                    condEvaluation[i] = EvaluateFetterCond(fetter.fetter_id, cond);
                 }
                 bool[] condResult = await Task.WhenAll(condEvaluation);
                 if (condResult.All(b => b == true))
                 {
-                    fetterProto.FetterState = ++FetterStates[fetter.fetterId].FetterState;
-                    FetterStates[FetterInfoData.fetterId] = fetterProto;
+                    fetterProto.FetterState = ++FetterStates[fetter.fetter_id].FetterState;
+                    FetterStates[FetterInfoData.fetter_id] = fetterProto;
                 }
                 else
                 {
@@ -126,9 +125,9 @@ namespace Weedwacker.GameServer.Systems.Avatar
                     }
                 }
             }
-            return FetterStates[fetter.fetterId].FetterState;
+            return FetterStates[fetter.fetter_id].FetterState;
         }
-        private async Task<bool> EvaluateFetterCond(uint fetterId, FetterCond cond)
+        private async Task<bool> EvaluateFetterCond(uint fetterId, FetterConditionConfig cond)
         {
             switch (cond.condType)
             {

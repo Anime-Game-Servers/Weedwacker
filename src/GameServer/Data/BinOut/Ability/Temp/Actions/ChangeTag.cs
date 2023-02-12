@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ChangeTag : ConfigAbilityAction
 {
-    internal class ChangeTag : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool isAdd;
-        [JsonProperty] public readonly string tag;
-    }
+	public bool isAdd;
+	public string tag;
 }

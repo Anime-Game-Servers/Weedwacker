@@ -1,19 +1,18 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigMove
 {
-    internal class ConfigMove
-    {
-        [JsonProperty] public readonly ConfigMoveVelocityForce velocityForce;
-        [JsonProperty] public readonly bool handleCombatTaskImmediately;
+	public ConfigMoveVelocityForce velocityForce;
+	public bool handleCombatTaskImmediately;
 
-        public class ConfigMoveVelocityForce
-        {
-            [JsonProperty] public readonly bool muteAll;
-            [JsonProperty] public readonly bool useAll;
-            [JsonProperty] public readonly VelocityForceType[] includeForces;
-            [JsonProperty] public readonly VelocityForceType[] excludeForces;
-        }
-    }
+	public class ConfigMoveVelocityForce
+	{
+		public bool muteAll;
+		public bool useAll;
+		public VelocityForceType[] includeForces;
+		public VelocityForceType[] excludeForces;
+	}
 }

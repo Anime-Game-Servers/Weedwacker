@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class InteractTriggerAbilityMixin : ConfigAbilityMixin
 {
-    internal class InteractTriggerAbilityMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string abilityName;
-    }
+	public string abilityName;
 }

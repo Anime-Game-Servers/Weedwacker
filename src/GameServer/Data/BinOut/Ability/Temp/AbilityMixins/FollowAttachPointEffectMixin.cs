@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class FollowAttachPointEffectMixin : ConfigAbilityMixin
 {
-    internal class FollowAttachPointEffectMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly string attachPriority;
-        [JsonProperty] public readonly bool refreshOnAvatarIn;
-    }
+	public string modifierName;
+	public FollowAttachOccupyPriority attachPriority;
+	public bool refreshOnAvatarIn;
 }

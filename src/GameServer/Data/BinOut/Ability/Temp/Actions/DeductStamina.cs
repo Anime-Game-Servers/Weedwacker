@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DeductStamina : ConfigAbilityAction
 {
-    internal class DeductStamina : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly float value;
-    }
+	public object value;
+	public bool swimCheck;
 }

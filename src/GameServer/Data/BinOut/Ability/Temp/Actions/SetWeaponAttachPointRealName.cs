@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetWeaponAttachPointRealName : ConfigAbilityAction
 {
-    internal class SetWeaponAttachPointRealName : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string partName;
-        [JsonProperty] public readonly string realName;
-    }
+	public string partName;
+	public string realName;
 }

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class CalcDvalinS04RebornPoint : ConfigAbilityAction
 {
-    internal class CalcDvalinS04RebornPoint : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool enable;
-    }
+	public bool enable;
 }

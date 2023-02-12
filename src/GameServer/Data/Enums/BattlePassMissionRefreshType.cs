@@ -1,0 +1,10 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum BattlePassMissionRefreshType : int
+{
+	BATTLE_PASS_MISSION_REFRESH_DAILY = 0,
+	BATTLE_PASS_MISSION_REFRESH_CYCLE = 1,
+	BATTLE_PASS_MISSION_REFRESH_SCHEDULE = 2,
+	BATTLE_PASS_MISSION_REFRESH_CYCLE_CROSS_SCHEDULE = 3,
+}

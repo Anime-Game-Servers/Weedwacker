@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class EntityDisplacementMixin : ConfigAbilityMixin
 {
-    internal class EntityDisplacementMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float triggerDistance;
-        [JsonProperty] public readonly ConfigAbilityAction[] actionList;
-    }
+	public float triggerDistance;
+	public ConfigAbilityAction[] actionList;
 }

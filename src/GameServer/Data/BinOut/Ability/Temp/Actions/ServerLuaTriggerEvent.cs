@@ -1,11 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ServerLuaTriggerEvent : ConfigAbilityAction
 {
-    internal class ServerLuaTriggerEvent : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly LuaCallType luaCallType;
-        [JsonProperty] public readonly string sourceName;
-    }
+	public LuaCallType luaCallType;
+	public bool isTarget;
+	public uint[] CallParamList;
+	public string sourceName;
+	public uint paramNum;
+	public object param1;
+	public object param2;
+	public object param3;
 }

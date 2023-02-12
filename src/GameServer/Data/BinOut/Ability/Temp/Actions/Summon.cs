@@ -1,18 +1,21 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class Summon : ConfigAbilityAction
 {
-    internal class Summon : ConfigAbilityAction
-	{
-		[JsonProperty] public readonly int monsterID;
-		[JsonProperty] public readonly int bornSlotIndex;
-		[JsonProperty] public readonly ConfigBornType born;
-		[JsonProperty] public readonly int summonTag;
-		[JsonProperty] public readonly bool aliveByOwner;
-		[JsonProperty] public readonly bool hasDrop;
-		[JsonProperty] public readonly bool hasExperience;
-		[JsonProperty] public readonly bool sightGroupWithOwner;
-		[JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public uint monsterID;
+	public ConfigBornType born;
+	public uint bornSlotIndex;
+	public AbilityTargetting faceToTarget;
+	public uint summonTag;
+	public bool aliveByOwner;
+	public bool isElite;
+	public uint[] affixList;
+	public object levelDelta;
+	public bool hasDrop;
+	public bool hasExp;
+	public bool sightGroupWithOwner;
 }

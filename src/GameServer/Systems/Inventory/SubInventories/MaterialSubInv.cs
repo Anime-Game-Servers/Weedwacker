@@ -1,12 +1,13 @@
 ﻿using System.Reflection;
 using MongoDB.Bson.Serialization.Attributes;
 using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.Common;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.GameServer.Systems.Inventory.ItemUseOp;
 using Weedwacker.Shared.Utils;
+using static Weedwacker.GameServer.Data.Excel.MaterialData;
 
 namespace Weedwacker.GameServer.Systems.Inventory
 {
@@ -104,15 +105,15 @@ namespace Weedwacker.GameServer.Systems.Inventory
             */
             return false;
         }
-        public override async Task<GameItem?> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0)
+        public override async Task<GameItem?> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0)
         {
             MaterialData data = (MaterialData)GameData.ItemDataMap[itemId];
             List<BaseItemUse> ops = new();
 
             // Find the Handler for this opcode
-            foreach (ItemUseData op in data.itemUse)
+            foreach (ItemUseConfig op in data.itemUse)
             {
-                if (op.useOp != Enums.ItemUseOp.ITEM_USE_NONE)
+                if (op.useOp != Data.Enums.ItemUseOp.ITEM_USE_NONE)
                 {
                     var query =
                         from type in Assembly.GetExecutingAssembly().GetTypes()
@@ -184,7 +185,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             }
         }
 
-        internal override async Task<bool> RemoveItemAsync(GameItem item, int count = 1)
+        internal override async Task<bool> RemoveItemAsync(GameItem item, uint count = 1)
         {
             MaterialData data = (MaterialData)GameData.ItemDataMap[item.ItemId];
 

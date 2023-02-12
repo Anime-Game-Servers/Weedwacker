@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByCreateGadgetMixin : ConfigAbilityMixin
 {
-    internal class DoActionByCreateGadgetMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ConfigAbilityAction[] actionQueue;
-    }
+	public CreateGadgetMixinType type;
+	public ConfigAbilityAction[] actionQueue;
 }

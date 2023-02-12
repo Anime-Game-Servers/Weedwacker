@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByPredicatePoint : ConfigBornType
 {
-    internal class ConfigBornByPredicatePoint : ConfigBornType
-    {
-        [JsonProperty] public readonly float timeForPredictive;
-        [JsonProperty] public readonly bool onGround;
-    }
+	public float timeForPredictive;
 }

@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetSurroundAnchor : ConfigAbilityAction
 {
-    internal class SetSurroundAnchor : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool setPoint;
-        [JsonProperty] public readonly PointType actionPointType;
-        [JsonProperty] public readonly bool canBeHandledOnRecover;
-    }
+	public bool setPoint;
+	public ActionPointType actionPointType;
+	public uint actionPointID;
 }

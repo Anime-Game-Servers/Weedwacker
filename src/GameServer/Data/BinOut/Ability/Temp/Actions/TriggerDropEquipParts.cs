@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerDropEquipParts : ConfigAbilityAction
 {
-    internal class TriggerDropEquipParts : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool dropAll;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public bool dropAll;
+	public string[] equipParts;
 }

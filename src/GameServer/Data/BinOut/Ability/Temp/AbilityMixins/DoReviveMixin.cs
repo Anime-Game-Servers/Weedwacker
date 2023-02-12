@@ -1,9 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoReviveMixin : ConfigAbilityMixin
 {
-    internal class DoReviveMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ConfigAbilityAction[] onReviveActions;
-    }
+	public AvatarStageType type;
+	public bool ignoreDieAbyss;
+	public bool ignoreDieDrawn;
+	public ConfigAbilityAction[] onKillActions;
+	public ConfigAbilityAction[] onReviveActions;
 }

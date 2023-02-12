@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnablePushColliderName : ConfigAbilityAction
 {
-    internal class EnablePushColliderName : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string[] pushColliderNames;
-        [JsonProperty] public readonly bool setEnable;
-    }
+	public object pushColliderNames; // string or string[]
+	public bool setEnable;
 }

@@ -1,6 +1,8 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+﻿using Newtonsoft.Json;
+
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnableBulletCollisionPluginTrigger : ConfigAbilityAction
 {
-    internal class EnableBulletCollisionPluginTrigger : ConfigAbilityAction
-    {
-    }
+	public bool setEnable;
 }

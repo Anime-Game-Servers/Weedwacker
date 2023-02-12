@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarEnterViewBias : ConfigAbilityAction
 {
-    internal class AvatarEnterViewBias : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int sphereBiasPole;
-        [JsonProperty] public readonly int sphereBiasElev;
-        [JsonProperty] public readonly int sphereRadius;
-        [JsonProperty] public readonly int postForwardPoleDeltaAngle;
-        [JsonProperty] public readonly int postForwardElevDeltaAngle;
-        [JsonProperty] public readonly bool lockZoom;
-        [JsonProperty] public readonly bool lockResetBack;
-    }
+	public float sphereBiasPole;
+	public float sphereBiasElev;
+	public float sphereRadius;
+	public float postForwardPoleDeltaAngle;
+	public float postForwardElevDeltaAngle;
+	public float durationInNormalState;
+	public bool lockZoom;
+	public bool lockResetBack;
 }

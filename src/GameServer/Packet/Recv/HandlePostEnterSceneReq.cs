@@ -1,4 +1,5 @@
-﻿using Weedwacker.GameServer.Enums;
+﻿using Weedwacker.GameServer.Data.Enums;
+using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
 
 namespace Weedwacker.GameServer.Packet.Recv

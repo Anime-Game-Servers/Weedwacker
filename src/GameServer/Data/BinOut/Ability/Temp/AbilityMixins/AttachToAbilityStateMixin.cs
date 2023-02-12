@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachToAbilityStateMixin : ConfigAbilityMixin
 {
-    internal class AttachToAbilityStateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly AbilityState[] abilityStates;
-        [JsonProperty] public readonly string modifierName;
-    }
+	public AbilityState[] abilityStates;
+	public bool reject;
+	public string modifierName;
 }

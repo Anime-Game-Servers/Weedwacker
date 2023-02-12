@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTrampolineType : ConfigAbilityPredicate
 {
-    internal class ByTrampolineType : BasePredicate
-    {
-        [JsonProperty] public readonly bool? isExcitedState; 
-    }
+	public bool? isExcitedState; 
 }

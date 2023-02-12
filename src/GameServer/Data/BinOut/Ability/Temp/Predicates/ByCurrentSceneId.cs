@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByCurrentSceneId : ConfigAbilityPredicate
 {
-    internal class ByCurrentSceneId : BasePredicate
-    {
-        [JsonProperty] public readonly int[] sceneIds;
-    }
+	public uint[] sceneIds;
 }

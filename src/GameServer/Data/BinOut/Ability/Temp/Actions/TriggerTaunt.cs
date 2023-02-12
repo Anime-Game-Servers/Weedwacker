@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerTaunt : ConfigAbilityAction
 {
-    internal class TriggerTaunt : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public TauntLevel tauntLevel;
+	public float careValue;
 }

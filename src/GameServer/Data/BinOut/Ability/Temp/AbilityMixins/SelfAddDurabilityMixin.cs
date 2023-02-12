@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class SelfAddDurabilityMixin : ConfigAbilityMixin
 {
-    internal class SelfAddDurabilityMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float value;
-        [JsonProperty] public readonly bool useLimitRange;
-        [JsonProperty] public readonly float maxValue;
-        [JsonProperty] public readonly float thinkInterval;
-    }
+	public object value;
+	public bool useLimitRange;
+	public object maxValue;
+	public object minValue;
+	public float thinkInterval;
 }

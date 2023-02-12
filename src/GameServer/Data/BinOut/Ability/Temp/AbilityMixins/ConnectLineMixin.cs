@@ -1,11 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ConnectLineMixin : ConfigAbilityMixin
 {
-    internal class ConnectLineMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string RepeaterModifier;
-        [JsonProperty] public readonly string CollectorModifier;
-        [JsonProperty] public readonly string CollectorGlobalvalueKey;
-    }
+	public string RepeaterModifier;
+	public string CollectorModifier;
+	public string CollectorGlobalvalueKey;
+	public SelectTargets otherTargets;
+	public ConfigAbilityPredicate[] predicates;
+	public ConfigAbilityPredicate[] predicatesForeach;
 }

@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Weedwacker.GameServer.Database;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Utils;
 
@@ -10,10 +10,10 @@ namespace Weedwacker.GameServer.Systems.Inventory
     internal class FoodTab : MaterialsTab
     {
         [BsonIgnore] public new const int InventoryLimit = 2000;
-        private static string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_MATERIAL}.{nameof(FoodTab)}.{nameof(Items)}";
+        private static readonly string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_MATERIAL}.{nameof(FoodTab)}.{nameof(Items)}";
         public FoodTab(Player.Player owner, InventoryManager inventory) : base(owner, inventory) { }
 
-        public override async Task<GameItem?> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0)
+        public override async Task<GameItem?> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0)
         {
             if (Items.TryGetValue(itemId, out GameItem? material))
             {
@@ -46,7 +46,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             }
         }
 
-        internal override async Task<bool> RemoveItemAsync(GameItem item, int count = 1)
+        internal override async Task<bool> RemoveItemAsync(GameItem item, uint count = 1)
         {
             if (Items.TryGetValue(item.ItemId, out GameItem? material))
             {

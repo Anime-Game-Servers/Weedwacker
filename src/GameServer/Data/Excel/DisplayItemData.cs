@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("DisplayItemExcelConfigData.json")]
+public class DisplayItemData : ItemConfig
 {
-    internal class DisplayItemData : ItemData
-    {
-        [JsonProperty] public readonly DisplayType displayType;
-        [JsonProperty] public readonly int param;
-
-    }
+	public uint typeDescTextMapHash;
+	public uint rankLevel;
+	public DisplayItemType displayType;
+	public uint param;
 }

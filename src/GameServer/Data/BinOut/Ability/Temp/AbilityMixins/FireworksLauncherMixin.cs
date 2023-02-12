@@ -1,11 +1,17 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class FireworksLauncherMixin : ConfigAbilityMixin
 {
-    internal class FireworksLauncherMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string startCountDownModifier;
-        [JsonProperty] public readonly ConfigAbilityAction[] OnEvtStartCountDown;
-        [JsonProperty] public readonly ConfigAbilityAction[] OnAllBulletsFired;
-    }
+	public string startCountDownModifier;
+	public ConfigAbilityAction[] OnEvtStartCountDown;
+	public ConfigAbilityAction[] OnAllBulletsFired;
+	public string GV_FW_BulletItemID;
+	public string GV_FW_ColorH;
+	public string GV_FW_Scale;
+	public string GV_FW_Angle;
+	public string GV_FW_MaxParticleCount;
+	public string GV_FW_FaceToCamera;
+	public string GV_FW_BulletLifeTime;
 }

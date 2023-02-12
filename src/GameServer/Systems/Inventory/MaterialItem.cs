@@ -9,7 +9,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
     {
         [BsonIgnore] public new MaterialData ItemData => (MaterialData)GameData.ItemDataMap[ItemId];
 
-        public MaterialItem(ulong guid, uint itemId, int count) : base(guid, itemId, count)
+        public MaterialItem(ulong guid, uint itemId, uint count) : base(guid, itemId, count)
         {
             Count = count;
         }

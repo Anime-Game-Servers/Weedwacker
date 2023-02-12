@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHasShield : ConfigAbilityPredicate
 {
-    internal class ByHasShield : BasePredicate
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly TargetType type;
-    }
+	public HasShieldType type;
+	public bool usePotentShield;
+	public ElementType potentShieldType;
 }

@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ElementOuterGlowEffectMixin : ConfigAbilityMixin
 {
-    internal class ElementOuterGlowEffectMixin : BaseAbilityMixin
-    {
-    }
 }

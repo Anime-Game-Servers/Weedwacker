@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+﻿namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByCollisionPoint : ConfigBornType
 {
-    internal class ConfigBornByCollisionPoint : ConfigBornType
-    {
-    }
 }

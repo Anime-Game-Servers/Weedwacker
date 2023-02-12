@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByEnergyRatio : ConfigAbilityPredicate
 {
-    internal class ByEnergyRatio : BasePredicate
-    {
-        [JsonProperty] public readonly object ratio;
-        [JsonProperty] public readonly LogicType logic;
-    }
+	public object ratio;
 }

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class OverrideStickElemUIMixin : ConfigAbilityMixin
 {
-    internal class OverrideStickElemUIMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string effName;
-    }
+	public string effName;
 }

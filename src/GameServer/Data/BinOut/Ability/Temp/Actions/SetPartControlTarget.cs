@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetPartControlTarget : ConfigAbilityAction
 {
-    internal class SetPartControlTarget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string[] partRootNames;
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-    }
+	public string[] partRootNames;
+	public ControlPartTargetType targetType;
 }

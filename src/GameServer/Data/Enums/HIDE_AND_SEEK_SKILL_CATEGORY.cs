@@ -1,0 +1,9 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum HIDE_AND_SEEK_SKILL_CATEGORY : int
+{
+	HIDE_AND_SEEK_SKILL_CATEGORY_NONE = 0,
+	HIDE_AND_SEEK_SKILL_CATEGORY_HUNTER = 1,
+	HIDE_AND_SEEK_SKILL_CATEGORY_PREY = 2,
+}

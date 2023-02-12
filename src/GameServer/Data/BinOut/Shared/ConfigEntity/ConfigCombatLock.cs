@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigCombatLock
 {
-    internal class ConfigCombatLock
-    {
-        [JsonProperty] public readonly string lockShape;
-        [JsonProperty] public readonly bool denyLockOn;
-        [JsonProperty] public readonly float lockWeightYaxisParam;
-        [JsonProperty] public readonly float lockWeightYaxisThreshold;
-        [JsonProperty] public readonly string lockType;
-        [JsonProperty] public readonly float overrideRange;
-        [JsonProperty] public readonly float overrideNormalPri;
-        [JsonProperty] public readonly float overrideCombatPri;
-    }
+	public string lockShape;
+	public bool denyLockOn;
+	public float lockWeightYaxisParam;
+	public float lockWeightYaxisThreshold;
+	public string lockType;
+	public float overrideRange;
+	public float overrideNormalPri;
+	public float overrideCombatPri;
 }

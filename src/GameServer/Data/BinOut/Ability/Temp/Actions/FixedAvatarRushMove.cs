@@ -1,17 +1,17 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FixedAvatarRushMove : ConfigAbilityAction
 {
-    internal class FixedAvatarRushMove : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly ConfigBornType toPos;
-        [JsonProperty] public readonly float timeRange;
-        [JsonProperty] public readonly float maxRange;
-        [JsonProperty] public readonly string[] animatorStateIDs;
-        [JsonProperty] public readonly string overrideMoveCollider;
-        [JsonProperty] public readonly bool isInAir;
-    }
+	public ConfigBornType toPos;
+	public object timeRange;
+	public float maxRange;
+	public string[] animatorStateIDs;
+	public string overrideMoveCollider;
+	public bool isInAir;
+	public bool checkAnimatorStateOnExitOnly;
+	public bool ignoreDetectForward;
+	public bool exactArrive;
 }

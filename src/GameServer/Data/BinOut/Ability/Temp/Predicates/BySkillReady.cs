@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class BySkillReady : ConfigAbilityPredicate
 {
-    internal class BySkillReady : BasePredicate
-    {
-        [JsonProperty] public readonly int overtime;
-    }
+	public uint skillID;
+	public uint[] skillSlot;
 }

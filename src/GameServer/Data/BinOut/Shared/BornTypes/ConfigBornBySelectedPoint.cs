@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornBySelectedPoint : ConfigBornType
 {
-    internal class ConfigBornBySelectedPoint : ConfigBornType
-    {
-        [JsonProperty] public readonly bool onGround;
-    }
 }

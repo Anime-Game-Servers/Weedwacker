@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetIsCaster : ConfigAbilityPredicate
 {
-    internal class ByTargetIsCaster : BasePredicate
-    {
-        [JsonProperty] public readonly bool isCaster;
-    }
+	public bool isCaster;
 }

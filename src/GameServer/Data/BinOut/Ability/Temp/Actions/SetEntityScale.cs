@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetEntityScale : ConfigAbilityAction
 {
-    internal class SetEntityScale : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float scale;
-        [JsonProperty] public readonly bool canBeHandledOnRecover;
-    }
+	public float scale;
 }

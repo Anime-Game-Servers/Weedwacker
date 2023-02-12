@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByGlobalValue : ConfigBornType
 {
-    internal class ConfigBornByGlobalValue : ConfigBornType
-    {
-        [JsonProperty] public readonly string positionKey;
-        [JsonProperty] public readonly string directionKey;
-    }
+	public string positionKey;
+	public string directionKey;
+	public bool useGlobalUp;
 }

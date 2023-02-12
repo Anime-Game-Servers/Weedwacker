@@ -1,31 +1,39 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("WeaponExcelConfigData.json")]
+public class WeaponData : ItemConfig
 {
-    [Resource("WeaponExcelConfigData.json")]
-    internal class WeaponData : ItemData
-    {
-        [JsonProperty] public readonly WeaponType weaponType;
-        [JsonProperty] public readonly uint weaponBaseExp;
-        [JsonProperty] public readonly uint[] skillAffix;
-        [JsonProperty] public readonly List<WeaponProperty>? weaponProp;
-        [JsonProperty] public readonly string awakenTexture;
-        [JsonProperty] public readonly string awakenLightMapTexture;
-        [JsonProperty] public readonly string awakenIcon;
-        [JsonProperty] public readonly uint awakenMaterial;
-        [JsonProperty] public readonly uint weaponPromoteId;
-        [JsonProperty] public readonly uint storyId;
-        [JsonProperty] public readonly uint[] awakenCosts;
-        [JsonProperty] public readonly uint gachaCardNameHashPre;
-        [JsonProperty] public readonly int weight;
-        [JsonProperty] public readonly uint gadgetId;
+	public WeaponType weaponType;
+	public uint rankLevel;
+	public WeaponMaterialType materialType;
+	public ElementType elemType;
+	public bool isGold;
+	public uint weaponBaseExp;
+	public uint[] skillAffix;
+	public uint awakenMaterial;
+	public WeaponProperty[] weaponProp;
+	public string awakenTexture;
+	public string awakenLightMapTexture;
+	public string awakenIcon;
+	public bool unRotate;
+	public uint weaponPromoteId;
+	public uint storyId;
+	public uint[] awakenCosts;
+	public byte gachaCardNameHashPre;
+	public uint gachaCardNameHashSuffix;
+	public uint enhanceRule;
+	public MaterialDestroyType destroyRule;
+	public uint[] destroyReturnMaterial;
+	public uint[] destroyReturnMaterialCount;
+	public uint initialLockState;
 
-        public class WeaponProperty
-        {
-            [JsonProperty] public readonly FightProperty propType;
-            [JsonProperty] public readonly float initValue;
-            [JsonProperty] public readonly GrowCurveType type;
-        }
-    }
+	public class WeaponProperty
+	{
+		public FightPropType propType;
+		public float initValue;
+		public GrowCurveType type;
+	}
 }

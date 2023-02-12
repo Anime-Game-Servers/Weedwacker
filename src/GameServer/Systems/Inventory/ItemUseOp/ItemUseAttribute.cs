@@ -5,9 +5,9 @@ namespace Weedwacker.GameServer.Systems.Inventory.ItemUseOp
     internal class ItemUseAttribute : Attribute
     {
         /* Enum of the operation */
-        public readonly Enums.ItemUseOp Op;
+        public readonly Data.Enums.ItemUseOp Op;
 
-        public ItemUseAttribute(Enums.ItemUseOp op)
+        public ItemUseAttribute(Data.Enums.ItemUseOp op)
         {
             Op = op;
         }

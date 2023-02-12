@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ChangeEnviroWeather : ConfigAbilityAction
 {
-    internal class ChangeEnviroWeather : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int areaId;
-        [JsonProperty] public readonly int climateType;
-        [JsonProperty] public readonly float transDuration;
-    }
+	public uint areaId;
+	public uint climateType;
+	public float transDuration;
 }

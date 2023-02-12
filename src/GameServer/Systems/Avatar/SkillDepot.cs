@@ -3,7 +3,6 @@ using MongoDB.Driver;
 using Weedwacker.GameServer.Data;
 using Weedwacker.GameServer.Data.BinOut.Ability.Temp;
 using Weedwacker.GameServer.Data.BinOut.Talent;
-using Weedwacker.GameServer.Data.Common;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Packet.Send;
@@ -29,7 +28,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
         [BsonElement] public HashSet<uint> Talents { get; private set; } = new(); // talentId. last digit of id = constellationRank.
         [BsonIgnore] public Dictionary<string, HashSet<string>> UnlockedTalentParams = new(); // <abilityName, talentParams> Added by ConfigTalent UnlockTalentParam
         [BsonIgnore] public HashSet<string> ActiveDynamicAbilities { get; private set; } = new(); // abilityName
-        [BsonIgnore] public Dictionary<uint, Dictionary<uint, float>?>? AbilitySpecials { get; private set; } = new(); // <abilityNameHash, <abilitySpecialHash, value>> Variables used in ConfigAbility_<Avatar>.json
+        [BsonIgnore] public Dictionary<uint, Dictionary<uint, object>?>? AbilitySpecials { get; private set; } = new(); // <abilityNameHash, <abilitySpecialHash, value>> Variables used in ConfigAbility_<Avatar>.json
         [BsonIgnore] public SortedList<uint, uint> ProudSkillExtraLevelMap { get; private set; } = new(); // <groupId,extraLevels> 
 
         public SkillDepot(Avatar avatar, uint depotId, Player.Player owner)
@@ -43,28 +42,28 @@ namespace Weedwacker.GameServer.Systems.Avatar
             if (EnergySkill != 0)
             {
                 EnergySkillLevel = 1;
-                Enums.ElementType type = avatarInfo.SkillData[depotId][EnergySkill].costElemType;
+                Data.Enums.ElementType type = avatarInfo.SkillData[depotId][EnergySkill].costElemType;
                 switch (type)
                 {
-                    case Enums.ElementType.Fire:
+                    case Data.Enums.ElementType.Fire:
                         Element = new Fire();
                         break;
-                    case Enums.ElementType.Water:
+                    case Data.Enums.ElementType.Water:
                         Element = new Water();
                         break;
-                    case Enums.ElementType.Wind:
+                    case Data.Enums.ElementType.Wind:
                         Element = new Wind();
                         break;
-                    case Enums.ElementType.Ice:
+                    case Data.Enums.ElementType.Ice:
                         Element = new Ice();
                         break;
-                    case Enums.ElementType.Rock:
+                    case Data.Enums.ElementType.Rock:
                         Element = new Rock();
                         break;
-                    case Enums.ElementType.Electric:
+                    case Data.Enums.ElementType.Electric:
                         Element = new Electric();
                         break;
-                    case Enums.ElementType.Grass:
+                    case Data.Enums.ElementType.Grass:
                         Element = new Grass();
                         break;
                     default:
@@ -79,7 +78,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
                 if (skillId != 0) Skills.Add(skillId, 1);
             }
 
-            var inherentProudSkillGroups = avatarInfo.SkillDepotData[depotId].inherentProudSkillOpens.Where(w => w.proudSkillGroupId != null && (w.needAvatarPromoteLevel < avatar.PromoteLevel || w.needAvatarPromoteLevel is null)).ToDictionary(q => q.proudSkillGroupId).Keys.ToList();
+            var inherentProudSkillGroups = avatarInfo.SkillDepotData[depotId].inherentProudSkillOpens.Where(w => (w.needAvatarPromoteLevel < avatar.PromoteLevel)).ToDictionary(q => q.proudSkillGroupId).Keys.ToList();
             foreach (int group in inherentProudSkillGroups)
             {
                 var idList = avatarInfo.ProudSkillData[depotId].Where(w => w.Value.proudSkillGroupId == group).ToDictionary(q => q.Key).Keys.ToList();
@@ -210,7 +209,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             var talentData = Character.Data.TalentData[DepotId][talentId];
             Talents.Add(talentData.talentId);
-            foreach (BaseConfigTalent config in Character.Data.ConfigTalentMap[DepotId][talentData.openConfig])
+            foreach (ConfigTalentMixin config in Character.Data.ConfigTalentMap[DepotId][talentData.openConfig])
             {
                 config.Apply(Character.AsEntity.AbilityManager, talentData.paramList);
             }
@@ -220,7 +219,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             var proudSkillData = Character.Data.ProudSkillData[DepotId][proudSkillId];
             InherentProudSkillIds.Add(proudSkillId);
-            foreach (BaseConfigTalent config in Character.Data.ConfigTalentMap[DepotId][proudSkillData.openConfig])
+            foreach (ConfigTalentMixin config in Character.Data.ConfigTalentMap[DepotId][proudSkillData.openConfig])
             {
                 config.Apply(Character.AsEntity.AbilityManager, proudSkillData.paramList);
             }
@@ -233,7 +232,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
             if (talentData == null) return false;
 
             // Pay constellation item if possible
-            if (!skipPayment && !await Owner.Inventory.PayPromoteCostAsync(new ItemParamData[] { new ItemParamData(talentData.mainCostItemId, 1) })) // don't judge...
+            if (!skipPayment && !await Owner.Inventory.PayPromoteCostAsync(new IdCountConfig[] { new IdCountConfig(talentData.mainCostItemId, 1) })) // don't judge...
             {
                 return false;
             }

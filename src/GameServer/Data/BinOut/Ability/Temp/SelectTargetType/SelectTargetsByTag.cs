@@ -2,8 +2,8 @@
 
 namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType
 {
-    internal class SelectTargetsByTag : BaseSelectTargetType
+    public class SelectTargetsByTag : SelectTargets
     {
-        [JsonProperty] public readonly string tag;
+        public string tag;
     }
 }

@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class UpdateReactionDamage : ConfigAbilityAction
 {
-    internal class UpdateReactionDamage : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType levelTarget;
-        [JsonProperty] public readonly string reactionDamageName;
-    }
+	public AbilityTargetting levelTarget;
+	public string reactionDamageName;
 }

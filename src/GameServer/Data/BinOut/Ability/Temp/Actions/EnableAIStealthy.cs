@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnableAIStealthy : ConfigAbilityAction
 {
-    internal class EnableAIStealthy : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool enable;
-    }
+	public bool enable;
 }

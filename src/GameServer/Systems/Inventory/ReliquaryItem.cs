@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Weedwacker.GameServer.Data;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.Shared.Network.Proto;

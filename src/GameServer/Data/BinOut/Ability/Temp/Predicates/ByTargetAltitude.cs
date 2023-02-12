@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetAltitude : ConfigAbilityPredicate
 {
-    internal class ByTargetAltitude : BasePredicate
-    {
-        [JsonProperty] public readonly LogicType? logic;
-        [JsonProperty] public readonly float value;
-    }
+	public object value;
+	public TargetAltitudeType TargetAltitudeType;
 }

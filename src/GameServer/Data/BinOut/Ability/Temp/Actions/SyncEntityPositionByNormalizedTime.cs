@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SyncEntityPositionByNormalizedTime : ConfigAbilityAction
 {
-    internal class SyncEntityPositionByNormalizedTime : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float normalizedTime;
-    }
+	public float normalizedTime;
 }

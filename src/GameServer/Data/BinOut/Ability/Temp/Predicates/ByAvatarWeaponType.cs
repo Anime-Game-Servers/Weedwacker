@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByAvatarWeaponType : ConfigAbilityPredicate
 {
-    internal class ByAvatarWeaponType : BasePredicate
-    {
-        [JsonProperty] public readonly WeaponType[] weaponTypes;
-    }
+	public string[] weaponTypes;
 }

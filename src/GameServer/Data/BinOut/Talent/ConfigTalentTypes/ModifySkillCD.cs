@@ -3,12 +3,13 @@ using Weedwacker.GameServer.Systems.Ability;
 
 namespace Weedwacker.GameServer.Data.BinOut.Talent
 {
-    internal class ModifySkillCD : BaseConfigTalent
+    internal class ModifySkillCD : ConfigTalentMixin
     {
-        [JsonProperty] public readonly int overtime;
-        [JsonProperty] public readonly float cdRatio;
+		public uint skillID;
+		public float cdDelta;
+		public float cdRatio;
 
-        public override void Apply(BaseAbilityManager abilityManager, double[] paramList)
+		public override void Apply(BaseAbilityManager abilityManager, float[] paramList)
         {
             //TODO
         }

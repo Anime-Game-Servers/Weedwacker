@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
+
+public class SelectTargetsByChildrenEntityType : SelectTargets
 {
-    internal class SelectTargetsByChildrenEntityType : BaseSelectTargetType
-    {
-        [JsonProperty] public readonly EntityType entityType;
-        [JsonProperty] public readonly string sortType;
-    }
+	public EntityType entityType;
 }

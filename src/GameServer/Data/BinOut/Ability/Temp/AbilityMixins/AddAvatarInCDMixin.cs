@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AddAvatarInCDMixin : ConfigAbilityMixin
 {
-    internal class AddAvatarInCDMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float increasedDuration;
-    }
+	public object increasedDuration;
 }

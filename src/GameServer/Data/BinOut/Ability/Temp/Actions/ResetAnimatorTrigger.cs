@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ResetAnimatorTrigger : ConfigAbilityAction
 {
-    internal class ResetAnimatorTrigger : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string triggerID;
-    }
+	public string triggerID;
 }

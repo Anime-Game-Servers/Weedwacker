@@ -3,7 +3,7 @@ using Weedwacker.Shared.Utils;
 
 namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp
 {
-    internal class LocalIdGenerator
+    public class LocalIdGenerator
     {
         public ConfigAbilitySubContainerType Type = ConfigAbilitySubContainerType.NONE;
         public uint ModifierIndex = 0;

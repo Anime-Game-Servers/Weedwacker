@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Network.Proto;

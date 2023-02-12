@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class WidgetMpSupportMixin : ConfigAbilityMixin
 {
-    internal class WidgetMpSupportMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ConfigAbilityAction[] succActions;
-    }
+	public ConfigAbilityAction[] succActions;
+	public ConfigAbilityAction[] failActions;
+	public ConfigAbilityPredicate[] predicates;
 }

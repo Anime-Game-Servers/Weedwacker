@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("MonsterDescribeExcelConfigData.json")]
+internal class MonsterDescribeData
 {
-    [Resource("MonsterDescribeExcelConfigData.json")]
-    internal class MonsterDescribeData
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly ulong nameTextMapHash;
-        [JsonProperty] public readonly uint titleId;
-        [JsonProperty] public readonly uint specialNameLabId;
-        [JsonProperty] public readonly string icon;
-    }
+	public uint id;
+	public uint nameTextMapHash;
+	public uint titleId;
+	public uint specialNameLabID;
+	public string icon;
 }

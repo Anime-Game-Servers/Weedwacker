@@ -1,6 +1,8 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+﻿using Newtonsoft.Json;
+
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarExitFocus : ConfigAbilityAction
 {
-    internal class AvatarExitFocus : ConfigAbilityAction
-    {
-    }
+	public bool keepRotation;
 }

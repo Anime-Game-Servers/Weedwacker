@@ -1,0 +1,17 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum TaskID : int
+{
+	MOVE_TASK_ID = 0,
+	NARRATOR_TASK_ID = 1,
+	LOCK_TASK_ID = 2,
+	THREAD_TASK_ID = 3,
+	TRANSMIT_BTN_ID = 4,
+	FORCE_WALK_ID = 5,
+	STEER_TO_AUTONOMY_ID = 6,
+	HOME_TASK_ID = 7,
+	SAFE_CIRCLE = 8,
+	NPC_FOLLOW_PLAYER_ID = 9,
+	WARNING_TASK_ID = 10,
+}

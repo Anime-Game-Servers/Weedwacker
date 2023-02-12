@@ -1,17 +1,16 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class NahidaAimNpcGatherMixin : ConfigAbilityMixin
 {
-    internal class NahidaAimNpcGatherMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string npcAttachEffect;
-        [JsonProperty] public readonly string gatherAttachEffect;
-        [JsonProperty] public readonly float detectRangeForNPC;
-        [JsonProperty] public readonly float widthForNPC;
-        [JsonProperty] public readonly float heightForNPC;
-        [JsonProperty] public readonly float detectRangeForGather;
-        [JsonProperty] public readonly float widthForGather;
-        [JsonProperty] public readonly float heightForGather;
-        [JsonProperty] public readonly int gatherMaxCount;
-    }
+	public string npcAttachEffect;
+	public string gatherAttachEffect;
+	public float detectRangeForNPC;
+	public float widthForNPC;
+	public float heightForNPC;
+	public float detectRangeForGather;
+	public float widthForGather;
+	public float heightForGather;
+	public int gatherMaxCount;
 }

@@ -1,17 +1,16 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class CircleBarrageMixin : ConfigAbilityMixin
 {
-    internal class CircleBarrageMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly int bulletID;
-		[JsonProperty] public readonly int innerRadius;
-		[JsonProperty] public readonly int cutNum;
-		[JsonProperty] public readonly int waveNum;
-		[JsonProperty] public readonly float waveCD;
-		[JsonProperty] public readonly int wavebulletNum;
-		[JsonProperty] public readonly int waveangle;
-		[JsonProperty] public readonly float triggerCD;
-		[JsonProperty] public readonly string shootPoint;
-    }
+	public uint bulletID;
+	public float innerRadius;
+	public int cutNum;
+	public int waveNum;
+	public float waveCD;
+	public int wavebulletNum;
+	public float waveangle;
+	public float triggerCD;
+	public string shootPoint;
 }

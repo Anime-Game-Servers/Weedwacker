@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachModifierToSelfGlobalValueAndTalkStateMixin : AttachModifierToSelfGlobalValueMixin
 {
-    internal class AttachModifierToSelfGlobalValueAndTalkStateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly float[] valueSteps;
-        [JsonProperty] public readonly bool removeAppliedModifier;
-        [JsonProperty] public readonly string[] modifierNameSteps;
-    }
+	public object GVInTalk;
 }

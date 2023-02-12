@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByEntityTypes : ConfigAbilityPredicate
 {
-    internal class ByEntityTypes : BasePredicate
-    {
-        [JsonProperty] public readonly EntityType[] entityTypes;
-    }
+	public EntityType[] entityTypes;
+	public bool reject;
+	public bool useEventSource;
+	public short isAuthority;
 }

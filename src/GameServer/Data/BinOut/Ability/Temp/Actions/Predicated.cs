@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class Predicated : ConfigAbilityAction
 {
-    internal class Predicated : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BasePredicate[] targetPredicates;
-        [JsonProperty] public readonly ConfigAbilityAction[] successActions;
-        [JsonProperty] public readonly ConfigAbilityAction[] failActions;
-    }
+	public ConfigAbilityPredicate[] targetPredicates;
+	public ConfigAbilityAction[] successActions;
+	public ConfigAbilityAction[] failActions;
 }

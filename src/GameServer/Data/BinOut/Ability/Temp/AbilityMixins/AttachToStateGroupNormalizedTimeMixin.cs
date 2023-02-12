@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachToStateGroupNormalizedTimeMixin : ConfigAbilityMixin
 {
-    internal class AttachToStateGroupNormalizedTimeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] stateGroup;
-        [JsonProperty] public readonly string modifierName;
-    }
+	public string[] stateGroup;
+	public string modifierName;
 }

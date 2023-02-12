@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class CallLuaTask : ConfigAbilityAction
 {
-    internal class CallLuaTask : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int targetAlias;
-        [JsonProperty] public readonly int valueInt;
-    }
+	public string targetAlias;
+	public int valueInt;
+	public float valueFloat;
+	public string valueString;
 }

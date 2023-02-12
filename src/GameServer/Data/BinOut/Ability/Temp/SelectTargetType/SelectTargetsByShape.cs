@@ -1,15 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
+
+public class SelectTargetsByShape : SelectTargets
 {
-    internal class SelectTargetsByShape : BaseSelectTargetType
-    {
-        [JsonProperty] public readonly string shapeName;
-        [JsonProperty] public readonly TargetType centerBasedOn;
-        [JsonProperty] public readonly TargetType campTargetType;
-        [JsonProperty] public readonly TargetType campBasedOn;
-        [JsonProperty] public readonly int topLimit;
-        [JsonProperty] public readonly object sizeRatio;
-    }
+	public string shapeName;
+	public AbilityTargetting centerBasedOn;
+	public TargetType campTargetType;
+	public AbilityTargetting campBasedOn;
+	public object sizeRatio;
 }

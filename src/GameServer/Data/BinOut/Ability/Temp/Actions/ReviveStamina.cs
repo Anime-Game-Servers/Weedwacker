@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ReviveStamina : ConfigAbilityAction
 {
-    internal class ReviveStamina : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly object value;
-    }
+	public object value;
 }

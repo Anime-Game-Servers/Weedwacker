@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigHeadControl
 {
-    internal class ConfigHeadControl
-    {
-        [JsonProperty] public readonly bool useHeadControl;
-        [JsonProperty] public readonly float maxYawDegree;
-        [JsonProperty] public readonly float maxPitchDegree;
-        [JsonProperty] public readonly float speed;
-        [JsonProperty] public readonly float weightSpeed;
-        [JsonProperty] public readonly bool useWhiteAnimStates;
-        [JsonProperty] public readonly string[] animStates;
-        [JsonProperty] public readonly string[] dontAnimStates;
-    }
+	public bool useHeadControl;
+	public float maxYawDegree;
+	public float maxPitchDegree;
+	public float speed;
+	public float weightSpeed;
+	public bool useWhiteAnimStates;
+	public string[] animStates;
+	public string[] dontAnimStates;
 }

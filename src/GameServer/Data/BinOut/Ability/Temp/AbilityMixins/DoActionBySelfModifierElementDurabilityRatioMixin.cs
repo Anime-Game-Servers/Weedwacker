@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionBySelfModifierElementDurabilityRatioMixin : ConfigAbilityMixin
 {
-    internal class DoActionBySelfModifierElementDurabilityRatioMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly float[] valueSteps;
-		[JsonProperty] public readonly ConfigAbilityAction[] actionQueues;
-    }
+	public string uniqueModifierName;
+	public object[] valueSteps;
+	public ConfigAbilityAction[][] actionQueues;
 }

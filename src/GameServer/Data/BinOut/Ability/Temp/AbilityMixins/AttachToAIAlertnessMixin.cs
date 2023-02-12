@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachToAIAlertnessMixin : ConfigAbilityMixin
 {
-    internal class AttachToAIAlertnessMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int[] alertness;
-        [JsonProperty] public readonly string modifierName;
-    }
+	public int[] alertness;
+	public string modifierName;
 }

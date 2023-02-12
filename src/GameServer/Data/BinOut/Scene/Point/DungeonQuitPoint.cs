@@ -1,6 +1,9 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class DungeonQuitPoint : ConfigScenePoint
 {
-    internal class DungeonQuitPoint : BasePoint
-    {
-    }
+	public Vector size;
 }

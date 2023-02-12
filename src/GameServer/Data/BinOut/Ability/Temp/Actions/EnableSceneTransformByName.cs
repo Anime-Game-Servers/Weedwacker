@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnableSceneTransformByName : ConfigAbilityAction
 {
-    internal class EnableSceneTransformByName : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string[] transformNames;
-        [JsonProperty] public readonly bool setEnable;
-    }
+	public string[] transformNames;
+	public bool setEnable;
 }

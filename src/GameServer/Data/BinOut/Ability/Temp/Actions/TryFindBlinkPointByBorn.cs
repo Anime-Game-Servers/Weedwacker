@@ -1,12 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TryFindBlinkPointByBorn : ConfigAbilityAction
 {
-    internal class TryFindBlinkPointByBorn : ConfigAbilityAction
-	{
-		[JsonProperty] public readonly ConfigBornType born;
-		[JsonProperty] public readonly bool hitSceneTest;
-		[JsonProperty] public readonly float limitY;
-    }
+	public ConfigBornType born;
+	public bool hitSceneTest;
+	public BlinkHitSceneTestType hitSceneType;
+	public object limitY;
+	public bool ignoreWater;
 }

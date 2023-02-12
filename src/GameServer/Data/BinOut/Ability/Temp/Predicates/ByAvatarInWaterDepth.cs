@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByAvatarInWaterDepth : ConfigAbilityPredicate
 {
-    internal class ByAvatarInWaterDepth : BasePredicate
-    {
-        [JsonProperty] public readonly string compareType;
-        [JsonProperty] public readonly float depth;
-    }
+	public RelationType compareType;
+	public float depth;
 }

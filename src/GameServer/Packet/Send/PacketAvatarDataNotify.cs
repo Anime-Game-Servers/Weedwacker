@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Systems.Avatar;
 using Weedwacker.GameServer.Systems.Inventory;
 using Weedwacker.GameServer.Systems.Player;
@@ -14,8 +15,8 @@ namespace Weedwacker.GameServer.Packet.Send
             {
                 CurAvatarTeamId = (uint)player.TeamManager.CurrentTeamIndex,
             };
-            (player.Inventory.SubInventories[Enums.ItemType.ITEM_MATERIAL] as MaterialSubInv).FlyCloakList.AsParallel().ForAll(w => proto.OwnedFlycloakList.Add((uint)w));
-            (player.Inventory.SubInventories[Enums.ItemType.ITEM_MATERIAL] as MaterialSubInv).CostumeList.AsParallel().ForAll(w => proto.OwnedCostumeList.Add((uint)w));
+            (player.Inventory.SubInventories[ItemType.ITEM_MATERIAL] as MaterialSubInv).FlyCloakList.AsParallel().ForAll(w => proto.OwnedFlycloakList.Add(w));
+            (player.Inventory.SubInventories[ItemType.ITEM_MATERIAL] as MaterialSubInv).CostumeList.AsParallel().ForAll(w => proto.OwnedCostumeList.Add(w));
 
             player.Avatars.Avatars.Values.AsParallel().ForAll(w => proto.AvatarList.Add(w.ToProto()));
 

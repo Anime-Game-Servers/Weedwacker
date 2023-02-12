@@ -1,8 +1,8 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Weedwacker.GameServer.Data;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Database;
-using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Utils;
 
@@ -11,7 +11,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
     internal class RelicTab : InventoryTab
     {
         [BsonIgnore] public new const int InventoryLimit = 1500;
-        private static string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_RELIQUARY}";
+        private static readonly string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_RELIQUARY}";
         [BsonElement] private uint NextRelicId = 0; // Is it possible to collect 4B items? O.o
         // Use Mongodb unique (for the player) id for the relics
         [BsonSerializer(typeof(UIntDictionarySerializer<MaterialItem>))]
@@ -34,7 +34,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             }
         }
 
-        public override async Task<GameItem> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0)
+        public override async Task<GameItem?> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0)
         {
             if (GameData.ItemDataMap[itemId].itemType == ItemType.ITEM_MATERIAL)
             {
@@ -87,7 +87,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             return relic;
         }
 
-        internal override async Task<bool> RemoveItemAsync(GameItem item, int count = 1)
+        internal override async Task<bool> RemoveItemAsync(GameItem item, uint count = 1)
         {
             if (Items.TryGetValue((item as ReliquaryItem).Id, out GameItem? relic))
             {

@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerAbility : ConfigAbilityAction
 {
-    internal class TriggerAbility : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly string abilityName;
-    }
+	public string abilityName;
+	public Dictionary<string, object> abilitySpecials;
+	public bool forceUseSelfCurrentAttackTarget;
 }

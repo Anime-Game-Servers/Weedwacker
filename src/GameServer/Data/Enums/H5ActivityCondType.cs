@@ -1,0 +1,10 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum H5ActivityCondType : int
+{
+	H5_ACTIVITY_COND_NONE = 0,
+	H5_ACTIVITY_COND_PLAYER_LEVEL = 1,
+	H5_ACTIVITY_COND_REGISTER_TIME_GREAT_EQUAL = 2,
+	H5_ACTIVITY_COND_DAY_COUNT_GREAT_EQUAL = 3,
+}

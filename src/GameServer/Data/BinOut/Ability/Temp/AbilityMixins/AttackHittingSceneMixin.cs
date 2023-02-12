@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttackHittingSceneMixin : ConfigAbilityMixin
 {
-    internal class AttackHittingSceneMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly object[] animEventIDs;
-        [JsonProperty] public readonly ConfigAbilityAction[] onHittingScene;
-    }
+	public ConfigAbilityAction[] onHittingScene;
+	public string[] animEventIDs;
 }

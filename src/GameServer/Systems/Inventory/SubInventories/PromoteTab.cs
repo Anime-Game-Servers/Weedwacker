@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Weedwacker.GameServer.Database;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.Shared.Utils;
 
@@ -14,7 +14,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
         private static string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_MATERIAL}.{nameof(PromoteTab)}.{nameof(Items)}";
         public PromoteTab(Player.Player owner, InventoryManager inventory) : base(owner, inventory) { }
 
-        public override async Task<GameItem?> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0)
+        public override async Task<GameItem?> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0)
         {
             if (Items.TryGetValue(itemId, out GameItem? material))
             {
@@ -47,7 +47,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             }
         }
 
-        internal override async Task<bool> RemoveItemAsync(GameItem item, int count = 1)
+        internal override async Task<bool> RemoveItemAsync(GameItem item, uint count = 1)
         {
             if (Items.TryGetValue(item.ItemId, out GameItem? material))
             {

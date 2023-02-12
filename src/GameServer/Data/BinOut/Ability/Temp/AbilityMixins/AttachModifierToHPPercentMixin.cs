@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachModifierToHPPercentMixin : ConfigAbilityMixin
 {
-    internal class AttachModifierToHPPercentMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly object[] valueSteps;
-        [JsonProperty] public readonly string[] modifierNameSteps;
-    }
+	public object[] valueSteps;
+	public string[] modifierNameSteps;
 }

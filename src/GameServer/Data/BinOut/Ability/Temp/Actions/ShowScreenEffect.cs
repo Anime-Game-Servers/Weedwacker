@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ShowScreenEffect : ConfigAbilityAction
 {
-    internal class ShowScreenEffect : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly EffectType effectType;
-        [JsonProperty] public readonly bool show;
-    }
+	public EffectType effectType;
+	public bool show;
 }

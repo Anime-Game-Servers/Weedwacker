@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnablePartControl : ConfigAbilityAction
 {
-    internal class EnablePartControl : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string[] partRootNames;
-        [JsonProperty] public readonly bool enable;
-    }
+	public string[] partRootNames;
+	public bool enable;
 }

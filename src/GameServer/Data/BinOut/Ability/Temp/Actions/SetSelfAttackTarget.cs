@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetSelfAttackTarget : ConfigAbilityAction
 {
-    internal class SetSelfAttackTarget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public bool turnToTargetImmediately;
+	public bool turnToTargetKeepUpAxisDirection;
 }

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByIsGadgetExistAround : ConfigAbilityPredicate
 {
-    internal class ByIsGadgetExistAround : BasePredicate
-    {
-        [JsonProperty] public readonly int[] gadgetIdArray;
-        [JsonProperty] public readonly bool trunToTarget;
-    }
+	public uint[] gadgetIdArray;
+	public bool trunToTarget;
 }

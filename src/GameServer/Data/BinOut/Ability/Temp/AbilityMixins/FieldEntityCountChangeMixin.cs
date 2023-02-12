@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class FieldEntityCountChangeMixin : ConfigAbilityMixin
 {
-    internal class FieldEntityCountChangeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly TargetType campTargetType;
-        [JsonProperty] public readonly BasePredicate[] targetPredicates;
-        [JsonProperty] public readonly ConfigAbilityAction[] onFieldEnter;
-        [JsonProperty] public readonly ConfigAbilityAction[] onFieldExit;
-
-    }
+	public TargetType campTargetType;
+	public bool forceTriggerWhenChangeAuthority;
+	public ConfigAbilityPredicate[] targetPredicates;
+	public ConfigAbilityAction[] onFieldEnter;
+	public ConfigAbilityAction[] onFieldExit;
 }

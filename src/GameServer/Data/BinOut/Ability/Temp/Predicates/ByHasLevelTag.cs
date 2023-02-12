@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHasLevelTag : ConfigAbilityPredicate
 {
-    internal class ByHasLevelTag : BasePredicate
-    {
-        [JsonProperty] public readonly int levelTagId;
-    }
+	public string levelTag;
+	public uint levelTagId;
 }

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class SwitchSkillIconMixin : ConfigAbilityMixin
 {
-    internal class SwitchSkillIconMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int skillID;
-        [JsonProperty] public readonly string skillIcon;
-    }
+	public int skillID;
+	public string skillIcon;
 }

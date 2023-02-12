@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class HomeworldEnterEditorMixin : ConfigAbilityMixin
 {
-    internal class HomeworldEnterEditorMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] editorModifierNames;
-        [JsonProperty] public readonly string[] worldModifierNames;
-    }
+	public string[] editorModifierNames;
+	public string[] worldModifierNames;
 }

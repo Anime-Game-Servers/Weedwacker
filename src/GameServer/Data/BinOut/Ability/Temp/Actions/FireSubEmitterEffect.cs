@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireSubEmitterEffect : ConfigAbilityAction
 {
-    internal class FireSubEmitterEffect : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string effectPattern;
-        [JsonProperty] public readonly ConfigBornType born;
-    }
+	public object effectPattern;
+	public ConfigBornType born;
+	public float scale;
 }

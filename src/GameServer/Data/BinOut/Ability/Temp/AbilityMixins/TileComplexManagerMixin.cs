@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class TileComplexManagerMixin : ConfigAbilityMixin
 {
-    internal class TileComplexManagerMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string attackID;
-        [JsonProperty] public readonly float interval;
-        [JsonProperty] public readonly ConfigAttackInfo attackInfo;
-    }
+	public string attackID;
+	public float interval;
+	public uint srcCamp;
+	public ConfigAttackInfo attackInfo;
 }

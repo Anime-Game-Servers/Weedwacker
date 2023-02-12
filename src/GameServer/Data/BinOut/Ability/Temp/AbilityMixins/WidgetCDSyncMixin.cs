@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class WidgetCDSyncMixin : ConfigAbilityMixin
 {
-    internal class WidgetCDSyncMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int itemId;
-        [JsonProperty] public readonly int skillId;
-        [JsonProperty] public readonly bool syncOnCDChange;
-        [JsonProperty] public readonly bool syncOnChangeAvatar;
-        [JsonProperty] public readonly float skillCDOffset;
-    }
+	public bool syncOnTick;
+	public bool syncOnChangeAvatar;
+	public bool syncOnCDChange;
+	public bool syncOnlyGreater;
+	public uint itemId;
+	public uint skillId;
+	public float skillCDOffset;
 }

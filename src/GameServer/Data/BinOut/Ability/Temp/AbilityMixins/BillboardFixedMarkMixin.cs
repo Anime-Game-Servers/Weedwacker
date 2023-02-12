@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class BillboardFixedMarkMixin : ConfigAbilityMixin
 {
-    internal class BillboardFixedMarkMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string prefabName;
-    }
+	public string prefabName;
+	public bool onlyShowInElementView;
 }

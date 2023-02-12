@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class EnviroFollowRotateMixin : ConfigAbilityMixin
 {
-    internal class EnviroFollowRotateMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly string deactiveOnCutsecneName;
-		[JsonProperty] public readonly Dictionary<string, float> selfRotateOffSet;
-    }
+	public Vector selfRotateOffSet;
+	public string deactiveOnCutsecneName;
 }

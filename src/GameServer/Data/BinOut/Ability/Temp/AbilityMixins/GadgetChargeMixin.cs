@@ -1,17 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class GadgetChargeMixin : ConfigAbilityMixin
 {
-    internal class GadgetChargeMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly ElementType chargeType;
-		[JsonProperty] public readonly float chargeRatio;
-		[JsonProperty] public readonly float chargeValue;
-		[JsonProperty] public readonly float maxChargeValue;
-		[JsonProperty] public readonly float[] valueSteps;
-		[JsonProperty] public readonly string[] modifierNameSteps;
-		[JsonProperty] public readonly string globalValueKey;
-		[JsonProperty] public readonly string ratioGlobalValueKey;
-    }
+	public ElementType chargeType;
+	public float chargeRatio;
+	public float chargeValue;
+	public float maxChargeValue;
+	public object[] valueSteps;
+	public string[] modifierNameSteps;
+	public string globalValueKey;
+	public string ratioGlobalValueKey;
 }

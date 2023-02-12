@@ -1,22 +1,21 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("OpenStateConfigData.json")]
+public class OpenStateData
 {
-    [Resource("OpenStateConfigData.json")]
-    internal class OpenStateData
-    {
-        [JsonProperty] public readonly uint id; // maps to OpenStateType enum
-        [JsonProperty] public readonly bool defaultState;
-        [JsonProperty] public readonly bool allowClientOpen;
-        [JsonProperty] public readonly uint systemOpenUiId;
-        [JsonProperty] public readonly OpenStateCond[] cond;
+	public uint id; // maps to OpenStateType enum
+	public bool defaultState;
+	public bool allowClientOpen;
+	public OpenStateCond[] cond;
+	public uint system_open_ui_id;
 
-        public class OpenStateCond
-        {
-            [JsonProperty] public readonly OpenStateCondType condType;
-            [JsonProperty] public readonly int param;
-            [JsonProperty] public readonly int param2;
-        }
-    }
+	public class OpenStateCond
+	{
+		public OpenStateCondType cond_type;
+		public uint param;
+		public uint param2;
+	}
 }

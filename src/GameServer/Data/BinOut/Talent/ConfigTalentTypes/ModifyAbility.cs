@@ -5,22 +5,22 @@ using Weedwacker.Shared.Utils;
 
 namespace Weedwacker.GameServer.Data.BinOut.Talent
 {
-    internal class ModifyAbility : BaseConfigTalent
+    internal class ModifyAbility : ConfigTalentMixin
     {
-        [JsonProperty] public readonly string abilityName;
-        [JsonProperty] public readonly string paramSpecial;
-        [JsonProperty] public readonly object? paramDelta; // plus or minus &(index in proudSkillData's or AvatarTalentData's paramList) or absolute delta
-        [JsonProperty] public readonly object? paramRatio; // plus or minus &(index in proudSkillData's or AvatarTalentData's paramList) or absolute delta
+        public string abilityName;
+        public string paramSpecial;
+        public object paramDelta; // plus or minus &(index in proudSkillData's or AvatarTalentData's paramList) or absolute delta
+        public object paramRatio; // plus or minus &(index in proudSkillData's or AvatarTalentData's paramList) or absolute delta
 
-        public override void Apply(BaseAbilityManager abilityManager, double[] paramList)
+        public override void Apply(BaseAbilityManager abilityManager, float[] paramList)
         {
             try
             {
-                float special = abilityManager.AbilitySpecials[Utils.AbilityHash(abilityName)][Utils.AbilityHash(paramSpecial)];
+                float special = (float)abilityManager.AbilitySpecials[Utils.AbilityHash(abilityName)][Utils.AbilityHash(paramSpecial)]; //TODO
                 if (paramDelta is string deltaString)
                 {
                     string index = Regex.Replace(deltaString, "%", "");
-                    float delta = (float)paramList[int.Parse(index)];
+                    float delta = paramList[int.Parse(index)];
                     special += delta;
                 }
                 else if (paramDelta is double asD)
@@ -29,7 +29,7 @@ namespace Weedwacker.GameServer.Data.BinOut.Talent
                 if (paramRatio is string ratioString)
                 {
                     string index = Regex.Replace(ratioString, "%", "");
-                    float ratio = (float)paramList[int.Parse(index)];
+                    float ratio = paramList[int.Parse(index)];
                     special *= ratio;
                 }
                 else if (paramRatio is double asD)

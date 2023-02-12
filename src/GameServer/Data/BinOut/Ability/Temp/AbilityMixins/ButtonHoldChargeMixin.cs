@@ -1,17 +1,18 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ButtonHoldChargeMixin : ConfigAbilityMixin
 {
-    internal class ButtonHoldChargeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int overtime;
-        [JsonProperty] public readonly float chargeTime;
-        [JsonProperty] public readonly object secondChargeTime;
-        [JsonProperty] public readonly ConfigAbilityAction[]? OnBeginUncharged;
-        [JsonProperty] public readonly ConfigAbilityAction[]? OnReleaseUncharged;
-        [JsonProperty] public readonly ConfigAbilityAction[]? OnBeginCharged;
-        [JsonProperty] public readonly ConfigAbilityAction[]? OnReleaseCharged;
-        [JsonProperty] public readonly ConfigAbilityAction[]? OnBeginSecondCharged;
-        [JsonProperty] public readonly string[] chargeStateIDs;
-    }
+	public uint skillID;
+	public float chargeTime;
+	public object secondChargeTime;
+	public ConfigAbilityAction[] OnBeginUncharged;
+	public ConfigAbilityAction[] OnReleaseUncharged;
+	public ConfigAbilityAction[] OnBeginCharged;
+	public ConfigAbilityAction[] OnReleaseCharged;
+	public ConfigAbilityAction[] OnBeginSecondCharged;
+	public ConfigAbilityAction[] OnReleaseSecondCharged;
+	public ConfigAbilityAction[] OnCancelCharged;
+	public string[] chargeStateIDs;
 }

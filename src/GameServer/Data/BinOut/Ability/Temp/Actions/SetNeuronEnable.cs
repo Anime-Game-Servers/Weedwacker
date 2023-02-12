@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetNeuronEnable : ConfigAbilityAction
 {
-    internal class SetNeuronEnable : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string neuronName;
-        [JsonProperty] public readonly bool enable;
-    }
+	public NeuronName neuronName;
+	public bool enable;
 }

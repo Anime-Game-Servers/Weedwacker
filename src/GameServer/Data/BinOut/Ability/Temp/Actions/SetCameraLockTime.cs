@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetCameraLockTime : ConfigAbilityAction
 {
-    internal class SetCameraLockTime : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float lockTime;
-    }
+	public float lockTime;
 }

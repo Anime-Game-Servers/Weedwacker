@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<RootNamespace>Weedwacker.GameServer</RootNamespace>
@@ -16,6 +16,11 @@
     <PackageReference Include="NetOctree" Version="2.1.0" />
     <PackageReference Include="NLua" Version="1.4.32" />
 	<ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\BinOut\Voice\Emo\" />
+    <Folder Include="Data\BinOut\WidgetNew\" />
   </ItemGroup>
 
 </Project>

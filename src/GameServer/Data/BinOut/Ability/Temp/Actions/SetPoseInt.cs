@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetPoseInt : ConfigAbilityAction
 {
-    internal class SetPoseInt : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string intID;
-        [JsonProperty] public readonly int value;
-    }
+	public string intID;
+	public int value;
 }

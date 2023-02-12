@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ChangePlayMode : ConfigAbilityAction
 {
-    internal class ChangePlayMode : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool? canBeHandledOnRecover;
-        [JsonProperty] public readonly BinPlayMode? toPlayMode;
-    }
+	public PlayModeType toPlayMode;
+	public bool authorityOnly;
 }

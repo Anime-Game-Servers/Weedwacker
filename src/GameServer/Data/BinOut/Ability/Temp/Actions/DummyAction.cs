@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DummyAction : ConfigAbilityAction
 {
-    internal class DummyAction : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-    }
+	public ConfigAbilityAction[] actionList;
 }

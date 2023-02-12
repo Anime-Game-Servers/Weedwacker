@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerCrystalLinkAbility : ConfigAbilityAction
 {
-    internal class TriggerCrystalLinkAbility : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly int id;
-    }
+	public uint id;
 }

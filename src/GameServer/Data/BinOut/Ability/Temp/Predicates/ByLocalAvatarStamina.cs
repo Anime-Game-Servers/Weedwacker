@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByLocalAvatarStamina : ConfigAbilityPredicate
 {
-    internal class ByLocalAvatarStamina : BasePredicate
-    {
-        [JsonProperty] public readonly LogicType logic;
-        [JsonProperty] public readonly object stamina;
-    }
+	public object stamina;
 }

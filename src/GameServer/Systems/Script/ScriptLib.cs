@@ -1,4 +1,5 @@
 ﻿using NLua;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Systems.World;
 using Weedwacker.Shared.Utils;

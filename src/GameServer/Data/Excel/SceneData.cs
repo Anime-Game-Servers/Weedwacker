@@ -1,17 +1,27 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("SceneExcelConfigData.json")]
+public class SceneData
 {
-    [Resource("SceneExcelConfigData.json")]
-    internal class SceneData
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly SceneType type;
-        [JsonProperty] public readonly string scriptData;
-        [JsonProperty] public readonly string overrideDefaultProfile;
-        [JsonProperty] public readonly string levelEntityConfig;
-        [JsonProperty] public readonly uint[] specifiedAvatarList;
-        [JsonProperty] public readonly uint safePoint;
-    }
+	public uint id;
+	public SceneType type;
+	public SceneSubType subtype;
+	public bool ignoreNavMesh;
+	public NavmeshModeType navmeshMode;
+	public string scriptData;
+	public string overrideDefaultProfile;
+	public string levelEntityConfig;
+	public uint entityAppearSorted;
+	public uint[] specifiedAvatarList;
+	public uint maxSpecifiedAvatarNum;
+	public float sceneFixTime;
+	public string comment;
+	public uint safePoint;
+	public SceneMpType mpType;
+	public bool isAllowMapMarkPoint;
+	public bool isDeleteMapMarkPoint;
+	public uint[] dungeonEntryPoint;
 }

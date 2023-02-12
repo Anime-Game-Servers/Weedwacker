@@ -1,29 +1,44 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigTrigger
 {
-    internal class ConfigTrigger
-    {
-        [JsonProperty] public readonly TriggerFlag triggerFlag;
-        [JsonProperty] public readonly ConcernType concernType;
-        [JsonProperty] public readonly string shape;
-        [JsonProperty] public readonly bool checkInfinite;
-        [JsonProperty] public readonly bool triggerInfinite;
-        [JsonProperty] public readonly bool lifeInfinite;
-        [JsonProperty] public readonly float startCheckTime;
-        [JsonProperty] public readonly float checkInterval;
-        [JsonProperty] public readonly int checkCount;
-        [JsonProperty] public readonly float triggerInterval;
-        [JsonProperty] public readonly int triggerCount;
-        [JsonProperty] public readonly float lifeTime;
-        [JsonProperty] public readonly bool overwriteCampType;
-        [JsonProperty] public readonly TargetType campType;
-        [JsonProperty] public readonly bool checkPoint;
-        [JsonProperty] public readonly bool useSurfaceHeight;
-        [JsonProperty] public readonly bool useCollider;
-        [JsonProperty] public readonly string colliderName;
-        [JsonProperty] public readonly bool checkGhost;
-        [JsonProperty] public readonly bool colliderCheckOnInit;
-    }
+	public EntityTriggerType triggerType;
+	public TriggerFlag triggerFlag;
+	public ConcernType concernType;
+	public string shape;
+	public Vector offset;
+	public Vector eularOffset;
+	public float height;
+	public string fromShape;
+	public Vector fromOffset;
+	public Vector fromEularOffset;
+	public float fromHeight;
+	public bool checkInfinite;
+	public bool triggerInfinite;
+	public bool lifeInfinite;
+	public float startCheckTime;
+	public float checkInterval;
+	public int checkCount;
+	public float triggerInterval;
+	public int triggerCount;
+	public float lifeTime;
+	public bool overwriteCampType;
+	public TargetType campType;
+	public bool checkPoint;
+	public bool useSurfaceHeight;
+	public bool useCollider;
+	public string colliderName;
+	public string fromColliderName;
+	public bool checkGhost;
+	public bool colliderCheckOnInit;
+	public bool checkOnReconnect;
+	public string[] colliderWhiteList;
+	public string[] colliderBlackList;
+	public bool useLevelOverride;
+	public ConfigBaseShape rawShape;
+	public bool useLocalTriggerLogic;
+	public ConfigLocalTriggerMeta localTriggerMeta;
 }

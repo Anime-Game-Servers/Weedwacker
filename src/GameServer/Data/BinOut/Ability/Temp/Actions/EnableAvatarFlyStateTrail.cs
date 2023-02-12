@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnableAvatarFlyStateTrail : ConfigAbilityAction
 {
-    internal class EnableAvatarFlyStateTrail : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool setEnable;
-    }
+	public bool setEnable;
 }

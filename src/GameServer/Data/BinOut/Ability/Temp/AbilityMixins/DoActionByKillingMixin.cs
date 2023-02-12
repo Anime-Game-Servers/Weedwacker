@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByKillingMixin : ConfigAbilityMixin
 {
-    internal class DoActionByKillingMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly double detectWindow;
-        [JsonProperty] public readonly ConfigAbilityAction[] onKill;
-    }
+	public string[] attackTags;
+	public float detectWindow;
+	public ConfigAbilityAction[] onKill;
 }

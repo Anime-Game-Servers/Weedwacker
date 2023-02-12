@@ -1,30 +1,30 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("GatherExcelConfigData.json")]
+public class GatherData
 {
-    [Resource("GatherExcelConfigData.json")]
-    internal class GatherData
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly uint areaId;
-        [JsonProperty] public readonly int pointType;
-        [JsonProperty] public readonly uint gadgetId;
-        [JsonProperty] public readonly uint itemId;
-        //[JsonProperty] public readonly ???[] extraItemIdVec;
-        [JsonProperty] public readonly string pointLocation;
-        [JsonProperty] public readonly int cd;
-        [JsonProperty] public readonly int priority;
-        [JsonProperty] public readonly uint refreshId;
-        [JsonProperty] public readonly BlockLimit[] blockLimits;
-        [JsonProperty] public readonly bool initDisableInteract;
-        [JsonProperty] public readonly bool isForbidGuest;
-        [JsonProperty] public readonly SaveType saveType;
+	public uint id;
+	public uint area_id;
+	public uint pointType;
+	public uint gadgetId;
+	public uint itemId;
+	public uint[] extraItemIdVec;
+	public PointLocation pointLocation;
+	public uint cd;
+	public uint priority;
+	public uint refreshId;
+	public BlockLimit[] blockLimits;
+	public bool init_disable_interact;
+	public bool isForbidGuest;
+	public GatherSaveType saveType;
+	public bool isForbidMpMode;
 
-        public class BlockLimit
-        {
-            [JsonProperty] public readonly uint blockId;
-            [JsonProperty] public readonly int count;
-        }
-    }
+	public class BlockLimit
+	{
+		public uint blockIdRawNum;
+		public uint countRawNum;
+	}
 }

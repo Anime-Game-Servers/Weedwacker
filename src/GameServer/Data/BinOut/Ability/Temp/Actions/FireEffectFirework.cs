@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireEffectFirework : ConfigAbilityAction
 {
-    internal class FireEffectFirework : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string effectPattern;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public object effectPattern;
+	public ConfigBornType born;
+	public float scale;
 }

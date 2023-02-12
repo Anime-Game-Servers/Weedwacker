@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class Repeated : ConfigAbilityAction
 {
-    internal class Repeated : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string repeatTimes;
-        [JsonProperty] public readonly ConfigAbilityAction[] actions;
-    }
+	public object repeatTimes;
+	public ConfigAbilityAction[] actions;
 }

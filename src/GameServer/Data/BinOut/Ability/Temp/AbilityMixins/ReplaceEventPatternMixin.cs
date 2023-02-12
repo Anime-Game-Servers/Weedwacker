@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ReplaceEventPatternMixin : ConfigAbilityMixin
 {
-    internal class ReplaceEventPatternMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] oldPatterns;
-        [JsonProperty] public readonly string[] newPatterns;
-    }
+	public string[] oldPatterns;
+	public string[] newPatterns;
 }

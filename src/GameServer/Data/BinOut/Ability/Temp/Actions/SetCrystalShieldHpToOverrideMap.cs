@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetCrystalShieldHpToOverrideMap : ConfigAbilityAction
 {
-    internal class SetCrystalShieldHpToOverrideMap : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string overrideMapKey;
-    }
+	public string overrideMapKey;
 }

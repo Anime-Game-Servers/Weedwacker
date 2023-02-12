@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByAvatarIsHost : ConfigAbilityPredicate
 {
-    internal class ByAvatarIsHost : BasePredicate
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly bool isHost;
-    }
+	public bool isHost;
 }

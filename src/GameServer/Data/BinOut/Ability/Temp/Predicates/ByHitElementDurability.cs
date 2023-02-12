@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHitElementDurability : ConfigAbilityPredicate
 {
-    internal class ByHitElementDurability : BasePredicate
-    {
-        [JsonProperty] public readonly ElementType element;
-        [JsonProperty] public readonly int durability;
-        [JsonProperty] public readonly CompareType compareType;
-    }
+	public ElementType element;
+	public float durability;
+	public RelationType compareType;
+	public bool applyAttenuation;
 }

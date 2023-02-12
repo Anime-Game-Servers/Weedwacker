@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHitImpulse : ConfigAbilityPredicate
 {
-    internal class ByHitImpulse : BasePredicate
-    {
-        [JsonProperty] public readonly float hitImpulse;
-    }
+	public float hitImpulse;
 }

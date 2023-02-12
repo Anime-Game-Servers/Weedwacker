@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireFishingEvent : ConfigAbilityAction
 {
-    internal class FireFishingEvent : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string eventType;
-    }
+	public FishingEvent eventType;
 }

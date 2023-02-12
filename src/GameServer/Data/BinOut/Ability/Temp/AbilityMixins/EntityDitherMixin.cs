@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class EntityDitherMixin : ConfigAbilityMixin
 {
-    internal class EntityDitherMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly float ditherValue;
-        [JsonProperty] public readonly float cutInTime;
-        [JsonProperty] public readonly float cutOutTime;
-    }
+	public ConfigAbilityPredicate[] predicates;
+	public float ditherValue;
+	public float cutInTime;
+	public float cutOutTime;
+	public bool forceUpdateAtStart;
 }

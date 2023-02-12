@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerAuxWeaponTrans : ConfigAbilityAction
 {
-    internal class TriggerAuxWeaponTrans : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool setEnable;
-        [JsonProperty] public readonly string equipPart;
-    }
+	public bool setEnable;
+	public string equipPart;
 }

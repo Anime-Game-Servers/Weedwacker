@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ChargeBarMixin : ConfigAbilityMixin
 {
-    internal class ChargeBarMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly ElementType chargeBarElementType;
-        [JsonProperty] public readonly int chargeBarIconID;
-        [JsonProperty] public readonly int initialValue;
-        [JsonProperty] public readonly object maxValue;
-    }
+	public ElementType chargeBarElementType;
+	public int chargeBarIconID;
+	public object initialValue;
+	public object maxValue;
 }

@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachToNormalizedTimeMixin : ConfigAbilityMixin
 {
-    internal class AttachToNormalizedTimeMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string stateID;
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly float normalizeStart;
-    }
+	public string stateID;
+	public string modifierName;
+	public AbilityTargetting target;
+	public ConfigAbilityPredicate[] predicates;
+	public float normalizeStart;
+	public float normalizeEnd;
 }

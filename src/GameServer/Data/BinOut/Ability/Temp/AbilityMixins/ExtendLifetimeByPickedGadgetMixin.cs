@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ExtendLifetimeByPickedGadgetMixin : ConfigAbilityMixin
 {
-    internal class ExtendLifetimeByPickedGadgetMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int[] pickedConfigIDs;
-        [JsonProperty] public readonly string extendLifeTime;
-        [JsonProperty] public readonly string maxExtendLifeTime;
-    }
+	public uint[] pickedConfigIDs;
+	public object extendLifeTime;
+	public object maxExtendLifeTime;
 }

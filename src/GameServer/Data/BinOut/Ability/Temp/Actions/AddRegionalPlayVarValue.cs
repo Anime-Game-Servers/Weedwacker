@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddRegionalPlayVarValue : ConfigAbilityAction
 {
-    internal class AddRegionalPlayVarValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string varType;
-        [JsonProperty] public readonly int addValue;
-    }
+	public RegionalPlayVarType varType;
+	public float addValue;
 }

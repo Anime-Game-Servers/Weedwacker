@@ -1,44 +1,58 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigEntity
 {
-    internal class ConfigEntity
-    {
-        [JsonProperty] public readonly ConfigEntityCommon common;
-        [JsonProperty] public readonly ConfigHeadControl headControl;
-        [JsonProperty] public readonly ConfigEntityPoint specialPoint;
-        [JsonProperty] public readonly ConfigCustomAttackShape customAttackShape;
-        [JsonProperty] public readonly ConfigModel model;
+	public ConfigEntityCommon common;
+	public ConfigHeadControl headControl;
+	public ConfigEntityPoint specialPoint;
+	public ConfigCustomAttackShape customAttackShape;
+	public ConfigModel model;
+	public ConfigDither dither;
+	public ConfigGlobalValue globalValue;
+	public ConfigEntityTags entityTags;
 
-        public class ConfigEntityPoint
-        {
-            [JsonProperty] public readonly string elementAbsorb;
-            [JsonProperty] public readonly string elementPendant;
-            [JsonProperty] public readonly string elementDrop;
-            [JsonProperty] public readonly string bulletAim;
-            [JsonProperty] public readonly string[] hitPoints;
-            [JsonProperty] public readonly string[] selectedPoints;
-        }
+	public class ConfigEntityTags
+	{
+		public string[] initTags;
+	}
+	public class ConfigGlobalValue
+	{
+		public string[] serverGlobalValues;
+		public Dictionary<string, float> initServerGlobalValues;
+	}
+	public class ConfigEntityPoint
+	{
+		public string elementAbsorb;
+		public string elementPendant;
+		public string elementDrop;
+		public string bulletAim;
+		public string[] hitPoints;
+		public string[] selectedPoints;
+		public bool ignoreTransform;
+		public float selectedPointRadius;
+	}
 
-        public class ConfigModel
-        {
-            [JsonProperty] public readonly ConfigMatLinearChangedByDistance[] matLinearChangedByDistance;
-            [JsonProperty] public readonly string bornEffect;
-            [JsonProperty] public readonly string attachEffect;
-            [JsonProperty] public readonly bool canBakeMesh;
-            [JsonProperty] public readonly bool setPerObjectShadowGroupId;
-            [JsonProperty] public readonly bool hasCharacterRendering;
-        }
+	public class ConfigModel
+	{
+		public ConfigMatLinearChangedByDistance[] matLinearChangedByDistance;
+		public string bornEffect;
+		public string attachEffect;
+		public bool ignoreDistCheckWhenAttachEffect;
+		public bool canBakeMesh;
+		public bool setPerObjectShadowGroupID;
+		public bool hasCharacterRenderering;
+	}
 
-        public class ConfigMatLinearChangedByDistance
-        {
-            [JsonProperty] public readonly string transformName;
-            [JsonProperty] public readonly string[] textureProperty;
-            [JsonProperty] public readonly string[] floatProperty;
-            [JsonProperty] public readonly float minRatio;
-            [JsonProperty] public readonly float maxRatio;
-            [JsonProperty] public readonly float minDistance;
-            [JsonProperty] public readonly float maxDistance;
-        }
-    }
+	public class ConfigMatLinearChangedByDistance
+	{
+		public string transformName;
+		public string[] textureProperty;
+		public string[] floatProperty;
+		public float minRatio;
+		public float maxRatio;
+		public float minDistance;
+		public float maxDistance;
+	}
 }

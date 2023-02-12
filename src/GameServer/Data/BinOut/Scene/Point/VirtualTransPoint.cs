@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class VirtualTransPoint : SceneTransPoint
 {
-    internal class VirtualTransPoint : TransPoint
-    {
-        [JsonProperty] public readonly MarkIconType markIconTypeName;
-    }
+	public string markIconTypeName;
 }

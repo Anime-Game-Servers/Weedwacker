@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class NotifyNahidaTrigger : ConfigAbilityAction
 {
-    internal class NotifyNahidaTrigger : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly SelectTargetsByShape selectTargets;
-        [JsonProperty] public readonly string healLimitedByCasterMaxHPRatio;
-    }
+	public SelectTargetsByShape selectTargets;
+	public string healLimitedByCasterMaxHPRatio;
 }

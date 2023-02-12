@@ -2,11 +2,9 @@
 using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetBulletTrackTarget : ConfigAbilityAction
 {
-    internal class SetBulletTrackTarget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly SelectTargetsByShape otherTargets;
-        [JsonProperty] public readonly bool notDoIfTrackTargetAlive;
-    }
+	public bool notDoIfTrackTargetAlive;
 }

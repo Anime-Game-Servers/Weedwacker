@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByFindBlinkPointSuccess : ConfigAbilityPredicate
 {
-    internal class ByFindBlinkPointSuccess : BasePredicate
-    {
-        [JsonProperty] public readonly bool findPointSuccess;
-    }
+	public bool findPointSuccess;
 }

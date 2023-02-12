@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerCreateGadgetToEquipPart : ConfigAbilityAction
 {
-    internal class TriggerCreateGadgetToEquipPart : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int gadgetID;
-        [JsonProperty] public readonly string equipPart;
-    }
+	public uint gadgetID;
+	public string equipPart;
 }

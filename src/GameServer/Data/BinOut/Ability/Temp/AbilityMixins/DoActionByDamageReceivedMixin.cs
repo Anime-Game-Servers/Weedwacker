@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByDamageReceivedMixin : ConfigAbilityMixin
 {
-    internal class DoActionByDamageReceivedMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string paramType;
-        [JsonProperty] public readonly float valueMin;
-        [JsonProperty] public readonly float valueMax;
-        [JsonProperty] public readonly ConfigAbilityAction[] actionQueue;
-    }
+	public DoActionByDamageReceivedParamType paramType;
+	public object valueMin;
+	public object valueMax;
+	public ConfigAbilityAction[] actionQueue;
 }

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHitElement : ConfigAbilityPredicate
 {
-    internal class ByHitElement : BasePredicate
-    {
-        [JsonProperty] public readonly ElementType element;
-    }
+	public ElementType element;
 }

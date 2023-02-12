@@ -1,17 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class RocketJumpMixin : ConfigAbilityMixin
 {
-    internal class RocketJumpMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string type;
-        [JsonProperty] public readonly bool uiEffect;
-        [JsonProperty] public readonly Extension extention;
+	public RocketJumpType type;
+	public RocketJumpExt extention;
+	public bool uiEffect;
 
-        public class Extension
-        {
-            [JsonProperty] public readonly float xzMultiplier;
-            [JsonProperty] public readonly float yMultiplier;
-        }
-    }
 }

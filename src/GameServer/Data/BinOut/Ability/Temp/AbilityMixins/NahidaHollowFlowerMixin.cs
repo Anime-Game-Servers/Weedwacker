@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class NahidaHollowFlowerMixin : ConfigAbilityMixin
 {
-    internal class NahidaHollowFlowerMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string effectPattern;
-        [JsonProperty] public readonly string effectTrigger;
-        [JsonProperty] public readonly double interval;
-        [JsonProperty] public readonly int maxCount;
-        [JsonProperty] public readonly int createMaxNumPerInterval;
-        [JsonProperty] public readonly object createOffset;
-        [JsonProperty] public readonly float maxRange;
-        [JsonProperty] public readonly float destroyRange;
-    }
+	public string effectPattern;
+	public string effectTrigger;
+	public double interval;
+	public int maxCount;
+	public int createMaxNumPerInterval;
+	public object createOffset;
+	public float maxRange;
+	public float destroyRange;
 }

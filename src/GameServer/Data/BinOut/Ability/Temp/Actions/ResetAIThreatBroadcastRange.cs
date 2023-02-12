@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ResetAIThreatBroadcastRange : ConfigAbilityAction
 {
-    internal class ResetAIThreatBroadcastRange : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float range;
-        [JsonProperty] public readonly bool canBeHandledOnRecover;
-    }
+	public object range;
 }

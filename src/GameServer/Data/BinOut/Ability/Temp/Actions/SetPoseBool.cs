@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetPoseBool : ConfigAbilityAction
 {
-    internal class SetPoseBool : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string boolID;
-        [JsonProperty] public readonly bool value;
-    }
+	public string boolID;
+	public bool value;
 }

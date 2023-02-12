@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ServerMonsterLog : ConfigAbilityAction
 {
-    internal class ServerMonsterLog : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int[] paramList;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public int[] paramList;
 }

@@ -1,29 +1,28 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigCustomAttackShape
 {
-    internal class ConfigCustomAttackShape
-    {
-        [JsonProperty] public readonly ConfigCustomAttackSphere sphere;
-        [JsonProperty] public readonly ConfigCustomAttackBox box;
-        [JsonProperty] public readonly ConfigCustomAttackCircle circle;
+	public ConfigCustomAttackSphere sphere;
+	public ConfigCustomAttackBox box;
+	public ConfigCustomAttackCircle circle;
 
-        public class ConfigCustomAttackSphere
-        {
-            [JsonProperty] public readonly float customAttackSphereRadius;
-        }
+	public class ConfigCustomAttackSphere
+	{
+		public float customAttackSphere_Radius;
+	}
 
-        public class ConfigCustomAttackBox
-        {
-            [JsonProperty] public readonly float customAttackBoxSizeX;
-            [JsonProperty] public readonly float customAttackBoxSizeY;
-            [JsonProperty] public readonly float customAttackBoxSizeZ;
-        }
+	public class ConfigCustomAttackBox
+	{
+		public float customAttackBox_Size_X;
+		public float customAttackBox_Size_Y;
+		public float customAttackBox_Size_Z;
+	}
 
-        public class ConfigCustomAttackCircle
-        {
-            [JsonProperty] public readonly float customAttackCircleRadius;
-            [JsonProperty] public readonly float customAttackCircleInnerRadius;
-        }
-    }
+	public class ConfigCustomAttackCircle
+	{
+		public float customAttackCircle_Radius;
+		public float customAttackCircle_InnerRadius;
+	}
 }

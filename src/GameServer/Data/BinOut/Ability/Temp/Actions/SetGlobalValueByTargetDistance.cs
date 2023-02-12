@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetGlobalValueByTargetDistance : ConfigAbilityAction
 {
-    internal class SetGlobalValueByTargetDistance : ConfigAbilityAction
-	{
-		[JsonProperty] public readonly string key;
-		[JsonProperty] public readonly BaseSelectTargetType otherTargets;
-		[JsonProperty] public readonly BasePredicate[] predicatesForeach;
-	}
+	public string key;
+	public bool isXZ;
 }

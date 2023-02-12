@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetCanDieImmediately : ConfigAbilityAction
 {
-    internal class SetCanDieImmediately : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool dieImmediately;
-    }
+	public bool dieImmediately;
 }

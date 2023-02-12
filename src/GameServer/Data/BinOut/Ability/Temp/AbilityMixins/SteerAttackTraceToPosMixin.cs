@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class SteerAttackTraceToPosMixin : SteerAttackMixin
 {
-    internal class SteerAttackTraceToPosMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] steerStateIDs;
-        [JsonProperty] public readonly float startNormalizedTime;
-        [JsonProperty] public readonly float endNormalizedTime;
-        [JsonProperty] public readonly float angularSpeed;
-        [JsonProperty] public readonly string globalPosKey;
-    }
+	public string globalPosKey;
 }

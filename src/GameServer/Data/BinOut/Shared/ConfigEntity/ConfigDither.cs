@@ -1,27 +1,27 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigDither
 {
-    internal class ConfigDither
-    {
-        [JsonProperty] public readonly float showDitherDuration;
-        [JsonProperty] public readonly ConfigDitherByStartDitherAction startDitherAction;
-        [JsonProperty] public readonly ConfigDitherByBetweenCameraAndAvatar betweenCameraAndAvatar;
-        [JsonProperty] public readonly ConfigDitherByNormalBetweenCamera normalBetweenCamera;
+	public float showDitherDuration;
+	public ConfigDitherByStartDitherAction startDitherAction;
+	public ConfigDitherByBetweenCameraAndAvatar betweenCameraAndAvatar;
+	public ConfigDitherByNormalBetweenCamera normalBetweenCamera;
+	public bool hideEffectWhenDither;
 
-        public class ConfigDitherByStartDitherAction
-        {
-            [JsonProperty] public readonly bool enable;
-        }
+	public class ConfigDitherByStartDitherAction
+	{
+		public bool enable;
+	}
 
-        public class ConfigDitherByBetweenCameraAndAvatar
-        {
-            [JsonProperty] public readonly float detectDitherRange;
-        }
+	public class ConfigDitherByBetweenCameraAndAvatar
+	{
+		public float detectDitherRange;
+	}
 
-        public class ConfigDitherByNormalBetweenCamera
-        {
-            [JsonProperty] public readonly float detectDitherRange;
-        }
-    }
+	public class ConfigDitherByNormalBetweenCamera
+	{
+		public float detectDitherRange;
+	}
 }

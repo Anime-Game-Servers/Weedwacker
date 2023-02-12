@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DynamicCollisionMixin : ConfigAbilityMixin
 {
-    internal class DynamicCollisionMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] tags;
-        [JsonProperty] public readonly bool isChecker;
-    }
+	public string[] tags;
+	public bool isChecker;
 }

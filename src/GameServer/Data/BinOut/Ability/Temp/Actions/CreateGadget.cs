@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.BinOut.Shared;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class CreateGadget : CreateEntity
 {
-    internal class CreateGadget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly ConfigBornType born;
-        [JsonProperty] public readonly int gadgetID;
-        [JsonProperty] public readonly TargetType campTargetType;
-    }
+	public uint gadgetID;
+	public uint campID;
+	public TargetType campTargetType;
+	public bool byServer;
 }

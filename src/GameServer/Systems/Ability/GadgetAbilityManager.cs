@@ -11,7 +11,7 @@ namespace Weedwacker.GameServer.Systems.Ability
     {
         private ConfigGadget Config => GameData.ConfigGadgetMap[(Owner as BaseGadgetEntity).Data.jsonName];
         private ConfigGadget? ItemConfig => GameData.ConfigGadgetMap.GetValueOrDefault((Owner as BaseGadgetEntity).Data.itemJsonName, null);
-        public override Dictionary<uint, Dictionary<uint, float>?>? AbilitySpecials { get; } = new();
+        public override Dictionary<uint, Dictionary<uint, object>?>? AbilitySpecials { get; } = new();
         public override HashSet<string> ActiveDynamicAbilities { get; } = new();
         public override Dictionary<string, HashSet<string>> UnlockedTalentParams => throw new NotImplementedException();
         protected override Dictionary<uint, ConfigAbility> ConfigAbilityHashMap { get; } = new();

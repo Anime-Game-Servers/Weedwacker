@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ApplyModifierWithSharedDurabilityMixin : ConfigAbilityMixin
 {
-    internal class ApplyModifierWithSharedDurabilityMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string modifierName;
-    }
+	public string modifierName;
 }

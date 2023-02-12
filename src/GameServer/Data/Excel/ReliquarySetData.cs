@@ -1,18 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.Excel
-{
-    [Resource("ReliquarySetExcelConfigData.json")]
-    internal class ReliquarySetData
-    {
-        [JsonProperty] public readonly uint setId;
-        [JsonProperty] public readonly string setIcon;
-        [JsonProperty] public readonly int[] setNeedNum;
+namespace Weedwacker.GameServer.Data.Excel;
 
-        [JsonProperty] public readonly uint EquipAffixId;
-        [JsonProperty] public readonly int[] containsList;
-        [JsonProperty] public readonly int DisableFilter;
-        // Missing 2 properties
-        [JsonProperty] public readonly ulong[] textList;
-    }
+[Resource("ReliquarySetExcelConfigData.json")]
+public class ReliquarySetData
+{
+	public uint setId;
+	public string setIcon;
+	public uint[] setNeedNum;
+	public uint EquipAffixId;
+	public uint DisableFilter;
+	public uint[] containsList;
+	public uint bagSortValue;
 }

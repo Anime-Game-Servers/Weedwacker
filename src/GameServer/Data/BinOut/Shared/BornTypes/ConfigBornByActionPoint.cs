@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.BinOut.Ability.Temp;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByActionPoint : ConfigBornType
 {
-    internal class ConfigBornByActionPoint : ConfigBornType
-    {
-        [JsonProperty] public readonly PointType actionPointType;
-        [JsonProperty] public readonly BaseSelectTargetType selectType;
-        [JsonProperty] public readonly bool onGround;
-    }
+	public ActionPointType actionPointType;
+	public ConfigActionPointSelectType selectType;
 }

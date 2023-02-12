@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttackChainMixin : ConfigAbilityMixin
 {
-    internal class AttackChainMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly object? cd;
-        [JsonProperty] public readonly ReactionType[] reactionTypes;
-        [JsonProperty] public readonly string[] attackTags;
-        [JsonProperty] public readonly string effectName;
-        [JsonProperty] public readonly string effectAttachPoint;
-        [JsonProperty] public readonly float lineRange;
-        [JsonProperty] public readonly string attackChainReceiverKey;
-    }
+	public object? cd;
+	public ElementReactionType[] reactionTypes;
+	public string[] attackTags;
+	public string effectName;
+	public string effectAttachPoint;
+	public float lineRange;
+	public string attackChainReceiverKey;
 }

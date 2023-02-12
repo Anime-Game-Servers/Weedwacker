@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using Weedwacker.GameServer.Data;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Enums;
@@ -66,9 +67,9 @@ namespace Weedwacker.GameServer.Systems.Player
             // Check all conditions and test if at least one of them is violated.
             foreach (var condition in openState.cond)
             {
-                switch (condition.condType)
+                switch (condition.cond_type)
                 {
-                    case OpenStateCondType.NONE:
+                    case OpenStateCondType.OPEN_STATE_COND_NONE:
                         continue;
                     // For level conditions, check if the player has reached the necessary level.
                     case OpenStateCondType.OPEN_STATE_COND_PLAYER_LEVEL:

@@ -1,25 +1,26 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("TeamResonanceExcelConfigData.json")]
+public class TeamResonanceData
 {
-    [Resource("TeamResonanceExcelConfigData.json")]
-    internal class TeamResonanceData
-    {
-        [JsonProperty] public readonly uint teamResonanceId;
-        [JsonProperty] public readonly uint teamResonanceGroupId;
-        [JsonProperty] public readonly uint level;
-        [JsonProperty] public readonly uint? fireAvatarCount;
-        [JsonProperty] public readonly uint? waterAvatarCount;
-        [JsonProperty] public readonly uint? windAvatarCount;
-        [JsonProperty] public readonly uint? electricAvatarCount;
-        [JsonProperty] public readonly uint? grassAvatarCount;
-        [JsonProperty] public readonly uint? iceAvatarCount;
-        [JsonProperty] public readonly uint? rockAvatarCount;
-        [JsonProperty] public readonly string? cond;
-        [JsonProperty] public readonly ulong nameTextMapHash;
-        [JsonProperty] public readonly ulong descTextMapHash;
-        [JsonProperty] public readonly string openConfig;
-        //[JsonProperty] public readonly int[] addProps; unused?
-        [JsonProperty] public readonly float[] paramList;
-    }
+	public uint teamResonanceId;
+	public uint teamResonanceGroupId;
+	public uint level;
+	public uint fireAvatarCount;
+	public uint waterAvatarCount;
+	public uint grassAvatarCount;
+	public uint electricAvatarCount;
+	public uint iceAvatarCount;
+	public uint windAvatarCount;
+	public uint rockAvatarCount;
+	public TeamResonanceCondType cond;
+	public uint minTotalPromoteLevel;
+	public uint nameTextMapHash;
+	public uint descTextMapHash;
+	public string openConfig;
+	public PropValConfig[] addProps;
+	public float[] paramList;
 }

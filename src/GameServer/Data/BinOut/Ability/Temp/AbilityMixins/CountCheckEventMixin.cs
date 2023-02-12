@@ -1,13 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class CountCheckEventMixin : ConfigAbilityMixin
 {
-    internal class CountCheckEventMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string eventKey;
-        [JsonProperty] public readonly float checkTime;
-        [JsonProperty] public readonly int checkCount;
-        [JsonProperty] public readonly ConfigAbilityAction[] actionQueue;
-    }
+	public string eventKey;
+	public float checkTime;
+	public int checkCount;
+	public ConfigAbilityAction[] actionQueue;
 }

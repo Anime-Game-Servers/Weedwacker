@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Systems.Ability;
 
-namespace Weedwacker.GameServer.Data.BinOut.Talent
-{
-    internal class AddAbility : BaseConfigTalent
-    {
-        [JsonProperty] public readonly string abilityName;
+namespace Weedwacker.GameServer.Data.BinOut.Talent;
 
-        public override void Apply(BaseAbilityManager abilityManager, double[] paramList)
-        {
-            abilityManager.ActiveDynamicAbilities.Add(abilityName);
-        }
+internal class AddAbility : ConfigTalentMixin
+{
+    public string abilityName;
+
+    public override void Apply(BaseAbilityManager abilityManager, float[] paramList)
+    {
+        abilityManager.ActiveDynamicAbilities.Add(abilityName);
     }
 }

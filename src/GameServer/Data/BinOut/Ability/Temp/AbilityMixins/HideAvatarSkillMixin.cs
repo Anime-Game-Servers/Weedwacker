@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class HideAvatarSkillMixin : ConfigAbilityMixin
 {
-    internal class HideAvatarSkillMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int[] skillID;
-    }
+	public uint[] skillID;
 }

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class GetInteractIdToGlobalValue : ConfigAbilityAction
 {
-    internal class GetInteractIdToGlobalValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string key;
-    }
+	public string key;
 }

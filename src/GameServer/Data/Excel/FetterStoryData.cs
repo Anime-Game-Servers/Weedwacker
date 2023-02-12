@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("FetterStoryExcelConfigData.json")]
+public class FetterStoryData : FetterConfig
 {
-    [Resource("FetterStoryExcelConfigData.json")]
-    internal class FetterStoryData : FetterBaseClass
-    {
-        [JsonProperty] public readonly ulong storyTitleTextMapHash;
-        [JsonProperty] public readonly ulong storyContextTextMapHash;
-        [JsonProperty] public readonly ulong storyTitle2TextMapHash;
-        [JsonProperty] public readonly ulong storyContext2TextMapHash;
-        [JsonProperty] public readonly ulong[] tips;
-        [JsonProperty] public readonly ulong storyTitleLockedTextMapHash;
-        [JsonProperty] public readonly uint avatarId;
-    }
+	public bool isHiden;
+	public uint storyTitleTextMapHash;
+	public uint storyContextTextMapHash;
+	public uint storyTitle2TextMapHash;
+	public uint storyContext2TextMapHash;
+	public uint[] tips;
+	public uint storyTitleLockedTextMapHash;
 }

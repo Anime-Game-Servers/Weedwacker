@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class SetAnimationPauseByAbilityStateMixin : ConfigAbilityMixin
 {
-    internal class SetAnimationPauseByAbilityStateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly AbilityState[] abilityStates;
-    }
+	public AbilityState[] abilityStates;
 }

@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class PlatformMoveMixin : ConfigAbilityMixin
 {
-    internal class PlatformMoveMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] moveModifiers;
-    }
+	public bool isLogicMove;
+	public string[] moveModifiers;
+	public string[] stopModifiers;
 }

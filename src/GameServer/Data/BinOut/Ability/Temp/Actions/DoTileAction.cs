@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DoTileAction : ConfigAbilityAction
 {
-    internal class DoTileAction : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string actionID;
-    }
+	public string actionID;
 }

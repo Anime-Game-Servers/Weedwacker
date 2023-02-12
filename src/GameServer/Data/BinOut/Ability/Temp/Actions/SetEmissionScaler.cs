@@ -1,11 +1,15 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetEmissionScaler : ConfigAbilityAction
 {
-    internal class SetEmissionScaler : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly string materialType;
-        [JsonProperty] public readonly float weight;
-    }
+	public BodyMaterialType materialType;
+	public bool useDefaultColor;
+	public float value;
+	public float duration;
+	public float emissionPower;
+	public ColorVector emissionColor;
 }

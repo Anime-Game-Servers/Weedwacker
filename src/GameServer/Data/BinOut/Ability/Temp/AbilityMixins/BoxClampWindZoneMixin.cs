@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class BoxClampWindZoneMixin : ConfigAbilityMixin
 {
-    internal class BoxClampWindZoneMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly Dictionary<string, float> size;
-		[JsonProperty] public readonly ConfigBornType born;
-		[JsonProperty] public readonly float attracForceStrength;
-		[JsonProperty] public readonly float maxStrengthRange;
-    }
+	public Vector size;
+	public ConfigBornType born;
+	public float attracForceStrength;
+	public float maxStrengthRange;
 }

@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ReviveElemEnergy : ConfigAbilityAction
 {
-    internal class ReviveElemEnergy : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly object value;
-    }
+	public object value;
 }

@@ -1,37 +1,36 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.Common;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("ProudSkillExcelConfigData.json")]
+public class ProudSkillData : BaseTalentConfig
 {
-    [Resource("ProudSkillExcelConfigData.json")]
-    public class ProudSkillData
-    {
-        [JsonProperty] public readonly uint proudSkillId;
-        [JsonProperty] public readonly uint proudSkillGroupId;
-        [JsonProperty] public readonly uint level;
-        [JsonProperty] public readonly int coinCost;
-        [JsonProperty] public readonly uint breakLevel;
-        [JsonProperty] public readonly int proudSkillType;
-        [JsonProperty] public readonly int effectiveForTeam;
-        [JsonProperty] public readonly string openConfig;
-        [JsonProperty] public readonly string icon;
-        [JsonProperty] public readonly ItemParamData[] costItems;
-        [JsonProperty] public readonly TalentFilter[] filterConds;
-        [JsonProperty] public readonly string[] lifeEffectParams;
-        [JsonProperty] public readonly FightPropData[] addProps;
-        [JsonProperty] public readonly double[] paramList;
-        [JsonProperty] public readonly long[] paramDescList;
-        [JsonProperty] public readonly long nameTextMapHash;
+	public uint proudSkillId;
+	public uint proudSkillGroupId;
+	public uint level;
+	public uint proudSkillType;
+	public uint nameTextMapHash;
+	public uint descTextMapHash;
+	public uint unlockDescTextMapHash;
+	public string icon;
+	public uint coinCost;
+	public IdCountConfig[] costItems;
+	public TalentFilterCond[] filterConds;
+	public uint breakLevel;
+	public uint[] paramDescList;
+	public ProudLifeEffectType lifeEffectType;
+	public string[] lifeEffectParams;
+	public byte effectiveForTeam;
+	public bool isHideLifeProudSkill;
 
-        public List<ItemParamData> GetTotalCostItems()
-        {
-            List<ItemParamData> total = new();
-            total = (List<ItemParamData>)total.Concat(costItems);
-            if (coinCost > 0)
-                total.Add(new ItemParamData(202, coinCost));
+	public List<IdCountConfig> GetTotalCostItems()
+	{
+		List<IdCountConfig> total = new();
+		total = (List<IdCountConfig>)total.Concat(costItems);
+		if (coinCost > 0)
+			total.Add(new IdCountConfig(202, coinCost));
 
-            return total;
-        }
-    }
+		return total;
+	}
 }

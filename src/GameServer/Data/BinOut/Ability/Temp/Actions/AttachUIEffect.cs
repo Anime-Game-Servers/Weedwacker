@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AttachUIEffect : ConfigAbilityAction
 {
-    internal class AttachUIEffect : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string effectPattern;
-        [JsonProperty] public readonly string effectSlot;
-    }
+	public string effectPattern;
+	public ActionPanelEffectSlot effectSlot;
 }

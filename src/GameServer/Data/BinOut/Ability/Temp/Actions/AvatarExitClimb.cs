@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarExitClimb : ConfigAbilityAction
 {
-    internal class AvatarExitClimb : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-    }
 }

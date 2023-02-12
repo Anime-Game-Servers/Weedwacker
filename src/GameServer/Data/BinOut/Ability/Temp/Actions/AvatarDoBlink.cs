@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarDoBlink : ConfigAbilityAction
 {
-    internal class AvatarDoBlink : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool PreferInput;
-        [JsonProperty] public readonly float Distance;
-    }
+	public bool PreferInput;
+	public float Distance;
 }

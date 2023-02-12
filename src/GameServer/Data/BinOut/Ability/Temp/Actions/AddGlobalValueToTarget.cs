@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddGlobalValueToTarget : ConfigAbilityAction
 {
-    internal class AddGlobalValueToTarget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType srcTarget;
-        [JsonProperty] public readonly TargetType dstTarget;
-        [JsonProperty] public readonly string srcKey;
-        [JsonProperty] public readonly string dstKey;
-    }
+	public AbilityTargetting srcTarget;
+	public AbilityTargetting dstTarget;
+	public string srcKey;
+	public string dstKey;
 }

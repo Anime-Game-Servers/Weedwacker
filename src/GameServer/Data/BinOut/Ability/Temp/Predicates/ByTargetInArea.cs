@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetInArea : ConfigAbilityPredicate
 {
-    internal class ByTargetInArea : BasePredicate
-    {
-        [JsonProperty] public readonly string areaLevel;
-        [JsonProperty] public readonly int[] areas;
-    }
+	public TargetPositionAreaLevel areaLevel;
+	public uint[] areas;
 }

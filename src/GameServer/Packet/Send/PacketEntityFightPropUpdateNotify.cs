@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Systems.World;
 using Weedwacker.Shared.Network.Proto;
@@ -7,7 +8,7 @@ namespace Weedwacker.GameServer.Packet.Send
 {
     internal class PacketEntityFightPropUpdateNotify : BasePacket
     {
-        public PacketEntityFightPropUpdateNotify(SceneEntity entity, FightProperty prop) : base(OpCode.EntityFightPropUpdateNotify)
+        public PacketEntityFightPropUpdateNotify(SceneEntity entity, FightPropType prop) : base(OpCode.EntityFightPropUpdateNotify)
         {
             EntityFightPropUpdateNotify proto = new EntityFightPropUpdateNotify()
             {
@@ -18,7 +19,7 @@ namespace Weedwacker.GameServer.Packet.Send
             Data = proto.ToByteArray();
         }
 
-        public PacketEntityFightPropUpdateNotify(SceneEntity entity, IEnumerable<FightProperty> props) : base(OpCode.EntityFightPropUpdateNotify)
+        public PacketEntityFightPropUpdateNotify(SceneEntity entity, IEnumerable<FightPropType> props) : base(OpCode.EntityFightPropUpdateNotify)
         {
             EntityFightPropUpdateNotify proto = new EntityFightPropUpdateNotify()
             {

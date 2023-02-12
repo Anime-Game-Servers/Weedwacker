@@ -1,14 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DamageByAttackValue : ConfigAbilityAction
 {
-    internal class DamageByAttackValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string target;
-        [JsonProperty] public readonly BaseSelectTargetType? otherTargets;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly ConfigBornType? born;
-        [JsonProperty] public readonly ConfigAttackInfo attackInfo;
-    }
+	public DamageAttacker attacker;
+	public ConfigBornType born;
+	public ConfigAttackInfo attackInfo;
 }

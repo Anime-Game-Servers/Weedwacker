@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ClearLockTarget : ConfigAbilityAction
 {
-    internal class ClearLockTarget : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool onlyAvatar;
-    }
+	public bool onlyAvatar;
 }

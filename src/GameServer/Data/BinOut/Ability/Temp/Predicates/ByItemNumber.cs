@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByItemNumber : ConfigAbilityPredicate
 {
-    internal class ByItemNumber : BasePredicate
-    {
-        [JsonProperty] public readonly int itemId;
-        [JsonProperty] public readonly int itemNum;
-    }
+	public uint itemId;
+	public uint itemNum;
 }

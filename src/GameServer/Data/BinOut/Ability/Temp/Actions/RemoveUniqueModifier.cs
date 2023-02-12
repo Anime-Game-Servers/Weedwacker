@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class RemoveUniqueModifier : ConfigAbilityAction
 {
-    internal class RemoveUniqueModifier : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool? doOffStage;
-        [JsonProperty] public readonly string modifierName;
-    }
+	public string modifierName;
 }

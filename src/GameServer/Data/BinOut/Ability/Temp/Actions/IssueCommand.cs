@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class IssueCommand : ConfigAbilityAction
 {
-    internal class IssueCommand : ConfigAbilityAction
-	{
-		[JsonProperty] public readonly int commandID;
-		[JsonProperty] public readonly float duration;
-		[JsonProperty] public readonly BaseSelectTargetType otherTargets;
-		[JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public int commandID;
+	public float duration;
 }

@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class TriggerPostProcessEffectMixin : ConfigAbilityMixin
 {
-    internal class TriggerPostProcessEffectMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string postEffectAssetName;
-        [JsonProperty] public readonly float duration;
-    }
+	public string postEffectAssetName;
+	public float duration;
+	public bool isStageEffect;
 }

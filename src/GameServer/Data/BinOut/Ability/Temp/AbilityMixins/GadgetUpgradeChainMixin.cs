@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class GadgetUpgradeChainMixin : ConfigAbilityMixin
 {
-    internal class GadgetUpgradeChainMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string globalValueKey;
-    }
+	public string globalValueKey;
 }

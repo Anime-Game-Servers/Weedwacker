@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class IgnoreMoveColToRockCol : ConfigAbilityAction
 {
-    internal class IgnoreMoveColToRockCol : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool ignore;
-    }
+	public bool ignore;
 }

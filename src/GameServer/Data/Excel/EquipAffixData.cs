@@ -1,17 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.Common;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("EquipAffixExcelConfigData.json")]
+public class EquipAffixData
 {
-    [Resource("EquipAffixExcelConfigData.json")]
-    public class EquipAffixData
-    {
-        [JsonProperty] public readonly uint affixId;
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly uint level;
-        [JsonProperty] public readonly ulong nameTextMapHash;
-        [JsonProperty] public readonly string openConfig;
-        [JsonProperty] public readonly FightPropData[] addProps;
-        [JsonProperty] public readonly float[] paramList;
-    }
+	public uint affixId;
+	public uint id;
+	public uint level;
+	public uint nameTextMapHash;
+	public uint descTextMapHash;
+	public string openConfig;
+	public PropValConfig[] addProps;
+	public float[] paramList;
 }

@@ -1,6 +1,12 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class DungeonWayPoint : ConfigScenePoint
 {
-    internal class DungeonWayPoint : BasePoint
-    {
-    }
+	public Vector size;
+	public bool isBoss;
+	public bool isActive;
+	public uint[] groupIds;
 }

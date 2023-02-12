@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class RemoveAvatarSkillInfo : ConfigAbilityAction
 {
-    internal class RemoveAvatarSkillInfo : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int overtime;
-    }
+	public uint skillID;
+	public bool refreshAfterRemove;
 }

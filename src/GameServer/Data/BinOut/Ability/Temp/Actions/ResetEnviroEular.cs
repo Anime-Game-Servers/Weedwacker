@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ResetEnviroEular : ConfigAbilityAction
 {
-    internal class ResetEnviroEular : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly Dictionary<string, float> eularAngles;
-    }
+	public Vector eularAngles;
 }

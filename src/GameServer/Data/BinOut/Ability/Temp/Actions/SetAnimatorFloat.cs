@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetAnimatorFloat : ConfigAbilityAction
 {
-    internal class SetAnimatorFloat : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly string floatID;
-        [JsonProperty] public readonly object value;
-    }
+	public string floatID;
+	public object value;
+	public bool persistent;
+	public bool useRandomValue;
+	public object randomValueMin;
+	public object randomValueMax;
+	public float transitionTime;
 }

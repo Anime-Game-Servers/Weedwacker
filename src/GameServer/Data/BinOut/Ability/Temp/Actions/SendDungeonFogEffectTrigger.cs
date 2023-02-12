@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SendDungeonFogEffectTrigger : ConfigAbilityAction
 {
-    internal class SendDungeonFogEffectTrigger : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string parameter;
-        [JsonProperty] public readonly string cameraFogEffectName;
-    }
+	public string parameter;
+	public string cameraFogEffectName;
 }

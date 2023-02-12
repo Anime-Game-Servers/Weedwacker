@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddGlobalValue : ConfigAbilityAction
 {
-    internal class AddGlobalValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly object value;
-        [JsonProperty] public readonly string key;
-        [JsonProperty] public readonly bool useLimitRange;
-        [JsonProperty] public readonly object maxValue;
-        [JsonProperty] public readonly object minValue;
-    }
+	public object value;
+	public string key;
+	public bool useLimitRange;
+	public bool randomInRange;
+	public object maxValue;
+	public object minValue;
 }

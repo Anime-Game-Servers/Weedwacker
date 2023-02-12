@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AttachAbilityStateResistance : ConfigAbilityAction
 {
-    internal class AttachAbilityStateResistance : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int resistanceListID;
-    }
+	public uint resistanceListID;
+	public AbilityState[] resistanceBuffDebuffs;
+	public float durationRatio;
 }

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnableAfterImage : ConfigAbilityAction
 {
-    internal class EnableAfterImage : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool? enable;
-        [JsonProperty] public readonly bool? doOffStage;
-    }
+	public bool enable;
+	public uint index;
 }

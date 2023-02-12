@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ShowExtraAbility : ConfigAbilityAction
 {
-    internal class ShowExtraAbility : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int skillID;
-        [JsonProperty] public readonly TargetType target;
-    }
+	public uint skillID;
 }

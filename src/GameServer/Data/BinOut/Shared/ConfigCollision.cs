@@ -1,23 +1,26 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared
+namespace Weedwacker.GameServer.Data.BinOut.Shared;
+
+public class ConfigCollision
 {
-    internal class ConfigCollision
-    {
-        [JsonProperty] public readonly ConfigCcd ccd;
-        [JsonProperty] public readonly ColliderTriggerType triggerType;
-        [JsonProperty] public readonly float triggerCD;
-        [JsonProperty] public readonly TargetType targetType;
-        [JsonProperty] public readonly bool ignoreScene;
-        [JsonProperty] public readonly bool ignoreWater;
-        [JsonProperty] public readonly bool bornWithTriggerEnabled;
-        [JsonProperty] public readonly float delayEnableCollision;
+	public ConfigCCD ccd;
+	public ColliderTriggerType triggerType;
+	public float triggerCD;
+	public TargetType targetType;
+	public bool ignoreScene;
+	public bool ignoreWater;
+	public bool bornWithTriggerEnabled;
+	public float delayEnableCollision;
 
-        public class ConfigCcd
-        {
-            [JsonProperty] public readonly CcdType type;
-            [JsonProperty] public readonly float detectCd;
-        }
-    }
+	public class ConfigCCD
+	{
+		public CCDType type;
+		public float detectCd;
+	}
+	public class Always : ConfigCCD
+	{
+		//...
+	}
 }

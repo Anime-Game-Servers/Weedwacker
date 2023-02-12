@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachToGadgetStateMixin : ConfigAbilityMixin
 {
-    internal class AttachToGadgetStateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int gadgetState;
-        [JsonProperty] public readonly string modifierName;
-    }
+	public int gadgetState;
+	public string modifierName;
 }

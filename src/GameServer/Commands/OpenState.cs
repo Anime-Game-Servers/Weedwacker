@@ -1,4 +1,5 @@
 ﻿using System.CommandLine;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.Shared.Commands;
 using Weedwacker.Shared.Enums;

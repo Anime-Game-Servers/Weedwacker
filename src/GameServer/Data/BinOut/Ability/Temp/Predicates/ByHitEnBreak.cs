@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByHitEnBreak : ConfigAbilityPredicate
 {
-    internal class ByHitEnBreak : BasePredicate
-    {
-        [JsonProperty] public readonly float enBreak;
-    }
+	public object enBreak;
 }

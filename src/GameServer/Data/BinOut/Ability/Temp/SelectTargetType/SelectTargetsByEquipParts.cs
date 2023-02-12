@@ -2,8 +2,8 @@
 
 namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.SelectTargetType
 {
-    internal class SelectTargetsByEquipParts : BaseSelectTargetType
+    public class SelectTargetsByEquipParts : SelectTargets
     {
-        [JsonProperty] public readonly string[] equipPartNames;
+        public string[] equipPartNames;
     }
 }

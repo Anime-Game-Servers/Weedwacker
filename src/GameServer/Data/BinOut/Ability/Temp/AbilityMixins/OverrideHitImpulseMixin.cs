@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
-{
-    internal class OverrideHitImpulseMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly Dictionary<string, overrideHitImpulse> overrideHitImpulseMap;
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
 
-        internal class overrideHitImpulse
-        {
-            [JsonProperty] public readonly string hitLevel;
-            [JsonProperty] public readonly float hitImpulseX;
-            [JsonProperty] public readonly float hitImpulseY;
-        }
-    }
+public class OverrideHitImpulseMixin : ConfigAbilityMixin
+{
+	public Dictionary<string, overrideHitImpulse> overrideHitImpulseMap;
+
+	public class overrideHitImpulse
+	{
+		public string hitLevel;
+		public float hitImpulseX;
+		public float hitImpulseY;
+	}
 }

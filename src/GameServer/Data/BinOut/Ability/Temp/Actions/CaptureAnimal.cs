@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class CaptureAnimal : ConfigAbilityAction
 {
-    internal class CaptureAnimal : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int materialId;
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public uint materialId;
 }

@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ElementReactionShockMixin : ConfigAbilityMixin
 {
-    internal class ElementReactionShockMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly float thinkInterval;
-		[JsonProperty] public readonly ConfigAbilityAction attackAction;
-		[JsonProperty] public readonly ConfigAbilityAction conductAction;
-}
+	public float thinkInterval;
+	public string campGlobalKey;
+	public ConfigAbilityAction attackAction;
+	public ConfigAbilityAction conductAction;
 }

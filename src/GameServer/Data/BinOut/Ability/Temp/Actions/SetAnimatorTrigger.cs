@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetAnimatorTrigger : ConfigAbilityAction
 {
-    internal class SetAnimatorTrigger : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BasePredicate[]? predicates;
-        [JsonProperty] public readonly string triggerID;
-    }
+	public object triggerID;
+	public bool MPTriggerOnRemote;
 }

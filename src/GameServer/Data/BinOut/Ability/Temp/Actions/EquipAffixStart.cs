@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EquipAffixStart : ConfigAbilityAction
 {
-    internal class EquipAffixStart : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly object CD;
-        [JsonProperty] public readonly int equipAffixDataID;
-    }
+	public object CD;
+	public uint equipAffixDataID;
 }

@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ControlEmotion : ConfigAbilityAction
 {
-    internal class ControlEmotion : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly bool toggleBlink;
-    }
+	public bool toggleEmoSync;
+	public bool toggleBlink;
+	public bool toggleEyeKey;
 }

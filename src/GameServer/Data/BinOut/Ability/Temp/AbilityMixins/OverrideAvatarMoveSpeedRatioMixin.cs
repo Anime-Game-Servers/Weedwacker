@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class OverrideAvatarMoveSpeedRatioMixin : ConfigAbilityMixin
 {
-    internal class OverrideAvatarMoveSpeedRatioMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly double maxValue;
-    }
+	public double maxValue;
 }

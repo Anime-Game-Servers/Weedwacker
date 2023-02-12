@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetSkillAnchor : ConfigAbilityAction
 {
-    internal class SetSkillAnchor : ConfigAbilityAction
-	{
-		[JsonProperty] public readonly ConfigBornType born;
-		[JsonProperty] public readonly bool canBeHandledOnRecover;
-		[JsonProperty] public readonly bool doOffStage;
-    }
+	public ConfigBornType born;
 }

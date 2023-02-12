@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ModifyCameraMaxDistanceMixin : ConfigAbilityMixin
 {
-    internal class ModifyCameraMaxDistanceMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int MaxDistance;
-        [JsonProperty] public readonly bool ResetToMaxOnStart;
-        [JsonProperty] public readonly float LerpInDuration;
-        [JsonProperty] public readonly float LerpOutDuration;
-    }
+	public float MaxDistance;
+	public bool ResetToMaxOnStart;
+	public float LerpInDuration;
+	public float LerpOutDuration;
 }

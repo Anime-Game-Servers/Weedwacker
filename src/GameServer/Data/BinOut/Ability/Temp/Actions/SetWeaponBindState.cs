@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetWeaponBindState : ConfigAbilityAction
 {
-    internal class SetWeaponBindState : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool place;
-        [JsonProperty] public readonly string equipPartName;
-        [JsonProperty] public readonly ConfigBornType born;
-    }
+	public bool place;
+	public string equipPartName;
+	public ConfigBornType born;
 }

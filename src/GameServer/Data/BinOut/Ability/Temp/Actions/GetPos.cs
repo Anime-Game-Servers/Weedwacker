@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class GetPos : ConfigAbilityAction
 {
-    internal class GetPos : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string key;
-        [JsonProperty] public readonly string posType;
-    }
+	public string key;
+	public GetPosType posType;
 }

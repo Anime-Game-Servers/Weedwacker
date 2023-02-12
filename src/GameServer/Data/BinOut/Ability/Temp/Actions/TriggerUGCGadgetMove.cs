@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerUGCGadgetMove : ConfigAbilityAction
 {
-    internal class TriggerUGCGadgetMove : ConfigAbilityAction
-    {
-    }
 }

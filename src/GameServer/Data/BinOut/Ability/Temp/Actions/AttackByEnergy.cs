@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AttackByEnergy : ConfigAbilityAction
 {
-    internal class AttackByEnergy : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly float energy;
-        [JsonProperty] public readonly float overDamageRatio;
-        [JsonProperty] public readonly float overDamageMaxHPRatio;
-    }
+	public object energy;
+	public float overDamageRatio;
+	public float overDamageMaxHPRatio;
 }

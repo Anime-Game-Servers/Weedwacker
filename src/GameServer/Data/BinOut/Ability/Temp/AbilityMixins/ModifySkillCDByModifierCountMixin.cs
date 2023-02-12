@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ModifySkillCDByModifierCountMixin : ConfigAbilityMixin
 {
-    internal class ModifySkillCDByModifierCountMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly TargetType targetType;
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly int overtime;
-        [JsonProperty] public readonly string cdDelta;
-    }
+	public TargetType targetType;
+	public string modifierName;
+	public uint skillID;
+	public object cdDelta;
 }

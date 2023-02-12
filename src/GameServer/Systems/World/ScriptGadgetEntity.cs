@@ -1,6 +1,4 @@
-﻿using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.Excel;
-using Weedwacker.GameServer.Enums;
+﻿using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Systems.Script.Scene;
 using Weedwacker.Shared.Network.Proto;
 

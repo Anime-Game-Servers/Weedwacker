@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ShowUICombatBar : ConfigAbilityAction
 {
-    internal class ShowUICombatBar : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool show;
-        [JsonProperty] public readonly bool fore;
-        [JsonProperty] public readonly bool canBeHandledOnRecover;
-    }
+	public bool show;
+	public uint sortID;
+	public bool changingSortID;
+	public bool fore;
 }

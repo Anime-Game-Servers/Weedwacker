@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class VelocityForceMixin : ConfigAbilityMixin
 {
-    internal class VelocityForceMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] excludeForces;
-    }
+	public bool muteAll;
+	public bool useAll;
+	public VelocityForceType[] includeForces;
+	public VelocityForceType[] excludeForces;
 }

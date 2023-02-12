@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttackReviveEnergyMixin : ConfigAbilityMixin
 {
-    internal class AttackReviveEnergyMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] attackTags;
-        [JsonProperty] public readonly float maxValue;
-        [JsonProperty] public readonly float minValue;
-        [JsonProperty] public readonly float addValue;
-        [JsonProperty] public readonly ConfigAbilityAction reviveAction;
-        [JsonProperty] public readonly Dictionary<ElementType, ConfigAbilityAction> fireEffectActions;
-    }
+	public string[] attackTags;
+	public float maxValue;
+	public float minValue;
+	public float addValue;
+	public ConfigAbilityAction reviveAction;
+	public Dictionary<ElementType, ConfigAbilityAction> fireEffectActions;
 }

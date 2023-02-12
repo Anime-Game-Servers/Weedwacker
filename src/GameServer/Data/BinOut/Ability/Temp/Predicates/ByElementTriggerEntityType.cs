@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByElementTriggerEntityType : ConfigAbilityPredicate
 {
-    internal class ByElementTriggerEntityType : BasePredicate
-    {
-        [JsonProperty] public readonly bool forcebyOriginOwner;
-        [JsonProperty] public readonly EntityType[] entityTypes;
-    }
+	public EntityType[] entityTypes;
+	public bool forcebyOriginOwner;
 }

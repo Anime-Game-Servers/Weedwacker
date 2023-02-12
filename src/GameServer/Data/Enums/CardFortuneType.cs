@@ -1,0 +1,11 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum CardFortuneType : int
+{
+	CHESS_CARDFORTUNE_BAD = 0,
+	CHESS_CARDFORTUNE_NORMAL = 1,
+	CHESS_CARDFORTUNE_GOOD = 2,
+	CHESS_CARDFORTUNE_VERYGOOD = 3,
+	CHESS_CARDFORTUNE_PERFECT = 4,
+}

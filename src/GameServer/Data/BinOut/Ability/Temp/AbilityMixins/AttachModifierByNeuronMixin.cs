@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachModifierByNeuronMixin : ConfigAbilityMixin
 {
-    internal class AttachModifierByNeuronMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] neuronNameList;
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly bool authorityOnly;
-        [JsonProperty] public readonly string removeOperator;
-    }
+	public NeuronName[] neuronNameList;
+	public NeuronMixinRemoveOperatorType removeOperator;
+	public string modifierName;
+	public bool authorityOnly;
 }

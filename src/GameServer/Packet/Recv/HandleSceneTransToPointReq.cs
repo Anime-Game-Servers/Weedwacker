@@ -22,16 +22,16 @@ namespace Weedwacker.GameServer.Packet.Recv
                 {
                     ret = Retcode.RetSucc;
                     Vector3 pos = new(
-                        bp.tranPos.FirstOrDefault(x => x.Key.Contains('x')).Value,
-                        bp.tranPos.FirstOrDefault(x => x.Key.Contains('y')).Value,
-                        bp.tranPos.FirstOrDefault(x => x.Key.Contains('z')).Value);
+                        bp.tranPos.x,
+                        bp.tranPos.y,
+                        bp.tranPos.z);
                     Vector3 rot = new();
                     if (bp.tranRot is not null)
                     {
                         rot = new(
-                            bp.tranRot.FirstOrDefault(x => x.Key.Contains('x')).Value,
-                            bp.tranRot.FirstOrDefault(x => x.Key.Contains('y')).Value,
-                            bp.tranRot.FirstOrDefault(x => x.Key.Contains('z')).Value);
+                            bp.tranRot.x,
+                            bp.tranRot.y,
+                            bp.tranRot.z);
                     }
                     await session.Player.World.TransferPlayerToSceneAsync(session.Player, EnterReason.TransPoint,
                         req.SceneId == (uint)session.Player.SceneId ? EnterType.Goto : EnterType.Jump, req.SceneId,

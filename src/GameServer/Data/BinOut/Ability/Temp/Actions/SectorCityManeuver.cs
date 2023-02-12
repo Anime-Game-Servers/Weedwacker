@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SectorCityManeuver : ConfigAbilityAction
 {
-    internal class SectorCityManeuver : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string attachPointName;
-        [JsonProperty] public readonly bool start;
-    }
+	public bool start;
+	public string attachPointName;
 }

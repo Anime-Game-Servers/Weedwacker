@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerAudio : ConfigAbilityAction
 {
-    internal class TriggerAudio : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BaseEventOp operation;
-    }
+	public OpResponder responder;
+	public ConfigAudioOperation operation;
 }

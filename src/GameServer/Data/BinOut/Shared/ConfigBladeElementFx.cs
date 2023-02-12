@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared
+namespace Weedwacker.GameServer.Data.BinOut.Shared;
+
+public class ConfigBladeElementFx
 {
-    internal class ConfigBladeElementFx
-    {
-        [JsonProperty] public readonly string slash;
-        [JsonProperty] public readonly string colorA;
-        [JsonProperty] public readonly string colorB;
-    }
+	public string slash;
+	public string colorA;
+	public string colorB;
 }

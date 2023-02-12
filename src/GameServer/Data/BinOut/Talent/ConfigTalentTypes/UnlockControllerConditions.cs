@@ -2,8 +2,8 @@
 
 namespace Weedwacker.GameServer.Data.BinOut.Talent
 {
-    internal class UnlockControllerConditions : BaseConfigTalent
+    internal class UnlockControllerConditions : ConfigTalentMixin
     {
-        [JsonProperty] public readonly string conditionName;
+        public string conditionName;
     }
 }

@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByScenePropState : ConfigAbilityPredicate
 {
-    internal class ByScenePropState : BasePredicate
-    {
-        [JsonProperty] public readonly EntityType entityType;
-        [JsonProperty] public readonly string state;
-    }
+	public EntityType entityType;
+	public SceneObjState state;
 }

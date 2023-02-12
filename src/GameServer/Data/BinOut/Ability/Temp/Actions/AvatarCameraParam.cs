@@ -1,16 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
-{
-    internal class AvatarCameraParam : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly CamParam cameraParam;
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
 
-        public class CamParam
-        {
-            [JsonProperty] public readonly float forceRadius;
-            [JsonProperty] public readonly float forceRadiusDuration;
-            [JsonProperty] public readonly bool shouldKeepForceRadius;
-        }
-    }
+public class AvatarCameraParam : ConfigAbilityAction
+{
+	public ConfigStateCameraParam cameraParam;
 }

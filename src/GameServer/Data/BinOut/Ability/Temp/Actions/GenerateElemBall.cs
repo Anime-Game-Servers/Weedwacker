@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class GenerateElemBall : ConfigAbilityAction
 {
-    internal class GenerateElemBall : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int configID;
-        [JsonProperty] public readonly ConfigBornType born;
-        [JsonProperty] public readonly object ratio;
-        [JsonProperty] public readonly float baseEnergy;
-    }
+	public DropElemBallType dropType;
+	public uint configID;
+	public ConfigBornType born;
+	public object ratio;
+	public float baseEnergy;
 }

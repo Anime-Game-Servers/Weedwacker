@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SendEffectTriggerToLineEffect : ConfigAbilityAction
 {
-    internal class SendEffectTriggerToLineEffect : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string parameter;
-        [JsonProperty] public readonly string effectPattern;
-    }
+	public string parameter;
+	public AnimatorParamType type;
+	public int value;
+	public object effectPattern;
+	public float floatValue;
 }

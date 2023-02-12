@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SendEvtElectricCoreMoveInterrupt : ConfigAbilityAction
 {
-    internal class SendEvtElectricCoreMoveInterrupt : ConfigAbilityAction
-    {
-    }
 }

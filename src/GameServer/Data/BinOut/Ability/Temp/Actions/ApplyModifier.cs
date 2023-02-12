@@ -1,14 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ApplyModifier : ConfigAbilityAction
 {
-    internal class ApplyModifier : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string? target;
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly bool? RotationDampTime;
-        [JsonProperty] public readonly BaseSelectTargetType? otherTargets;
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly BasePredicate[]? predicates;
-    }
+	public string modifierName;
 }

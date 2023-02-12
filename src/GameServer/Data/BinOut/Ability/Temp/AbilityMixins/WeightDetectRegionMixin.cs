@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class WeightDetectRegionMixin : ConfigAbilityMixin
 {
-    internal class WeightDetectRegionMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly ConfigAbilityAction[] onWeightChanged;
-    }
+	public string globalValueKey;
+	public ConfigAbilityAction[] onWeightChanged;
 }

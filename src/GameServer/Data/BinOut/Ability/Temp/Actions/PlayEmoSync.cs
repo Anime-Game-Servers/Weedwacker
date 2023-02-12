@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class PlayEmoSync : ConfigAbilityAction
 {
-    internal class PlayEmoSync : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string emoSyncAssetPath;
-    }
+	public uint dialogID;
+	public string emoSyncAssetPath;
 }

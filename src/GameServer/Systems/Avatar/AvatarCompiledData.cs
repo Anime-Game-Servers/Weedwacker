@@ -5,9 +5,8 @@ using Weedwacker.GameServer.Data.BinOut.AbilityGroup;
 using Weedwacker.GameServer.Data.BinOut.Avatar;
 using Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
 using Weedwacker.GameServer.Data.BinOut.Talent;
-using Weedwacker.GameServer.Data.Common;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
-using Weedwacker.GameServer.Enums;
 using Weedwacker.Shared.Utils;
 
 namespace Weedwacker.GameServer.Systems.Avatar
@@ -25,13 +24,13 @@ namespace Weedwacker.GameServer.Systems.Avatar
         public readonly Dictionary<uint, Dictionary<uint, AvatarTalentData>> TalentData; // <depotId,<talentId,data>> Constellations and skill upgrades
         public readonly Dictionary<uint, Dictionary<uint, ProudSkillData>> ProudSkillData; // <depotId,<proudSkillId,data>> Passives
         public readonly Dictionary<uint, Dictionary<uint, ConfigAbility>?> AbilityHashMap; //<depotId,<Hashes, config>>
-        public Dictionary<uint, AvatarCostumeData> CostumeData => GameData.AvatarCostumeDataMap.Where(w => w.Value.avatarId == AvatarId).ToDictionary(x => x.Key, x => x.Value); // costumeId
+        public Dictionary<uint, AvatarCostumeData> CostumeData => GameData.AvatarCostumeDataMap.Where(w => w.Value.characterId == AvatarId).ToDictionary(x => x.Key, x => x.Value); // costumeId
         public Dictionary<uint, AvatarCodexData> CodexData => GameData.AvatarCodexDataMap.Where(w => w.Value.avatarId == AvatarId).ToDictionary(x => x.Key, x => x.Value); // sortId Codex entry
         public static Dictionary<uint, AvatarLevelData> LevelData => GameData.AvatarLevelDataMap; // <level,exp> Level exp breakpoints
         public static Dictionary<uint, AvatarCurveData> CurveData => GameData.AvatarCurveDataMap; // <level,curveInfo> Base Stat multipliers
         public static Dictionary<uint, AvatarFlycloakData> FlycloakData => GameData.AvatarFlycloakDataMap; // flycloakId
         public readonly Dictionary<uint, ConfigAbilityContainer[]> AbilityConfigMap = new(); // depotId
-        public readonly Dictionary<uint, Dictionary<string, BaseConfigTalent[]>> ConfigTalentMap = new(); // <depotId, file name>
+        public readonly Dictionary<uint, Dictionary<string, ConfigTalentMixin[]>> ConfigTalentMap = new(); // <depotId, file name>
 
 
         // Fetters
@@ -104,15 +103,15 @@ namespace Weedwacker.GameServer.Systems.Avatar
                         ProudSkillData[depot.id][proud.Key] = proud.Value;
                     }
                 }
-                if (GameData.AvatarTalentConfigDataMap.TryGetValue($"ConfigTalent_{Regex.Replace(name, "Avatar_", "")}", out Dictionary<string, BaseConfigTalent[]>? configTalents))
+                if (GameData.AvatarTalentConfigDataMap.TryGetValue($"ConfigTalent_{Regex.Replace(name, "Avatar_", "")}", out Dictionary<string, ConfigTalentMixin[]>? configTalents))
                     ConfigTalentMap[depot.id] = configTalents;
                 Dictionary<uint, ConfigAbility> abilityHashMap = new();
                 // add abilityGroup abilities (if player skill depot ability group)
                 if (depot.skillDepotAbilityGroup != null && depot.skillDepotAbilityGroup.Length > 0)
                 {
-                    AbilityGroupData? abilityData = GameData.AbilityGroupDataMap.GetValueOrDefault(depot.skillDepotAbilityGroup);
+                    ConfigAbilityGroup? abilityData = GameData.AbilityGroupDataMap.GetValueOrDefault(depot.skillDepotAbilityGroup);
 
-                    if (abilityData != null)
+                    if (abilityData != null && ConfigAvatar.abilities != null)
                     {
                         foreach (ConfigEntityAbilityEntry ability in abilityData.targetAbilities.Concat(ConfigAvatar.abilities))
                         {
@@ -153,18 +152,18 @@ namespace Weedwacker.GameServer.Systems.Avatar
             foreach (AvatarCurveData curveData in CurveData.Values)
             {
                 uint level = curveData.level - 1;
-                foreach (PropGrowCurve growCurve in GeneralData.propGrowCurves)
+                foreach (FightPropGrowConfig growCurve in GeneralData.propGrowCurves)
                 {
                     switch (growCurve.type)
                     {
-                        case FightProperty.FIGHT_PROP_BASE_HP:
-                            HpGrowthCurve[level] = curveData.GetArith(growCurve.growCurve);
+                        case FightPropType.FIGHT_PROP_BASE_HP:
+                            HpGrowthCurve[level] = curveData.GetArith(growCurve.grow_curve);
                             break;
-                        case FightProperty.FIGHT_PROP_BASE_ATTACK:
-                            AttackGrowthCurve[level] = curveData.GetArith(growCurve.growCurve);
+                        case FightPropType.FIGHT_PROP_BASE_ATTACK:
+                            AttackGrowthCurve[level] = curveData.GetArith(growCurve.grow_curve);
                             break;
-                        case FightProperty.FIGHT_PROP_BASE_DEFENSE:
-                            DefenseGrowthCurve[level] = curveData.GetArith(growCurve.growCurve);
+                        case FightPropType.FIGHT_PROP_BASE_DEFENSE:
+                            DefenseGrowthCurve[level] = curveData.GetArith(growCurve.grow_curve);
                             break;
                         default:
                             Logger.WriteErrorLine("Error loading Avatar Growth Curves");
@@ -191,11 +190,11 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             try
             {
-                return CalcValue(GeneralData.hpBase, HpGrowthCurve[level - 1]);
+                return CalcValue(GeneralData.hp_base, HpGrowthCurve[level - 1]);
             }
             catch (Exception e)
             {
-                return GeneralData.hpBase;
+                return GeneralData.hp_base;
             }
         }
 
@@ -203,11 +202,11 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             try
             {
-                return CalcValue(GeneralData.attackBase, AttackGrowthCurve[level - 1]);
+                return CalcValue(GeneralData.attack_base, AttackGrowthCurve[level - 1]);
             }
             catch (Exception e)
             {
-                return GeneralData.attackBase;
+                return GeneralData.attack_base;
             }
         }
 
@@ -215,11 +214,11 @@ namespace Weedwacker.GameServer.Systems.Avatar
         {
             try
             {
-                return CalcValue(GeneralData.defenseBase, DefenseGrowthCurve[level - 1]);
+                return CalcValue(GeneralData.defense_base, DefenseGrowthCurve[level - 1]);
             }
             catch (Exception e)
             {
-                return GeneralData.defenseBase;
+                return GeneralData.defense_base;
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Systems.Avatar;
 using Weedwacker.GameServer.Systems.Inventory;
@@ -16,7 +17,7 @@ namespace Weedwacker.GameServer.Packet.Send
                 AvatarGuid = avatar.Guid,
                 EquipType = (uint)slot,
                 EquipGuid = item.Guid,
-                ItemId = (uint)item.ItemId
+                ItemId = item.ItemId
             };
 
             if (item.ItemData.itemType == ItemType.ITEM_WEAPON)

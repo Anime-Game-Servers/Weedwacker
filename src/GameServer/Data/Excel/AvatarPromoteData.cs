@@ -1,19 +1,16 @@
-﻿
-using Newtonsoft.Json;
-using Weedwacker.GameServer.Data.Common;
+﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("AvatarPromoteExcelConfigData.json")]
+public class AvatarPromoteData
 {
-    [Resource("AvatarPromoteExcelConfigData.json")]
-    public class AvatarPromoteData
-    {
-        [JsonProperty] public readonly uint avatarPromoteId;
-        [JsonProperty] public readonly uint promoteLevel;
-        [JsonProperty] public readonly string promoteAudio;
-        [JsonProperty] public readonly uint scoinCost;
-        [JsonProperty] public readonly ItemParamData[] costItems;
-        [JsonProperty] public readonly uint unlockMaxLevel;
-        [JsonProperty] public readonly FightPropData[] addProps;
-        [JsonProperty] public readonly uint requiredPlayerLevel;
-    }
+	public uint avatarPromoteId;
+	public uint promoteLevel;
+	public string promoteAudio;
+	public uint scoinCost;
+	public IdCountConfig[] costItems;
+	public uint unlockMaxLevel;
+	public PropValConfig[] addProps;
+	public uint requiredPlayerLevel;
 }

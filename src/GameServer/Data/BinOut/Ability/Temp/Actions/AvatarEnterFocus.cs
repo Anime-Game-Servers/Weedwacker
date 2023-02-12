@@ -1,38 +1,39 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarEnterFocus : ConfigAbilityAction
 {
-    internal class AvatarEnterFocus : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly FollowLower cameraFollowLower;
-        [JsonProperty] public readonly FollowUpper cameraFollowUpper;
-        [JsonProperty] public readonly bool cameraFastFocusMode;
-        [JsonProperty] public readonly string dragButtonName;
-        [JsonProperty] public readonly Assistance assistance;
-        [JsonProperty] public readonly bool canMove;
-        [JsonProperty] public readonly bool showCrosshair;
+	public Vector cameraFollowLower;
+	public Vector cameraFollowUpper;
+	public float cameraFollowMaxDegree;
+	public float cameraFollowMinDegree;
+	public bool cameraFastFocusMode;
+	public bool faceToTarget;
+	public float faceToTargetAngleThreshold;
+	public bool changeMainSkillID;
+	public string dragButtonName;
+	public FocusAssistanceGroup assistance;
+	public bool canMove;
+	public bool showCrosshair;
+	public float vcam_fov;
+	public float focusAnchorHorAngle;
+	public float focusAnchorVerAngle;
+	public bool disableAnim;
+	public bool disableAimLayer;
 
-        public class FollowLower
-        {
-            [JsonProperty] public readonly float _x;
-            [JsonProperty] public readonly float _z;
-        }
-        public class FollowUpper
-        {
-            [JsonProperty] public readonly float _x;
-            [JsonProperty] public readonly float _y;
-        }
+	public class FocusAssistanceGroup
+	{
+		public FocusAssistance ps4;
+		public FocusAssistance ps5;
+		public FocusAssistance other;
 
-        public class Assistance
-        {
-            [JsonProperty] public readonly Ass ps4;
-            [JsonProperty] public readonly Ass ps5;
-            [JsonProperty] public readonly Ass other;
-
-            public class Ass
-            {
-                [JsonProperty] public readonly bool useGyro;
-            }
-        }
-    }
+		public class FocusAssistance
+		{
+			public bool useFocusSticky;
+			public bool useAutoFocus;
+			public bool useGyro;
+		}
+	}
 }

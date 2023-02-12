@@ -13,7 +13,7 @@ namespace Weedwacker.GameServer.Systems.Ability
         private uint CurDepotId => CurDepot.DepotId;
         protected override Dictionary<uint, ConfigAbility> ConfigAbilityHashMap => CurDepot.Abilities;
 
-        public override Dictionary<uint, Dictionary<uint, float>?>? AbilitySpecials => CurDepot.AbilitySpecials;
+        public override Dictionary<uint, Dictionary<uint, object>?>? AbilitySpecials => CurDepot.AbilitySpecials;
 
         public override HashSet<string> ActiveDynamicAbilities => CurDepot.ActiveDynamicAbilities;
 
@@ -29,7 +29,7 @@ namespace Weedwacker.GameServer.Systems.Ability
             foreach (var proudSkill in CurDepot.InherentProudSkillOpens)
             {
                 if (proudSkill.openConfig == null || proudSkill.openConfig == "") continue;
-                foreach (BaseConfigTalent config in (Owner as AvatarEntity).Avatar.Data.ConfigTalentMap[(Owner as AvatarEntity).Avatar.CurrentDepotId][proudSkill.openConfig])
+                foreach (ConfigTalentMixin config in (Owner as AvatarEntity).Avatar.Data.ConfigTalentMap[(Owner as AvatarEntity).Avatar.CurrentDepotId][proudSkill.openConfig])
                 {
                     config.Apply(this, proudSkill.paramList);
                 }
@@ -41,7 +41,7 @@ namespace Weedwacker.GameServer.Systems.Ability
                     .Where(w => w.Value.proudSkillGroupId == skillData.proudSkillGroupId && w.Value.level == skill.Value).First().Value;
                 if ((Owner as AvatarEntity).Avatar.Data.ConfigTalentMap.ContainsKey(CurDepotId))
                 {
-                    foreach (BaseConfigTalent config in (Owner as AvatarEntity).Avatar.Data.ConfigTalentMap[CurDepotId][proudSkill.openConfig])
+                    foreach (ConfigTalentMixin config in (Owner as AvatarEntity).Avatar.Data.ConfigTalentMap[CurDepotId][proudSkill.openConfig])
                     {
                         config.Apply(this, proudSkill.paramList);
                     }
@@ -54,7 +54,7 @@ namespace Weedwacker.GameServer.Systems.Ability
                 AvatarSkillData skillData = (Owner as AvatarEntity).Avatar.Data.SkillData[CurDepotId][energySkill];
                 ProudSkillData proudSkill = (Owner as AvatarEntity).Avatar.Data.ProudSkillData[CurDepotId]
                     .Where(w => w.Value.proudSkillGroupId == skillData.proudSkillGroupId && w.Value.level == energySkillLevel).First().Value;
-                foreach (BaseConfigTalent config in (Owner as AvatarEntity).Avatar.Data.ConfigTalentMap[CurDepotId][proudSkill.openConfig])
+                foreach (ConfigTalentMixin config in (Owner as AvatarEntity).Avatar.Data.ConfigTalentMap[CurDepotId][proudSkill.openConfig])
                 {
                     config.Apply(this, proudSkill.paramList);
                 }

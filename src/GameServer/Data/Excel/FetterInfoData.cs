@@ -1,24 +1,24 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("FetterInfoExcelConfigData.json")]
+public class FetterInfoData : FetterConfig
 {
-    [Resource("FetterInfoExcelConfigData.json")]
-    internal class FetterInfoData : FetterBaseClass
-    {
-        [JsonProperty] public readonly uint infoBirthMonth;
-        [JsonProperty] public readonly uint infoBirthDay;
-        [JsonProperty] public readonly ulong avatarNativeTextMapHash;
-        [JsonProperty] public readonly ulong avatarVisionBeforTextMapHash;
-        [JsonProperty] public readonly ulong avatarConstellationBeforTextMapHash;
-        [JsonProperty] public readonly ulong avatarTitleTextMapHash;
-        [JsonProperty] public readonly ulong avatarDetailTextMapHash;
-        [JsonProperty] public readonly string avatarAssocType;
-        [JsonProperty] public readonly ulong cvChineseTextMapHash;
-        [JsonProperty] public readonly ulong cvJapaneseTextMapHash;
-        [JsonProperty] public readonly ulong cvEnglishTextMapHash;
-        [JsonProperty] public readonly ulong cvKoreanTextMapHash;
-        [JsonProperty] public readonly ulong avatarVisionAfterTextMapHash;
-        [JsonProperty] public readonly ulong avatarConstellationAfterTextMapHash;
-        [JsonProperty] public readonly uint avatarId;
-    }
+	public bool isHiden;
+	public uint infoBirthMonth;
+	public uint infoBirthDay;
+	public uint avatarNativeTextMapHash;
+	public uint avatarVisionBeforTextMapHash;
+	public uint avatarConstellationBeforTextMapHash;
+	public uint avatarTitleTextMapHash;
+	public uint avatarDetailTextMapHash;
+	public AssocType avatarAssocType;
+	public uint cvChineseTextMapHash;
+	public uint cvJapaneseTextMapHash;
+	public uint cvEnglishTextMapHash;
+	public uint cvKoreanTextMapHash;
+	public uint avatarVisionAfterTextMapHash;
+	public uint avatarConstellationAfterTextMapHash;
 }

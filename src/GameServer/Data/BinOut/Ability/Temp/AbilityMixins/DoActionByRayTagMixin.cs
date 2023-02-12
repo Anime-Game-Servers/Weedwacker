@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class DoActionByRayTagMixin : ConfigAbilityMixin
 {
-    internal class DoActionByRayTagMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] UGCRayTriggerDirections;
-        [JsonProperty] public readonly float raycastInterval;
-        [JsonProperty] public readonly int[] rayTags;
-        [JsonProperty] public readonly string[] modifierToTags;
-    }
+	public UGCRayTriggerDirectionType[] UGCRayTriggerDirections;
+	public uint[] rayTags;
+	public string[] modifierToTags;
+	public float raycastInterval;
 }

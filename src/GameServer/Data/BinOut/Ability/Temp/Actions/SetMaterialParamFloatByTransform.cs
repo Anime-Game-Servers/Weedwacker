@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetMaterialParamFloatByTransform : ConfigAbilityAction
 {
-    internal class SetMaterialParamFloatByTransform : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string matName;
-        [JsonProperty] public readonly string patternName;
-        [JsonProperty] public readonly bool useCurve;
-        [JsonProperty] public readonly float lerpTime;
-        [JsonProperty] public readonly int lerpCurveIndex;
-        [JsonProperty] public readonly object value;
-    }
+	public string matName;
+	public string patternName;
+	public object value;
+	public bool useCurve;
+	public uint lerpCurveIndex;
+	public float lerpTime;
 }

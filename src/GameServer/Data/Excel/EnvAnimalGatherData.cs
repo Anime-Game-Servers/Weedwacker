@@ -1,24 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("EnvAnimalGatherExcelConfigData.json")]
+public class EnvAnimalGatherData
 {
-    [Resource("EnvAnimalGatherExcelConfigData.json")]
-    internal class EnvAnimalGatherData
-    {
-        [JsonProperty] public readonly uint animalId;
-        [JsonProperty] public readonly int areaId;
-        [JsonProperty] public readonly EntityType entityType;
-        [JsonProperty] public readonly GatherItem[] gatherItemId;
-        [JsonProperty] public readonly int escapeRadius;
-        [JsonProperty] public readonly int escapeTime;
-        [JsonProperty] public readonly int aliveTime;
-        [JsonProperty] public readonly string excludeWeathers;
-    }
-
-    public class GatherItem
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly int count;
-    }
+	public uint animalId;
+	public EntityType entityType;
+	public IdCountConfig[] gatherItemList;
+	public uint escapeRadius;
+	public uint escapeTime;
+	public uint aliveTime;
+	public string excludeWeathers;
 }

@@ -1,16 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireHitEffect : ConfigAbilityAction
 {
-    internal class FireHitEffect : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string hitEntity;
-        [JsonProperty] public readonly HitScene hitScene;
-
-        public class HitScene
-        {
-            [JsonProperty] public readonly string defaultEffect;
-            [JsonProperty] public readonly Dictionary<string, string> surfaceEffect;
-        }
-    }
+	public string hitEntity;
+	public ConfigHitScene hitScene;
 }

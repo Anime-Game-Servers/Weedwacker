@@ -1,16 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
-{
-    internal class ActCameraRadialBlur : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly Blur cameraRadialBlur;
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
 
-        public class Blur
-        {
-            [JsonProperty] public readonly float power;
-            [JsonProperty] public readonly float blurTime;
-            [JsonProperty] public readonly float fadeTime;
-        }
-    }
+public class ActCameraRadialBlur : ConfigAbilityAction
+{
+	public ConfigCameraRadialBlur cameraRadialBlur;
 }

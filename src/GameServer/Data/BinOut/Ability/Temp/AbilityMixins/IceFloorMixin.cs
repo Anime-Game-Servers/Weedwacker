@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class IceFloorMixin : ConfigAbilityMixin
 {
-    internal class IceFloorMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float width;
-        [JsonProperty] public readonly float height;
-        [JsonProperty] public readonly ConfigAbilityAction doAction;
-    }
+	public float width;
+	public float height;
+	public float moveDistance;
+	public float minInterval;
+	public ConfigAbilityAction doAction;
 }

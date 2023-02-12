@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
-{
-    internal class ActTimeSlow : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TimeSlow timeSlow;
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
 
-        public class TimeSlow
-        {
-            [JsonProperty] public readonly float duration;
-            [JsonProperty] public readonly float slowRatio;
-        }
-    }
+public class ActTimeSlow : ConfigAbilityAction
+{
+	public ConfigTimeSlow timeSlow;
+	public bool isGlobal;
+
+	public class ConfigTimeSlow
+	{
+		public float duration;
+		public float slowRatio;
+	}
 }

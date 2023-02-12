@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AvatarChangeSkillMixin : ConfigAbilityMixin
 {
-    internal class AvatarChangeSkillMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string priority;
-        [JsonProperty] public readonly int jumpSkillID;
-        [JsonProperty] public readonly int flySkillID;
-    }
+	public int index;
+	public SwitchSkillPriority priority;
+	public uint aimSkillID;
+	public uint jumpSkillID;
+	public uint flySkillID;
+	public bool changeOnAdd;
 }

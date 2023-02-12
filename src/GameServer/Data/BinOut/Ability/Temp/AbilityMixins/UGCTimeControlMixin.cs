@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class UGCTimeControlMixin : ConfigAbilityMixin
 {
-    internal class UGCTimeControlMixin : BaseAbilityMixin
-    {
-    }
 }

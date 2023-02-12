@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class TriggerBeHitSupportMixin : TriggerTypeSupportMixin
 {
-    internal class TriggerBeHitSupportMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float duration;
-        [JsonProperty] public readonly string hitLevel;
-    }
+	public HitLevel hitLevel;
 }

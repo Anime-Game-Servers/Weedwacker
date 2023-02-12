@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByBigTeamHasElementType : ConfigAbilityPredicate
 {
-    internal class ByBigTeamHasElementType : BasePredicate
-    {
-        [JsonProperty] public readonly ElementType elementType;
-        [JsonProperty] public readonly LogicType logic;
-        [JsonProperty] public readonly int number;
-    }
+	public ElementType elementType;
+	public uint number;
+	public RelationalOperator logic;
 }

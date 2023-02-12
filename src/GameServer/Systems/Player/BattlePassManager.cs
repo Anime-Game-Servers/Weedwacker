@@ -1,19 +1,18 @@
-﻿using Weedwacker.GameServer.Enums;
+﻿using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Systems.Player
+namespace Weedwacker.GameServer.Systems.Player;
+
+internal class BattlePassManager
 {
-    internal class BattlePassManager
-    {
-        private Player Owner;
+	private Player Owner;
 
-        public BattlePassManager(Player owner)
-        {
-            Owner = owner;
-        }
+	public BattlePassManager(Player owner)
+	{
+		Owner = owner;
+	}
 
-        internal void TriggerMission(WatcherTriggerType triggerType, int v, int amount)
-        {
-            throw new NotImplementedException();
-        }
-    }
+	internal void TriggerMission(WatcherTriggerType triggerType, int v, int amount)
+	{
+		throw new NotImplementedException();
+	}
 }

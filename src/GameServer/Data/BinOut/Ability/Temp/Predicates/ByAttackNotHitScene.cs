@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByAttackNotHitScene : RelationalOperationPredicate
 {
-    internal class ByAttackNotHitScene : BasePredicate
-    {
-        [JsonProperty] public readonly BaseAttackPattern attackPattern;
-    }
+	public ConfigBaseAttackPattern attackPattern;
+	public bool checkWaterLayer;
 }

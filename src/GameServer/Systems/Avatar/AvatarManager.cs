@@ -1,11 +1,11 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
-using Weedwacker.GameServer.Data.Common;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Data;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Packet.Send;
 using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
 namespace Weedwacker.GameServer.Systems.Avatar
 {
@@ -94,10 +94,10 @@ namespace Weedwacker.GameServer.Systems.Avatar
                 return null;
             uint expGain = 0;         
             foreach(var x in matData.itemUse.Where(o => o.useOp == ItemUseOp.ITEM_USE_ADD_EXP)) expGain += uint.Parse(x.useParam[0]) * count;
-            List<ItemParamData> costItems = new()
+            List<IdCountConfig> costItems = new()
             {
-                new ItemParamData(itemId, (int)count),
-                new ItemParamData(202, (int)expGain / 5)
+                new IdCountConfig(itemId, count),
+                new IdCountConfig(202, expGain / 5)
             };
             if (await Owner.Inventory.PayPromoteCostAsync(costItems, ActionReason.AvatarUpgrade))
             {
@@ -136,7 +136,7 @@ namespace Weedwacker.GameServer.Systems.Avatar
             var currentPromoteData = avatar.Data.PromoteData[avatar.PromoteLevel];
             if (!avatar.Data.PromoteData.TryGetValue(avatar.PromoteLevel + 1, out var promoteData) || Owner.PlayerProperties[PlayerProperty.PROP_PLAYER_LEVEL] < promoteData.requiredPlayerLevel)
                 return;
-            IEnumerable<ItemParamData> costItems = promoteData.costItems.Where(o => o.id != 0).Append(new ItemParamData(202, (int)promoteData.scoinCost)); //some promotedatas in the excel seem to have landmines without an id -_-
+            IEnumerable<IdCountConfig> costItems = promoteData.costItems.Where(o => o.id != 0).Append(new IdCountConfig(202, promoteData.scoinCost)); //some promotedatas in the excel seem to have landmines without an id -_-
             if (await Owner.Inventory.PayPromoteCostAsync(costItems, ActionReason.AvatarPromote))
             {
                 avatar.PromoteLevel += 1;

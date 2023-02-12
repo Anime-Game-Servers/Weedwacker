@@ -1,24 +1,31 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
+
+public class ConfigDie
 {
-    internal class ConfigDie
-    {
-        [JsonProperty] public readonly bool hasAnimatorDie;
-        [JsonProperty] public readonly bool muteAllShaderDieEff;
-        [JsonProperty] public readonly bool fallWhenAirDie;
-        [JsonProperty] public readonly float dieEndTime;
-        [JsonProperty] public readonly float dieForceDisappearTime;
-        [JsonProperty] public readonly string dieDisappearEffect;
-        [JsonProperty] public readonly float dieDisappearEffectDelay;
-        [JsonProperty] public readonly EshaderData dieShaderData;
-        [JsonProperty] public readonly float dieShaderEnableDurationTime;
-        [JsonProperty] public readonly float dieShaderDisableDurationTime;
-        [JsonProperty] public readonly float dieModelFadeDelay;
-        [JsonProperty] public readonly bool useRagDoll;
-        [JsonProperty] public readonly float ragDollDieEndTimeDelay;
-        [JsonProperty] public readonly bool startDieEndAtOnce;
-        [JsonProperty] public readonly bool ingoreElementDie;
-    }
+	public bool hasAnimatorDie;
+	public bool muteAllShaderDieEff;
+	public bool fallWhenAirDie;
+	public float dieEndTime;
+	public float dieForceDisappearTime;
+	public string dieDisappearEffect;
+	public float dieDisappearEffectDelay;
+	public E_ShaderData dieShaderData;
+	public float dieShaderEnableDurationTime;
+	public float dieShaderDisableDurationTime;
+	public float dieModelFadeDelay;
+	public bool useRagDoll;
+	public float ragDollDieEndTimeDelay;
+	public bool startDieEndAtOnce;
+	public bool notSendDieTrigger;
+	public bool ignoreElementDie;
+	public bool muteHitBox;
+	public bool dieDenyLockOn;
+	public bool dieIsGhostToEnemy;
+	public bool dieIgnoreTriggerBullet;
+	public bool muteBillboard;
+	public bool mutePushCollider;
+	public bool dropWeaponImmediately;
 }

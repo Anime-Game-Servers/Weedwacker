@@ -2,8 +2,8 @@
 
 namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp
 {
-    internal class ConfigAbilityContainer
+    public class ConfigAbilityContainer
     {
-        [JsonProperty] public readonly ConfigAbility Default;
+        public ConfigAbility Default;
     }
 }

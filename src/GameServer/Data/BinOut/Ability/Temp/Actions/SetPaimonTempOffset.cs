@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetPaimonTempOffset : ConfigAbilityAction
 {
-    internal class SetPaimonTempOffset : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string from;
-        [JsonProperty] public readonly float time;
-        [JsonProperty] public readonly Dictionary<string, float> offSetPos;
-    }
+	public PaimonRequestFrom from;
+	public Vector offSetPos;
+	public float time;
 }

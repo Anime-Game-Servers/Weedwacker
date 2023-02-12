@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddClimateMeter : ConfigAbilityAction
 {
-    internal class AddClimateMeter : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly ClimateType climateType;
-        [JsonProperty] public readonly float value;
-    }
+	public JsonClimateType climateType;
+	public object value;
 }

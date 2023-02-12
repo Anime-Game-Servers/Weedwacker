@@ -1,18 +1,16 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerAttackTargetMapEvent : ConfigAbilityAction
 {
-    internal class TriggerAttackTargetMapEvent : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly AttackTargetMapEvent attackTargetMapEvent;
+	public ConfigAttackTargetMapEvent attackTargetMapEvent;
 
-        public class AttackTargetMapEvent
-        {
-            [JsonProperty] public readonly BaseAttackPattern attackPattern;
-            [JsonProperty] public readonly Dictionary<TargetType, ConfigAttackInfo> attackInfoMap;
-        }
-    }
+	public class ConfigAttackTargetMapEvent
+	{
+		public ConfigBaseAttackPattern attackPattern;
+		public Dictionary<TargetType, ConfigAttackInfo> attackInfoMap;
+	}
 }

@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class UnitDurationMixin : ConfigAbilityMixin
 {
-    internal class UnitDurationMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly bool isTrigger;
-        [JsonProperty] public readonly int[] steps;
-        [JsonProperty] public readonly string[] modifierName;
-    }
+	public bool isTrigger;
+	public string[] modifierName;
+	public object[] steps;
 }

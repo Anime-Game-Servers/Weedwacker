@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerHideWeapon : ConfigAbilityAction
 {
-    internal class TriggerHideWeapon : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly bool visible;
-        [JsonProperty] public readonly string[] partNames;
-    }
+	public bool visible;
+	public string[] partNames;
+	public bool modifyAnotherValue;
 }

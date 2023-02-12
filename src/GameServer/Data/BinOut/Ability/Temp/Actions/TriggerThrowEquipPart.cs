@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerThrowEquipPart : ConfigAbilityAction
 {
-    internal class TriggerThrowEquipPart : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string equipPart;
-        [JsonProperty] public readonly ConfigBornType born;
-    }
+	public string equipPart;
+	public bool chaseAttackTarget;
+	public ConfigBornType born;
 }

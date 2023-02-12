@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AddAvatarSkillInfo : ConfigAbilityAction
 {
-    internal class AddAvatarSkillInfo : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int overtime;
-    }
+	public uint skillID;
 }

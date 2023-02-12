@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachModifierToSelfGlobalValueNoInitMixin : ConfigAbilityMixin
 {
-    internal class AttachModifierToSelfGlobalValueNoInitMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly float[] valueSteps;
-        [JsonProperty] public readonly string[] modifierNameSteps;
-    }
+	public string globalValueKey;
+	public AddActionType addAction;
+	public object[] valueSteps;
+	public string[] modifierNameSteps;
+	public ConfigAbilityAction[][] actionQueues;
+	public bool removeAppliedModifier;
 }

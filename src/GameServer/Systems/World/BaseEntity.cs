@@ -1,15 +1,14 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Weedwacker.GameServer.Systems.Ability;
 
-namespace Weedwacker.GameServer.Systems.World
+namespace Weedwacker.GameServer.Systems.World;
+
+public abstract class BaseEntity
 {
-    internal abstract class BaseEntity
-    {
-        [BsonIgnore] public uint EntityId { get; set; }
-        [BsonIgnore] public BaseAbilityManager AbilityManager { get; protected set; }
-        public uint GetEntityType()
-        {
-            return EntityId >> 24;
-        }
-    }
+	[BsonIgnore] public uint EntityId { get; set; }
+	[BsonIgnore] public BaseAbilityManager AbilityManager { get; protected set; }
+	public uint GetEntityType()
+	{
+		return EntityId >> 24;
+	}
 }

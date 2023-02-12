@@ -1,5 +1,6 @@
 ﻿using System.CommandLine;
 using Weedwacker.GameServer.Data;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.Shared.Commands;
 using Weedwacker.Shared.Enums;
@@ -64,7 +65,7 @@ namespace Weedwacker.GameServer.Commands
             }
             else
             {
-                await GameServer.OnlinePlayers[(uint)guid].Player.Inventory.AddItemByIdAsync((uint)itemId, count, ActionReason.None, true);
+                await GameServer.OnlinePlayers[(uint)guid].Player.Inventory.AddItemByIdAsync((uint)itemId, (uint)count, ActionReason.None, true);
             }
             console.WriteLine($"Added {count} item {itemId} to player {guid} at level {lvl} and refinement {refinement}");
             return;

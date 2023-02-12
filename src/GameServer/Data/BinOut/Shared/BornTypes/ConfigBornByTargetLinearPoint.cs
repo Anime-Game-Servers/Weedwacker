@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByTargetLinearPoint : ConfigBornType
 {
-    internal class ConfigBornByTargetLinearPoint : ConfigBornType
-    {
-        [JsonProperty] public readonly float linearOffset;
-        [JsonProperty] public readonly bool linearXZ;
-        [JsonProperty] public readonly bool baseOnTarget;
-    }
+	public object linearOffset;
+	public bool baseOnTarget;
+	public bool linearXZ;
+	public object linearMin;
+	public object linearMax;
 }

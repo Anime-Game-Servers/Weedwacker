@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetGadgetState : ConfigAbilityPredicate
 {
-    internal class ByTargetGadgetState : BasePredicate
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly int gadgetState;
-    }
+	public uint gadgetState;
 }

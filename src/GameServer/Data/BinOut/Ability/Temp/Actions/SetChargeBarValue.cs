@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetChargeBarValue : ConfigAbilityAction
 {
-    internal class SetChargeBarValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float value;
-    }
+	public object value;
 }

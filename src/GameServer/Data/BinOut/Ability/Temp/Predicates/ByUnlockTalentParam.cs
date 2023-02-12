@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByUnlockTalentParam : ConfigAbilityPredicate
 {
-    internal class ByUnlockTalentParam : BasePredicate
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly string talentParam;
-    }
+	public string talentParam;
 }

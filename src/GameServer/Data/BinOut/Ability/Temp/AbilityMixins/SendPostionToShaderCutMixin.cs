@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class SendPostionToShaderCutMixin : ConfigAbilityMixin
 {
-    internal class SendPostionToShaderCutMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly TargetType sendTarget;
-        [JsonProperty] public readonly float sendRadius;
-        [JsonProperty] public readonly Dictionary<string, float> scale;
-    }
+	public AbilityTargetting sendTarget;
+	public float sendRadius;
+	public Vector scale;
+	public Vector offset;
 }

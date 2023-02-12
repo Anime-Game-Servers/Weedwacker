@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class VelocityDetectMixin : ConfigAbilityMixin
 {
-    internal class VelocityDetectMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float minSpeed;
-        [JsonProperty] public readonly float maxSpeed;
-        [JsonProperty] public readonly ConfigAbilityAction[] onNegedge;
-    }
+	public float minSpeed;
+	public float maxSpeed;
+	public bool detectOnStart;
+	public ConfigAbilityAction[] onPoseedge;
+	public ConfigAbilityAction[] onNegedge;
 }

@@ -1,6 +1,8 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+﻿using Newtonsoft.Json;
+
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class StreamingModifierMixin : ConfigAbilityMixin
 {
-    internal class StreamingModifierMixin : BaseAbilityMixin
-    {
-    }
+	public bool applyModifier;
 }

@@ -1,6 +1,8 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+﻿using Newtonsoft.Json;
+
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByMonsterAirState : ConfigAbilityPredicate
 {
-    internal class ByMonsterAirState : BasePredicate
-    {
-    }
+	public bool IsAirMove;
 }

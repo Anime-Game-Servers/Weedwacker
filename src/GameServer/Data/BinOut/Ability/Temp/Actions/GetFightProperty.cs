@@ -1,13 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class GetFightProperty : ConfigAbilityAction
 {
-    internal class GetFightProperty : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType fightPropSourceTarget;
-        [JsonProperty] public readonly FightProperty fightProp;
-        [JsonProperty] public readonly string globalValueKey;
-        [JsonProperty] public readonly bool doOffStage;
-    }
+	public AbilityTargetting fightPropSourceTarget;
+	public string fightProp;
+	public string globalValueKey;
 }

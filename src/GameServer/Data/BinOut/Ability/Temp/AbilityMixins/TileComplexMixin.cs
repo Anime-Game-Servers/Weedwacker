@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class TileComplexMixin : ConfigAbilityMixin
 {
-    internal class TileComplexMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string attackID;
-        [JsonProperty] public readonly string attachPointName;
-        [JsonProperty] public readonly BaseShape shape;
-    }
+	public string attackID;
+	public string attachPointName;
+	public Vector offset;
+	public TileShapeInfo shape;
 }

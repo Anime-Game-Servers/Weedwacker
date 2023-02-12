@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachToMonsterAirStateMixin : ConfigAbilityMixin
 {
-    internal class AttachToMonsterAirStateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string modifierName;
-        [JsonProperty] public readonly bool IsAirMove;
-    }
+	public string modifierName;
+	public bool IsAirMove;
 }

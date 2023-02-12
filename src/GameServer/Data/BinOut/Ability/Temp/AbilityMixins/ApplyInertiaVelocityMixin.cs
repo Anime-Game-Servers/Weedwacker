@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ApplyInertiaVelocityMixin : ConfigAbilityMixin
 {
-    internal class ApplyInertiaVelocityMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float damping;
-        [JsonProperty] public readonly bool useXZ;
-        [JsonProperty] public readonly bool useY;
-    }
+	public float damping;
+	public bool useXZ;
+	public bool useY;
 }

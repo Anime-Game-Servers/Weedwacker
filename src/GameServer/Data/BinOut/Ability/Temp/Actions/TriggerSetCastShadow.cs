@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerSetCastShadow : ConfigAbilityAction
 {
-    internal class TriggerSetCastShadow : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool castShadow;
-        [JsonProperty] public readonly TargetType target;
-    }
+	public bool castShadow;
 }

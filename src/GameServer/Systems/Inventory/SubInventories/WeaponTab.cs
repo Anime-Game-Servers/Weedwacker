@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.Common;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Enums;
@@ -15,7 +15,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
     internal class WeaponTab : InventoryTab
     {
         [BsonIgnore] public new const int InventoryLimit = 2000;
-        private static string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_WEAPON}";
+        private static readonly string mongoPathToItems = $"{nameof(InventoryManager.SubInventories)}.{ItemType.ITEM_WEAPON}";
         [BsonElement] private uint NextWeaponId = 1; // Is it possible to collect this many items? O.o
         // Use Mongodb unique (for the player) id for weapons
         [BsonSerializer(typeof(UIntDictionarySerializer<MaterialItem>))]
@@ -40,7 +40,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             }
         }
 
-        public override async Task<GameItem> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0)
+        public override async Task<GameItem> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0)
         {
 
             if (GameData.ItemDataMap[itemId].itemType == ItemType.ITEM_MATERIAL)
@@ -97,7 +97,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
         {
             WeaponItem weapon = Inventory.GuidMap[guid] as WeaponItem;
             List<ItemParam> leftoverOres = new(); //TODO
-            List<ItemParamData> xpMats = new();
+            List<IdCountConfig> xpMats = new();
             List<WeaponItem> weaponItems = new();
             if (weapon is null || weapon.PromoteData is null)
                 return null;
@@ -107,10 +107,10 @@ namespace Weedwacker.GameServer.Systems.Inventory
             {
                 var matData = GameData.ItemDataMap[itemParam.ItemId] as MaterialData;
 
-                foreach (var x in matData.itemUse.Where(o => o.useOp == Enums.ItemUseOp.ITEM_USE_ADD_WEAPON_EXP))
+                foreach (var x in matData.itemUse.Where(o => o.useOp == Data.Enums.ItemUseOp.ITEM_USE_ADD_WEAPON_EXP))
                 {
                     expGain += uint.Parse(x.useParam[0]) * itemParam.Count; //probably not the ideal way to go about it
-                    xpMats.Add(new ItemParamData(itemParam.ItemId, (int)itemParam.Count));
+                    xpMats.Add(new IdCountConfig(itemParam.ItemId, itemParam.Count));
 
                 }
             }
@@ -130,7 +130,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             uint exp = weapon.Exp;
             uint level = weapon.Level;
             uint oldLevel = level;
-            xpMats.Add(new ItemParamData(202, (int)moraCost));
+            xpMats.Add(new IdCountConfig(202, moraCost));
             if (await PayUpgradeCostAsync(xpMats, weaponItems))
             {
                 uint reqExp = GameData.WeaponLevelDataMap[level].requiredExps[weapon.ItemData.rankLevel - 1];
@@ -162,11 +162,11 @@ namespace Weedwacker.GameServer.Systems.Inventory
             return null;
         }
 
-        public async Task<bool> PayUpgradeCostAsync(IEnumerable<ItemParamData> costItems, IEnumerable<WeaponItem> foodWeapons)
+        public async Task<bool> PayUpgradeCostAsync(IEnumerable<IdCountConfig> costItems, IEnumerable<WeaponItem> foodWeapons)
         {
-            Dictionary<MaterialItem, int> materials = new();
-            Dictionary<uint, int> virtualItems = new();
-            foreach (ItemParamData itemData in costItems)
+            Dictionary<MaterialItem, uint> materials = new();
+            Dictionary<uint, uint> virtualItems = new();
+            foreach (IdCountConfig itemData in costItems)
             {
                 if (GameData.ItemDataMap[itemData.id].itemType == ItemType.ITEM_MATERIAL)
                 {
@@ -194,8 +194,8 @@ namespace Weedwacker.GameServer.Systems.Inventory
             GameData.WeaponPromoteDataMap.TryGetValue(Tuple.Create(weapon.ItemData.weaponPromoteId, weapon.PromoteLevel + 1), out WeaponPromoteData? promoteData);
             if (promoteData is null || Owner.PlayerProperties[PlayerProperty.PROP_PLAYER_LEVEL] < promoteData.requiredPlayerLevel)
                 return null;
-            List<ItemParamData> costItems = promoteData.costItems.ToList();
-            costItems.Add(new ItemParamData(202, promoteData.coinCost));
+            List<IdCountConfig> costItems = promoteData.costItems.ToList();
+            costItems.Add(new IdCountConfig(202, promoteData.coinCost));
             if(await Inventory.PayPromoteCostAsync(costItems))
             {
                 weapon.PromoteLevel += 1;
@@ -205,7 +205,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
             }
             return weapon;
         }
-        internal override async Task<bool> RemoveItemAsync(GameItem item, int count = 1)
+        internal override async Task<bool> RemoveItemAsync(GameItem item, uint count = 1)
         {
             if (item is WeaponItem && Items.TryGetValue((item as WeaponItem).Id, out GameItem? weapon))
             {

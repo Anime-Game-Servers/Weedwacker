@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
@@ -360,9 +361,9 @@ namespace Weedwacker.GameServer.Systems.Player
             }
 
             uint killedBy = deadAvatar.KilledBy;
-            PlayerDieType killedType = deadAvatar.KilledType;
+			Shared.Network.Proto.PlayerDieType killedType = deadAvatar.KilledType;
 
-            if (killedType == PlayerDieType.Drawn)
+            if (killedType == Shared.Network.Proto.PlayerDieType.Drawn)
             {
                 //TODO
             }

@@ -1,14 +1,17 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class SteerAttackMixin : ConfigAbilityMixin
 {
-    internal class SteerAttackMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly string[] steerStateIDs;
-		[JsonProperty] public readonly float startNormalizedTime;
-		[JsonProperty] public readonly float endNormalizedTime;
-		[JsonProperty] public readonly float angularSpeed;
-		[JsonProperty] public readonly string attackTrigger;
-		[JsonProperty] public readonly float attackDistance;
-    }
+	public string[] steerStateIDs;
+	public float startNormalizedTime;
+	public float endNormalizedTime;
+	public float angularSpeed;
+	public float attackAngle;
+	public string attackTrigger;
+	public float attackDistance;
+	public bool remoteSteerToLocalTarget;
+	public SteerAttackTargetType[] facingTargetTypes;
 }

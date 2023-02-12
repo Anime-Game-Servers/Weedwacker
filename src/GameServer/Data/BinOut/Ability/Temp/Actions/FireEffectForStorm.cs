@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireEffectForStorm : ConfigAbilityAction
 {
-    internal class FireEffectForStorm : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float height;
-        [JsonProperty] public readonly ConfigBornType born;
-    }
+	public ConfigBornType born;
+	public float height;
 }

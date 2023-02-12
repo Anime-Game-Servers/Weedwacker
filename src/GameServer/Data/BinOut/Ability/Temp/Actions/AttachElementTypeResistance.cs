@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AttachElementTypeResistance : ConfigAbilityAction
 {
-    internal class AttachElementTypeResistance : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly ElementType elementType;
-        [JsonProperty] public readonly object durationRatio;
-    }
+	public ElementType elementType;
+	public float durationRatio;
 }

@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AnimatorRotationCompensateMixin : ConfigAbilityMixin
 {
-    internal class AnimatorRotationCompensateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] animatorStateIDs;
-        [JsonProperty] public readonly float animationRotate;
-        [JsonProperty] public readonly float angleLimit;
-    }
+	public string[] animatorStateIDs;
+	public float animationRotate;
+	public float angleLimit;
 }

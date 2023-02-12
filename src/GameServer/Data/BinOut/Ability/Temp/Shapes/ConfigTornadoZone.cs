@@ -1,13 +1,18 @@
-﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Shapes
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp;
+
+public class ConfigTornadoZone
 {
-    internal class ConfigTornadoZone : BaseShape
-	{
-		[JsonProperty] public readonly string shapeName;
-		[JsonProperty] public readonly int strength;
-		[JsonProperty] public readonly int attenuation;
-		[JsonProperty] public readonly Dictionary<string, float> offset;
-		[JsonProperty] public readonly Dictionary<string, float> dir;
-    }
+	public string shapeName;
+	public Vector offset;
+	public Vector dir;
+	public object strength;
+	public object attenuation;
+	public object innerRadius;
+	public string modifierName;
+	public uint maxNum;
+	public float forceGrowth;
+	public float forceFallen;
+	public float duration;
 }

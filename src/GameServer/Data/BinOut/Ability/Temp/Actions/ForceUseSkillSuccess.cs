@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ForceUseSkillSuccess : ConfigAbilityAction
 {
-    internal class ForceUseSkillSuccess : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly int overtime;
-        [JsonProperty] public readonly string type;
-    }
+	public uint skillID;
+	public UseSkillType type;
+	public bool immediately;
 }

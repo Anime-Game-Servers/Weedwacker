@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TryTriggerTrampolineJump : ConfigAbilityAction
 {
-    internal class TryTriggerTrampolineJump : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly ConfigAbilityAction[] failActions;
-    }
+	public ConfigAbilityAction[] failActions;
 }

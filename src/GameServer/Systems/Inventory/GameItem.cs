@@ -14,13 +14,13 @@ namespace Weedwacker.GameServer.Systems.Inventory
         [BsonElement("_id")]
         public uint Id { get; protected set; }
         [BsonElement] public uint ItemId { get; protected set; }
-        public int Count;
+        public uint Count;
         [BsonIgnore] public ulong Guid; // Player unique id. Generated each session
         [BsonIgnore] public bool IsNew { get; protected set; } = false;
-        [BsonIgnore] public ItemData ItemData => GameData.ItemDataMap[ItemId];
+        [BsonIgnore] public ItemConfig ItemData => GameData.ItemDataMap[ItemId];
 
 
-        public GameItem(ulong guid, uint itemId, int count)
+        public GameItem(ulong guid, uint itemId, uint count)
         {
             Guid = guid;
             ItemId = itemId;
@@ -31,7 +31,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
 
         public ItemHint ToItemHintProto()
         {
-            var hint = new ItemHint() { ItemId = (uint)ItemId, Count = (uint)Count, IsNew = IsNew, Guid = (ulong)Guid };
+            var hint = new ItemHint() { ItemId = ItemId, Count = Count, IsNew = IsNew, Guid = Guid };
             if (IsNew) IsNew = false;
             return hint;
         }

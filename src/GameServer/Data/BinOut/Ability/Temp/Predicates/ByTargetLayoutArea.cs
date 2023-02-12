@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetLayoutArea : ConfigAbilityPredicate
 {
-    internal class ByTargetLayoutArea : BasePredicate
-    {
-        [JsonProperty] public readonly ClimateType climateType;
-    }
+	public JsonClimateType areaType;
+	public JsonClimateType climateType;
+	public uint areaID;
 }

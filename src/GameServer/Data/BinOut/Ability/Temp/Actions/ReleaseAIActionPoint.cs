@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ReleaseAIActionPoint : ConfigAbilityAction
 {
-    internal class ReleaseAIActionPoint : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly PointType pointType;
-    }
+	public ActionPointType pointType;
 }

@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("BlossomChestExcelConfigData.json")]
+public class BlossomChestData
 {
-    [Resource("BlossomChestExcelConfigData.json")]
-    internal class BlossomChestData
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly uint chestGadgetId;
-        [JsonProperty] public readonly uint worldResin;
-        [JsonProperty] public readonly uint resin;
-        [JsonProperty] public readonly BlossomRefreshType refreshType;
-        [JsonProperty] public readonly BlossomChestShowType clientShowType;
-    }
+	public uint id;
+	public uint chestGadgetId;
+	public uint worldResin;
+	public uint resin;
+	public BlossomRefreshType refreshType;
+	public BlossomChestShowType clientShowType;
 }

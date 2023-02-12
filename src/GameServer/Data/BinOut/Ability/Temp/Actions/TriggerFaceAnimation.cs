@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class TriggerFaceAnimation : ConfigAbilityAction
 {
-    internal class TriggerFaceAnimation : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string faceAnimation;
-    }
+	public string faceAnimation;
 }

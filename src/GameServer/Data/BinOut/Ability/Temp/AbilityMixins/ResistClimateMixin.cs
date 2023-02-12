@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ResistClimateMixin : ConfigAbilityMixin
 {
-    internal class ResistClimateMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string type;
-        [JsonProperty] public readonly ClimateType[] climateTypes;
-        [JsonProperty] public readonly string source;
-        [JsonProperty] public readonly string trend;
-        [JsonProperty] public readonly object ratio;
-    }
+	public JsonClimateType[] climateTypes;
+	public ClimateSourceType source;
+	public ClimateTrendType trend;
+	public object ratio;
+	public AvatarStageType type;
 }

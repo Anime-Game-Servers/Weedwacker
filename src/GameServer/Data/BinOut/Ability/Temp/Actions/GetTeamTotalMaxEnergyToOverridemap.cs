@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class GetTeamTotalMaxEnergyToOverridemap : ConfigAbilityAction
 {
-    internal class GetTeamTotalMaxEnergyToOverridemap : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType teamType;
-        [JsonProperty] public readonly bool doOffStage;
-        [JsonProperty] public readonly string overrideMapKey;
-    }
+	public TeamType teamType;
+	public string overrideMapKey;
 }

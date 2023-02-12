@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class KillPlayEntity : ConfigAbilityAction
 {
-    internal class KillPlayEntity : ConfigAbilityAction
-    {
-    }
 }

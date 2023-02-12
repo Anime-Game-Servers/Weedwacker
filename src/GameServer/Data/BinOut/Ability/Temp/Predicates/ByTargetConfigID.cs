@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetConfigID : ConfigAbilityPredicate
 {
-    internal class ByTargetConfigID : BasePredicate
-    {
-        [JsonProperty] public readonly int[] configIdArray;
-    }
+	public uint[] configIdArray;
 }

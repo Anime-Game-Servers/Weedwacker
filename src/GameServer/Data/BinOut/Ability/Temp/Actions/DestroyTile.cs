@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DestroyTile : ConfigAbilityAction
 {
-    internal class DestroyTile : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string tileName;
-        [JsonProperty] public readonly BaseAttackPattern attackPattern;
-    }
+	public string tileName;
+	public ConfigBaseAttackPattern attackPattern;
 }

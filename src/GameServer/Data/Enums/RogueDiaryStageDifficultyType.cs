@@ -1,0 +1,10 @@
+
+namespace Weedwacker.GameServer.Data.Enums;
+
+public enum RogueDiaryStageDifficultyType : int
+{
+	ROGUE_DIARY_STAGE_DIFFICULTY_NONE = 0,
+	ROGUE_DIARY_STAGE_DIFFICULTY_NORMAL = 1,
+	ROGUE_DIARY_STAGE_DIFFICULTY_HARD = 2,
+	ROGUE_DIARY_STAGE_DIFFICULTY_INSANE = 3,
+}

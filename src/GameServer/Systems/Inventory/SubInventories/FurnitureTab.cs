@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Weedwacker.GameServer.Data;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Database;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Packet.Send;
@@ -34,7 +35,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
         }
 
         //TODO FurnitureItem
-        public override async Task<GameItem?> AddItemAsync(uint itemId, int count = 1, uint level = 1, uint refinement = 0)
+        public override async Task<GameItem?> AddItemAsync(uint itemId, uint count = 1, uint level = 1, uint refinement = 0)
         {
 
             if (GameData.ItemDataMap[itemId].itemType == ItemType.ITEM_MATERIAL)
@@ -75,7 +76,7 @@ namespace Weedwacker.GameServer.Systems.Inventory
         }
 
         //TODO FurnitureItem
-        internal override async Task<bool> RemoveItemAsync(GameItem item, int count = 1)
+        internal override async Task<bool> RemoveItemAsync(GameItem item, uint count = 1)
         {
             if (Materials.TryGetValue((item as MaterialItem).ItemId, out MaterialItem? material))
             {

@@ -1,13 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByTargetOverrideMapValue : RelationalOperationPredicate
 {
-    internal class ByTargetOverrideMapValue : BasePredicate
-    {
-        [JsonProperty] public readonly LogicType logic;
-        [JsonProperty] public readonly string targetAbilityName;
-        [JsonProperty] public readonly string targetKey;
-        [JsonProperty] public readonly object targetValue;
-    }
+	public string targetAbilityName;
+	public string targetKey;
+	public object targetValue;
 }

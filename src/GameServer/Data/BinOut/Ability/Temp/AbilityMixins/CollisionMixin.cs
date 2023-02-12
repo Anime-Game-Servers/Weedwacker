@@ -2,13 +2,12 @@
 using Weedwacker.GameServer.Data.BinOut.Shared;
 using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class CollisionMixin : ConfigAbilityMixin
 {
-    internal class CollisionMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly float minShockSpeed;
-		[JsonProperty] public readonly float cd;
-		[JsonProperty] public readonly ConfigCollision collision;
-		[JsonProperty] public readonly ConfigAbilityAction[] onCollision;
-	}
+	public ConfigCollision collision;
+	public float minShockSpeed;
+	public float cd;
+	public ConfigAbilityAction[] onCollision;
 }

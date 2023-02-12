@@ -1,14 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.BinOut.Shared;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class SceneVehicleSummonPoint : ConfigScenePoint
 {
-    internal class SceneVehicleSummonPoint : BasePoint
-    {
-        [JsonProperty] public readonly VehicleType vehicleType;
-        [JsonProperty] public readonly int vehicleGadgetId;
-        [JsonProperty] public readonly List<Dictionary<string, float>> bornPointList;
-        [JsonProperty] public readonly List<Dictionary<string, float>> bornRotateList;
-        [JsonProperty] public readonly float vehicleRadius;
-    }
+	public VehicleType vehicleType;
+	public uint vehicleGadgetIdRawNum;
+	public Vector[] bornPointList;
+	public Vector[] bornRotateList;
+	public float vehicleRadiusRawNum;
+	public string titleTextID;
+	public SceneVehicleSummonPointMapMarkType mapMarkType;
 }

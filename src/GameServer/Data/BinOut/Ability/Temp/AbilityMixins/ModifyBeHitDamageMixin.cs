@@ -1,17 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ModifyBeHitDamageMixin : ConfigAbilityMixin
 {
-    internal class ModifyBeHitDamageMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string Actor_ElementReactionCriticalDelta;
-        [JsonProperty] public readonly bool ignoreEventInfo;
-        [JsonProperty] public readonly ByAny[] predicates;
-    }
+	public string Actor_ElementReactionCriticalDelta;
+	public bool ignoreEventInfo;
+	public ByAny[] predicates;
 }

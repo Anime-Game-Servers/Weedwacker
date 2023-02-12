@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DebugLog : ConfigAbilityAction
 {
-    internal class DebugLog : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string content;
-    }
+	public string content;
 }

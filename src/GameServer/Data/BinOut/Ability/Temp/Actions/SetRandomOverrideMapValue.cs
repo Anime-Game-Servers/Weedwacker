@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetRandomOverrideMapValue : ConfigAbilityAction
 {
-    internal class SetRandomOverrideMapValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float valueRangeMax;
-        [JsonProperty] public readonly string overrideMapKey;
-    }
+	public float valueRangeMax;
+	public float valueRangeMin;
+	public string overrideMapKey;
+	public RoundRandomType roundType;
 }

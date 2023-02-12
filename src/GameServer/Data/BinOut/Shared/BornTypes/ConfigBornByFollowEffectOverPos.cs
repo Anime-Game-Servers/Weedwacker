@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByFollowEffectOverPos : ConfigBornType
 {
-    internal class ConfigBornByFollowEffectOverPos : ConfigBornType
-	{
-        [JsonProperty] public readonly bool byOwner;
-    }
+	public bool byOwner;
 }

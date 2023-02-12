@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarExitViewBias : ConfigAbilityAction
 {
-    internal class AvatarExitViewBias : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly float lerpRadius;
-        [JsonProperty] public readonly float lerpDuration;
-        [JsonProperty] public readonly bool doOffStage;
-    }
+	public float lerpDuration;
+	public float lerpRadius;
 }

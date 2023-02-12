@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("ReliquaryMainPropExcelConfigData.json")]
+public class ReliquaryMainPropData
 {
-    [Resource("ReliquaryMainPropExcelConfigData.json")]
-    internal class ReliquaryMainPropData
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly uint propDepotId;
-        [JsonProperty] public readonly FightProperty propType;
-        [JsonProperty] public readonly int weight;
-    }
+	public uint id;
+	public uint prop_depot_id;
+	public FightPropType propType;
+	public ReliquaryMainAffixName affixName;
 }

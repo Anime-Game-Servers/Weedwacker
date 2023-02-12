@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class GetStrafeStaminaToGlobalValue : ConfigAbilityAction
 {
-    internal class GetStrafeStaminaToGlobalValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly string key;
-    }
+	public string key;
 }

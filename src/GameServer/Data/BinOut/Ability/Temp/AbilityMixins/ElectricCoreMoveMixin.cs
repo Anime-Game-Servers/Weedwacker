@@ -1,18 +1,18 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ElectricCoreMoveMixin : ConfigAbilityMixin
 {
-    internal class ElectricCoreMoveMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly float stageOnceVelocity;
-        [JsonProperty] public readonly float stageOneAccelerate;
-        [JsonProperty] public readonly float stageTwoVelocity;
-        [JsonProperty] public readonly float stageTwoAttenuation;
-        [JsonProperty] public readonly float maxAbsorbTime;
-        [JsonProperty] public readonly ConfigBornType toPos;
-        [JsonProperty] public readonly ConfigAbilityAction[] onCoreEnter;
-        [JsonProperty] public readonly ConfigAbilityAction[] onInterrupted;
-        [JsonProperty] public readonly ConfigAbilityAction[] onStartSuccess;
-    }
+	public float stageOnceVelocity;
+	public float stageOneAccelerate;
+	public float stageTwoVelocity;
+	public float stageTwoAttenuation;
+	public float maxAbsorbTime;
+	public ConfigBornType toPos;
+	public ConfigAbilityAction[] onCoreEnter;
+	public ConfigAbilityAction[] onInterrupted;
+	public ConfigAbilityAction[] onStartSuccess;
+	public ConfigAbilityAction[] onStartFailed;
 }

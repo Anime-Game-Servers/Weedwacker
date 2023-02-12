@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ChangeFollowDampTime : ConfigAbilityAction
 {
-    internal class ChangeFollowDampTime : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string effectPattern;
-        [JsonProperty] public readonly float PositionDampTime;
-    }
+	public object effectPattern;
+	public object PositionDampTime;
+	public object RotationDampTime;
 }

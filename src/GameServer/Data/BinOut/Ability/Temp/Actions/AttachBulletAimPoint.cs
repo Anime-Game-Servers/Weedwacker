@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AttachBulletAimPoint : ConfigAbilityAction
 {
-    internal class AttachBulletAimPoint : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string bulletAimPoint;
-    }
+	public string bulletAimPoint;
 }

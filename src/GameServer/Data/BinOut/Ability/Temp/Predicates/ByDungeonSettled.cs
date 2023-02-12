@@ -1,6 +1,5 @@
-﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates
+﻿namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Predicates;
+
+public class ByDungeonSettled : ConfigAbilityPredicate
 {
-    internal class ByDungeonSettled : BasePredicate
-    {
-    }
 }

@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarExitCameraShot : ConfigAbilityAction
 {
-    internal class AvatarExitCameraShot : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool doOffStage;
-    }
+	public AbilityCameraShotType shotType;
 }

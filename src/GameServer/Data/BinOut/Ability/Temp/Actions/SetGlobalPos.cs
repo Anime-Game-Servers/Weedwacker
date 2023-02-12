@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SetGlobalPos : ConfigAbilityAction
 {
-    internal class SetGlobalPos : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-        [JsonProperty] public readonly string key;
-        [JsonProperty] public readonly ConfigBornType born;
-        [JsonProperty] public readonly bool setTarget;
-    }
+	public string key;
+	public ConfigBornType born;
+	public bool setTarget;
 }

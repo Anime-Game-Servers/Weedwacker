@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Scene.Point
+namespace Weedwacker.GameServer.Data.BinOut.Scene.Point;
+
+public class DungeonExit : ConfigScenePoint
 {
-    internal class DungeonExit : BasePoint
-    {
-        [JsonProperty] public readonly int entryPointId;
-    }
+	public uint entryPointId;
 }

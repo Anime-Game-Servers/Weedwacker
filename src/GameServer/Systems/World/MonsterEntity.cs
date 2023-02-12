@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using Weedwacker.GameServer.Data;
-using Weedwacker.GameServer.Data.Common;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Data.Excel;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Systems.Ability;
@@ -11,7 +11,7 @@ namespace Weedwacker.GameServer.Systems.World
 {
     internal class MonsterEntity : SceneEntity, IScriptEntity
     {
-        public readonly MonsterData MonsterData;
+        public readonly Data.Excel.MonsterExcelConfig MonsterData;
         public readonly SceneGroup.SpawnInfo? SpawnInfo;
         public readonly uint Level;
         public readonly uint RightWeaponEntityId;
@@ -21,13 +21,13 @@ namespace Weedwacker.GameServer.Systems.World
         public uint GroupId { get; set; }
         public uint ConfigId { get; set; }
 
-        public static Task<MonsterEntity> CreateAsync(Scene scene, MonsterData monsterData, uint level, SceneGroup.Monster spawnInfo, uint blockId, uint groupId)
+        public static Task<MonsterEntity> CreateAsync(Scene scene, Data.Excel.MonsterExcelConfig monsterData, uint level, SceneGroup.Monster spawnInfo, uint blockId, uint groupId)
         {
             MonsterEntity ret = new MonsterEntity(scene, monsterData, level, spawnInfo, blockId, groupId);
             return ret.InitializeAsync();
         }
 
-        public static Task<MonsterEntity> CreateAsync(Scene scene, Player.Player targetPlayer, MonsterData monsterData, uint level, Vector3 pos = default, Vector3 rot = default)
+        public static Task<MonsterEntity> CreateAsync(Scene scene, Player.Player targetPlayer, Data.Excel.MonsterExcelConfig monsterData, uint level, Vector3 pos = default, Vector3 rot = default)
         {
             var ret = new MonsterEntity(scene, targetPlayer, monsterData, level, pos, rot);
             return ret.InitializeAsync();
@@ -39,7 +39,7 @@ namespace Weedwacker.GameServer.Systems.World
             await RecalcStatsAsync();
             return this;
         }
-        private MonsterEntity(Scene scene, MonsterData monsterData, uint level, SceneGroup.Monster? spawnInfo, uint blockId, uint groupId) : base(scene)
+        private MonsterEntity(Scene scene, Data.Excel.MonsterExcelConfig monsterData, uint level, SceneGroup.Monster? spawnInfo, uint blockId, uint groupId) : base(scene)
         {
 
             EntityId = scene.World.GetNextEntityId(EntityIdType.MONSTER);
@@ -59,7 +59,7 @@ namespace Weedwacker.GameServer.Systems.World
             if (monsterData.equips[1] != 0) LeftWeaponEntityId = scene.World.GetNextEntityId(EntityIdType.WEAPON);
         }
 
-        private MonsterEntity(Scene? scene, Player.Player targetPlayer, MonsterData monsterData, uint level, Vector3 posOffset = default, Vector3 rotOffset = default) : base(scene)
+        private MonsterEntity(Scene? scene, Player.Player targetPlayer, Data.Excel.MonsterExcelConfig monsterData, uint level, Vector3 posOffset = default, Vector3 rotOffset = default) : base(scene)
         {
             EntityId = scene.World.GetNextEntityId(EntityIdType.MONSTER);
             MonsterData = monsterData;
@@ -73,7 +73,7 @@ namespace Weedwacker.GameServer.Systems.World
             if (monsterData.equips[1] != 0) LeftWeaponEntityId = scene.World.GetNextEntityId(EntityIdType.WEAPON);
         }
 
-        public override async Task OnInteractAsync(Player.Player player, GadgetInteractReq interactReq)
+        internal override async Task OnInteractAsync(Player.Player player, GadgetInteractReq interactReq)
         {
             EnvAnimalGatherData gatherData = GameData.EnvAnimalGatherDataMap[MonsterData.id];
 
@@ -81,8 +81,8 @@ namespace Weedwacker.GameServer.Systems.World
             {
                 return;
             }
-            List<Tuple<uint, int>> items = new();
-            gatherData.gatherItemId.AsParallel().ForAll(w => items.Add(Tuple.Create(w.id, w.count)));
+            List<Tuple<uint, uint>> items = new();
+            gatherData.gatherItemList.AsParallel().ForAll(w => items.Add(Tuple.Create(w.id, w.count)));
             await player.Inventory.AddItemByIdManyAsync(items, ActionReason.SubfieldDrop);
 
             await Scene.KillEntityAsync(this);
@@ -101,13 +101,13 @@ namespace Weedwacker.GameServer.Systems.World
         public override async Task DamageAsync(float amount, uint killerId)
         {
             // Get HP before damage.
-            float hpBeforeDamage = FightProps[FightProperty.FIGHT_PROP_CUR_HP];
+            float hpBeforeDamage = FightProps[FightPropType.FIGHT_PROP_CUR_HP];
 
             // Apply damage.
             await base.DamageAsync(amount, killerId);
 
             // Get HP after damage.
-            float hpAfterDamage = FightProps[FightProperty.FIGHT_PROP_CUR_HP];
+            float hpAfterDamage = FightProps[FightPropType.FIGHT_PROP_CUR_HP];
 
             // Invoke energy drop logic.
             foreach (Player.Player player in Scene.Players)
@@ -117,7 +117,7 @@ namespace Weedwacker.GameServer.Systems.World
         }
 
 
-        public override async Task OnDeathAsync(uint killerId = default, PlayerDieType dieType = PlayerDieType.None)
+        public override async Task OnDeathAsync(uint killerId = default, Shared.Network.Proto.PlayerDieType dieType = Shared.Network.Proto.PlayerDieType.None)
         {
             await base.OnDeathAsync(killerId); // Invoke base class's onDeath() method.
 
@@ -142,43 +142,43 @@ namespace Weedwacker.GameServer.Systems.World
         {
             await Task.Yield();
             // Get hp percent, set to 100% if none
-            float hpPercent = FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_MAX_HP, 0) <= 0 ? 1f : FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_CUR_HP) / FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_MAX_HP, MonsterData.hpBase);
+            float hpPercent = FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_MAX_HP, 0) <= 0 ? 1f : FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_CUR_HP) / FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_MAX_HP, MonsterData.hp_base);
 
             // Base stats
-            FightProps[FightProperty.FIGHT_PROP_BASE_HP] = MonsterData.hpBase;
-            FightProps[FightProperty.FIGHT_PROP_BASE_ATTACK] = MonsterData.attackBase;
-            FightProps[FightProperty.FIGHT_PROP_BASE_DEFENSE] = MonsterData.defenseBase;
+            FightProps[FightPropType.FIGHT_PROP_BASE_HP] = MonsterData.hp_base;
+            FightProps[FightPropType.FIGHT_PROP_BASE_ATTACK] = MonsterData.attack_base;
+            FightProps[FightPropType.FIGHT_PROP_BASE_DEFENSE] = MonsterData.defense_base;
 
-            FightProps[FightProperty.FIGHT_PROP_PHYSICAL_SUB_HURT] = MonsterData.physicalSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_FIRE_SUB_HURT] = MonsterData.fireSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_ELEC_SUB_HURT] = MonsterData.elecSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_WATER_SUB_HURT] = MonsterData.waterSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_GRASS_SUB_HURT] = MonsterData.grassSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_WIND_SUB_HURT] = MonsterData.windSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_ROCK_SUB_HURT] = MonsterData.rockSubHurt;
-            FightProps[FightProperty.FIGHT_PROP_ICE_SUB_HURT] = MonsterData.iceSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_PHYSICAL_SUB_HURT] = MonsterData.physicalSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_FIRE_SUB_HURT] = MonsterData.fireSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_ELEC_SUB_HURT] = MonsterData.elecSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_WATER_SUB_HURT] = MonsterData.waterSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_GRASS_SUB_HURT] = MonsterData.grassSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_WIND_SUB_HURT] = MonsterData.windSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_ROCK_SUB_HURT] = MonsterData.rockSubHurt;
+            FightProps[FightPropType.FIGHT_PROP_ICE_SUB_HURT] = MonsterData.iceSubHurt;
 
             // Level curve
             MonsterCurveData curve = GameData.MonsterCurveDataMap[Level];
             if (curve != null)
             {
-                foreach (PropGrowCurve growCurve in MonsterData.propGrowCurves)
+                foreach (FightPropGrowConfig growCurve in MonsterData.propGrowCurves)
                 {
-                    FightProperty prop = growCurve.type;
-                    FightProps[prop] = MonsterCurveData.CalcValue(FightProps[prop], curve.GetArith(growCurve.growCurve));
+                    FightPropType prop = growCurve.type;
+                    FightProps[prop] = MonsterCurveData.CalcValue(FightProps[prop], curve.GetArith(growCurve.grow_curve));
                 }
             }
 
             // Set % stats
-            FightProps[FightProperty.FIGHT_PROP_MAX_HP] =
-                (FightProps[FightProperty.FIGHT_PROP_BASE_HP] * (1f + FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_HP_PERCENT))) + FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_HP);
-            FightProps[FightProperty.FIGHT_PROP_CUR_ATTACK] =
-                (FightProps[FightProperty.FIGHT_PROP_BASE_ATTACK] * (1f + FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_ATTACK_PERCENT))) + FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_ATTACK);
-            FightProps[FightProperty.FIGHT_PROP_CUR_DEFENSE] =
-                (FightProps[FightProperty.FIGHT_PROP_BASE_DEFENSE] * (1f + FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_DEFENSE_PERCENT))) + FightProps.GetValueOrDefault(FightProperty.FIGHT_PROP_DEFENSE);
+            FightProps[FightPropType.FIGHT_PROP_MAX_HP] =
+                (FightProps[FightPropType.FIGHT_PROP_BASE_HP] * (1f + FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_HP_PERCENT))) + FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_HP);
+            FightProps[FightPropType.FIGHT_PROP_CUR_ATTACK] =
+                (FightProps[FightPropType.FIGHT_PROP_BASE_ATTACK] * (1f + FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_ATTACK_PERCENT))) + FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_ATTACK);
+            FightProps[FightPropType.FIGHT_PROP_CUR_DEFENSE] =
+                (FightProps[FightPropType.FIGHT_PROP_BASE_DEFENSE] * (1f + FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_DEFENSE_PERCENT))) + FightProps.GetValueOrDefault(FightPropType.FIGHT_PROP_DEFENSE);
 
             // Set current hp
-            FightProps[FightProperty.FIGHT_PROP_CUR_HP] = FightProps[FightProperty.FIGHT_PROP_MAX_HP] * hpPercent;
+            FightProps[FightPropType.FIGHT_PROP_CUR_HP] = FightProps[FightPropType.FIGHT_PROP_MAX_HP] * hpPercent;
         }
 
         public override SceneEntityInfo ToProto()

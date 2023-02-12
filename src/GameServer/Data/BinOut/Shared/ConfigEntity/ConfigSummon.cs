@@ -1,18 +1,17 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity
-{
-    internal class ConfigSummon
-    {
-        [JsonProperty] public readonly ConfigSummonTag[] summonTags;
+namespace Weedwacker.GameServer.Data.BinOut.Shared.ConfigEntity;
 
-        public class ConfigSummonTag
-        {
-            [JsonProperty] public readonly int summonTag;
-            [JsonProperty] public readonly string name;
-            [JsonProperty] public readonly int maxNum;
-            [JsonProperty] public readonly bool copyOwnerThreatList;
-            [JsonProperty] public readonly bool useOwnerDefendArea;
-        }
-    }
+public class ConfigSummon
+{
+	public ConfigSummonTag[] summonTags;
+
+	public class ConfigSummonTag
+	{
+		public uint summonTag;
+		public string name;
+		public int maxNum;
+		public bool copyOwnerThreatList;
+		public bool useOwnerDefendArea;
+	}
 }

@@ -1,9 +1,8 @@
 ﻿using Weedwacker.GameServer.Systems.World;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp;
+
+public interface IInvocation
 {
-    public interface IInvocation
-    {
-        internal Task Invoke(string abilityName, BaseEntity srcEntity, SceneEntity? targetEntity = null);
-    }
+	public Task Invoke(string abilityName, BaseEntity srcEntity, SceneEntity? targetEntity = null);
 }

@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class PlayerUidNotifyMixin : ConfigAbilityMixin
 {
-    internal class PlayerUidNotifyMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string opParam;
-        [JsonProperty] public readonly int opType;
-        [JsonProperty] public readonly LogicType logic;
-        [JsonProperty] public readonly ConfigAbilityAction[] actions;
-    }
+	public string opParam;
+	public uint opType;
+	public RelationalOperator logic;
+	public ConfigAbilityAction[] actions;
 }

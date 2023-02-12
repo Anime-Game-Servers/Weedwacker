@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AIPerceptionMixin : ConfigAbilityMixin
 {
-    internal class AIPerceptionMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly int perceptionTemplateID;
-        [JsonProperty] public readonly int[] featureTagIDs;
-    }
+	public uint[] featureTagIDs;
+	public uint perceptionTemplateID;
 }

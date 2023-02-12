@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ReTriggerAISkillInitialCD : ConfigAbilityAction
 {
-    internal class ReTriggerAISkillInitialCD : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly int[] skillIDs;
-    }
+	public uint[] skillIDs;
+	public bool forceReinit;
 }

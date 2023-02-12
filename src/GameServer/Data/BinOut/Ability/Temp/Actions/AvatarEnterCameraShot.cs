@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class AvatarEnterCameraShot : ConfigAbilityAction
 {
-    internal class AvatarEnterCameraShot : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly BasePredicate[] predicates;
-        [JsonProperty] public readonly string cameraMoveCfgPath;
-    }
+	public string cameraMoveCfgPath;
+	public AbilityCameraShotType shotType;
 }

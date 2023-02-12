@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class GlobalSubShieldMixin : ConfigAbilityMixin
 {
-    internal class GlobalSubShieldMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string mainShieldModifierName;
-    }
+	public string mainShieldModifierName;
+	public bool notifyMainshieldWhenHit;
 }

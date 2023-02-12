@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class AttachModifierToTargetDistanceMixin : ConfigAbilityMixin
 {
-    internal class AttachModifierToTargetDistanceMixin : BaseAbilityMixin
-	{
-		[JsonProperty] public readonly int[] targetIDs;
-		[JsonProperty] public readonly bool byserver;
-		[JsonProperty] public readonly object[] valueSteps;
-		[JsonProperty] public readonly string[] modifierNameSteps;
-		[JsonProperty] public readonly string BlendParam;
-		[JsonProperty] public readonly string effectPattern;
-		[JsonProperty] public readonly int[] BlendDistance;
-    }
+	public uint[] targetIDs;
+	public bool byserver;
+	public object[] valueSteps;
+	public string[] modifierNameSteps;
+	public bool removeAppliedModifier;
+	public string BlendParam;
+	public object[] BlendDistance;
+	public string effectPattern;
 }

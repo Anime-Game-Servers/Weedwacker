@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
+using Weedwacker.GameServer.Data.Enums;
 using Weedwacker.GameServer.Enums;
 using Weedwacker.GameServer.Systems.World;
 using Weedwacker.Shared.Utils;
@@ -12,20 +13,20 @@ namespace Weedwacker.GameServer.Data
 
         public static float ResolveDynamicFloat(object dynFloat, BaseEntity entity, string configAbilityName)
         {
-            if (dynFloat is double asFloat)
+			uint ability = Utils.AbilityHash(configAbilityName);
+			if (dynFloat is double asFloat)
                 return (float)asFloat;
             else if (dynFloat is string)
             {
-                uint ability = Utils.AbilityHash(configAbilityName);
                 uint special = Utils.AbilityHash(dynFloat as string);
                 if (entity.AbilityManager.AbilitySpecialOverrideMap[ability].ContainsKey(special))
                     return entity.AbilityManager.AbilitySpecialOverrideMap[ability][special];
                 else // eg %X+%Y
-                    return ResolvePercentageSymbolReferences(dynFloat as string, entity, configAbilityName);
+                    return ResolvePercentageSymbolReferences(dynFloat as string, entity, ability);
             }
             else if (dynFloat is JArray expression)
             {
-                return ResolvePolishNotation(expression.ToObject<string[]>(), entity, configAbilityName);
+                return ResolvePolishNotation(expression.ToObject<string[]>(), entity, ability);
             }
             else
             {
@@ -33,12 +34,35 @@ namespace Weedwacker.GameServer.Data
                 return 0;
             }
         }
+		public static float ResolveDynamicFloat(object dynFloat, BaseEntity entity, uint configAbilityHash)
+		{
+			if (dynFloat is double asFloat)
+				return (float)asFloat;
+			else if (dynFloat is string)
+			{
+				uint ability = configAbilityHash;
+				uint special = Utils.AbilityHash(dynFloat as string);
+				if (entity.AbilityManager.AbilitySpecialOverrideMap[ability].ContainsKey(special))
+					return entity.AbilityManager.AbilitySpecialOverrideMap[ability][special];
+				else // eg %X+%Y
+					return ResolvePercentageSymbolReferences(dynFloat as string, entity, configAbilityHash);
+			}
+			else if (dynFloat is JArray expression)
+			{
+				return ResolvePolishNotation(expression.ToObject<string[]>(), entity, configAbilityHash);
+			}
+			else
+			{
+				Logger.WriteErrorLine($"Unknown dynamic float expression: {dynFloat}, {dynFloat.GetType()}");
+				return 0;
+			}
+		}
 
-        private static float ResolvePolishNotation(object[] expression, BaseEntity entity, string configAbilityName)
+		private static float ResolvePolishNotation(object[] expression, BaseEntity entity, uint configAbilityHash)
         {
             Stack<float> myStack = new Stack<float>();
             float value;
-            uint ability = Utils.AbilityHash(configAbilityName);
+            uint ability = configAbilityHash;
 
             for (int i = 0; i < expression.Length; i++)
             {
@@ -69,7 +93,7 @@ namespace Weedwacker.GameServer.Data
                                 myStack.Push(floatyFloat);
                                 break;
                             }
-                            else if (entity is SceneEntity sceneEntity && sceneEntity.FightProps != null && sceneEntity.FightProps.TryGetValue((FightProperty)Enum.Parse(typeof(FightProperty), expression[i] as string), out float fightProp))
+                            else if (entity is SceneEntity sceneEntity && sceneEntity.FightProps != null && sceneEntity.FightProps.TryGetValue((FightPropType)Enum.Parse(typeof(FightPropType), expression[i] as string), out float fightProp))
                             {
                                 myStack.Push(fightProp);
                                 break;
@@ -85,9 +109,9 @@ namespace Weedwacker.GameServer.Data
             return myStack.Pop();
         }
 
-        private static float ResolvePercentageSymbolReferences(string dynFloat, BaseEntity entity, string configAbilityName)
+        private static float ResolvePercentageSymbolReferences(string dynFloat, BaseEntity entity, uint configAbilityHash)
         {
-            uint ability = Utils.AbilityHash(configAbilityName);
+            uint ability = configAbilityHash;
             var specials = Regex.Matches(dynFloat, @"(?<!\w)#\w+"); // match "%Word"
             foreach (Match match in specials)
             {
@@ -95,7 +119,7 @@ namespace Weedwacker.GameServer.Data
                 uint special = Utils.AbilityHash(withoutPerc);
                 if (entity.AbilityManager.AbilitySpecialOverrideMap[ability].TryGetValue(special, out float fVal))
                     dynFloat = Regex.Replace(dynFloat, match.Value, fVal.ToString());
-                else if (entity is SceneEntity sceneEntity && sceneEntity.FightProps.TryGetValue((FightProperty)Enum.Parse(typeof(FightProperty), match.Value), out float fightProp))
+                else if (entity is SceneEntity sceneEntity && sceneEntity.FightProps.TryGetValue((FightPropType)Enum.Parse(typeof(FightPropType), match.Value), out float fightProp))
                     dynFloat = Regex.Replace(dynFloat, match.Value, fightProp.ToString());
                 else
                 {

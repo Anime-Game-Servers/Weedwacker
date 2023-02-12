@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class EnableHDMesh : ConfigAbilityAction
 {
-    internal class EnableHDMesh : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool enable;
-        [JsonProperty] public readonly string hdMeshKey;
-    }
+	public bool enable;
+	public string hdMeshKey;
 }

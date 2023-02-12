@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes
+namespace Weedwacker.GameServer.Data.BinOut.Shared.BornTypes;
+
+public class ConfigBornByStormLightning : ConfigBornType
 {
-    internal class ConfigBornByStormLightning : ConfigBornType
-    {
-        [JsonProperty] public readonly float hitHeightRatio;
-        [JsonProperty] public readonly float selectRange;
-        [JsonProperty] public readonly float lightningHitOrNotRatio;
-    }
+	public float hitHeightRatio;
+	public float selectRange;
+	public float maxOffsetLen;
+	public float lightningHitOrNotRatio;
 }

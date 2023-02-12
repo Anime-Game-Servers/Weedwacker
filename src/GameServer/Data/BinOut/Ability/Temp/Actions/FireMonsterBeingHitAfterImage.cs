@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class FireMonsterBeingHitAfterImage : ConfigAbilityAction
 {
-    internal class FireMonsterBeingHitAfterImage : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly TargetType target;
-    }
+	public uint effectIndex;
 }

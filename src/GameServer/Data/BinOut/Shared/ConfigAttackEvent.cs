@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Shared
+namespace Weedwacker.GameServer.Data.BinOut.Shared;
+
+public class ConfigAttackEvent
 {
-    internal class ConfigAttackEvent
-    {
-        [JsonProperty] public readonly BaseAttackPattern attackPattern;
-        [JsonProperty] public readonly ConfigAttackInfo attackInfo;
-    }
+	public ConfigBaseAttackPattern attackPattern;
+	public ConfigAttackInfo attackInfo;
 }

@@ -1,31 +1,37 @@
 ﻿using Newtonsoft.Json;
-using Weedwacker.GameServer.Enums;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.Excel
+namespace Weedwacker.GameServer.Data.Excel;
+
+[Resource("AvatarSkillExcelConfigData.json")]
+public class AvatarSkillData
 {
-    [Resource("AvatarSkillExcelConfigData.json")]
-    internal class AvatarSkillData
-    {
-        [JsonProperty] public readonly uint id;
-        [JsonProperty] public readonly double cdTime;
-        [JsonProperty] public readonly float costElemVal;
-        [JsonProperty] public readonly uint maxChargeNum;
-        [JsonProperty] public readonly uint triggerID;
-        [JsonProperty] public readonly bool isAttackCameraLock;
-        [JsonProperty] public readonly string? dragType;
-        [JsonProperty] public readonly bool showIconArrow;
-        [JsonProperty] public readonly uint proudSkillGroupId;
-        [JsonProperty] public readonly ElementType costElemType;
-        [JsonProperty] public readonly ulong nameTextMapHash;
-        [JsonProperty] public readonly ulong descTextMapHash;
-        [JsonProperty] public readonly string? abilityName;
-        [JsonProperty] public readonly string? skillIcon;
-        [JsonProperty] public readonly bool isRanged;
-        [JsonProperty] public readonly string? lockShape;
-        [JsonProperty] public readonly bool needStore;
-        [JsonProperty] public readonly string? buffIcon;
-        [JsonProperty] public readonly double[] lockWeightParams;
-        [JsonProperty] public readonly string? globalValueKey; // when this is not empty, set the avatar's global's value to energyMin
-        [JsonProperty] public readonly float energyMin;
-    }
+	public uint id;
+	public uint nameTextMapHash;
+	public string abilityName;
+	public uint descTextMapHash;
+	public string skillIcon;
+	public bool isRanged;
+	public float cdTime;
+	public bool ignoreCDMinusRatio;
+	public float costStamina;
+	public ElementType costElemType;
+	public float costElemVal;
+	public int maxChargeNum;
+	public int triggerID;
+	public string lockShape;
+	public float[] lockWeightParams;
+	public bool isAttackCameraLock;
+	public SkillDrag dragType;
+	public bool showIconArrow;
+	public MonitorType needMonitor;
+	public bool defaultLocked;
+	public string buffIcon;
+	public uint proudSkillGroupId;
+	public string globalValueKey; // when this is not empty, set the avatar's global's value to energyMin
+	public float energyMin;
+	public bool forceCanDoSkill;
+	public uint cdSlot;
+	public bool needStore;
+	public uint shareCDID;
 }

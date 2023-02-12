@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class SumTargetWeightToSelfGlobalValue : ConfigAbilityAction
 {
-    internal class SumTargetWeightToSelfGlobalValue : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string key;
-        [JsonProperty] public readonly BaseSelectTargetType otherTargets;
-    }
+	public string key;
 }

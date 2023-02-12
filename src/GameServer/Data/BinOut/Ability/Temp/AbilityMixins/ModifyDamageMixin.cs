@@ -1,11 +1,27 @@
 ﻿using Newtonsoft.Json;
+using Weedwacker.GameServer.Data.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.AbilityMixins;
+
+public class ModifyDamageMixin : ConfigAbilityMixin
 {
-    internal class ModifyDamageMixin : BaseAbilityMixin
-    {
-        [JsonProperty] public readonly string[] animEventNames;
-        [JsonProperty] public readonly object? bonusCriticalHurt;
-        [JsonProperty] public readonly object damagePercentageRatio;
-    }
+	public string[] animEventNames;
+	public string[] attackTags;
+	public AttackType attackType;
+	public bool ignoreEventInfo;
+	public object damagePercentage;
+	public object damagePercentageRatio;
+	public object damageExtra;
+	public object bonusCritical;
+	public object bonusCriticalHurt;
+	public ElementTypeModifier elementTypeModifier;
+	public ConfigAbilityPredicate[] predicates;
+	public bool trueDamage;
+	public object defenseIgnoreRatio;
+	public object defenseIgnoreDelta;
+
+	public class ElementTypeModifier
+	{
+		public ElementType elementType;
+	}
 }

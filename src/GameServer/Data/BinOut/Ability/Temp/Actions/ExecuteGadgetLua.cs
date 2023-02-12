@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ExecuteGadgetLua : ConfigAbilityAction
 {
-    internal class ExecuteGadgetLua : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string target;
-        [JsonProperty] public readonly int param1;
-        [JsonProperty] public readonly BasePredicate[] predicates;
-    }
+	public int param1;
+	public int param2;
+	public int param3;
 }

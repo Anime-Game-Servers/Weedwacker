@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class ShowProgressBarAction : ConfigAbilityAction
 {
-    internal class ShowProgressBarAction : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly bool show;
-    }
+	public bool show;
 }

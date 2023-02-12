@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class DropSubfield : ConfigAbilityAction
 {
-    internal class DropSubfield : ConfigAbilityAction
-    {
-        [JsonProperty] public readonly string subfieldName;
-    }
+	public string subfieldName;
 }

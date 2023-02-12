@@ -2,9 +2,9 @@
 
 namespace Weedwacker.GameServer.Data.BinOut.Talent
 {
-    internal class ModifySkillPoint : BaseConfigTalent
+    internal class ModifySkillPoint : ConfigTalentMixin
     {
-        [JsonProperty] public readonly int overtime;
-        [JsonProperty] public readonly int pointDelta;
-    }
+		public uint skillID;
+		public int pointDelta;
+	}
 }

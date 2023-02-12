@@ -1,15 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Weedwacker.GameServer.Data.BinOut.Shared;
-using Weedwacker.GameServer.Enums;
 
-namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions
+namespace Weedwacker.GameServer.Data.BinOut.Ability.Temp.Actions;
+
+public class RushMove : ConfigAbilityAction
 {
-    internal class RushMove : ConfigAbilityAction
-	{
-		[JsonProperty] public readonly TargetType target;
-		[JsonProperty] public readonly float timeRange;
-		[JsonProperty] public readonly float minRange;
-		[JsonProperty] public readonly float maxRange;
-		[JsonProperty] public readonly ConfigBornType toPos;
-    }
+	public ConfigBornType toPos;
+	public float minRange;
+	public float maxRange;
+	public float timeRange;
 }

@@ -3,14 +3,14 @@ Private Server reimplementation of a certain anime game.
 Join us on our [discord](https://discord.gg/XJgJcf6nPf)!
 
 ### Features:
-- Ability Framework (funeral parlor director's health reduction works correctly, and as intended!)
+- Ability Framework (Hu Tao's health reduction works correctly, and as intended!)
 - Native Lua 5.3 integration
 - Independent and highly customizable WebServer powered by microsoft's kestrel with the necessary json data structures properly represented in the code
 - Authentication framework
 - Organized Avatar framework faithfully reflecting the data and the game design
 - A very organized inventory system with type safety
-- Use of the Official c# driver for mongodb (with godly documentation), the ability to update, save, delete documents as needed
-- Resource loading and management of $type polymorphism
+- Use of the Official c# driver for mongodb, the ability to update, save, delete documents as needed
+- Resource loading with support for polymorphic types
 - Extensive debug logging and the option to save to disk (only in the DEBUG build)
 - Microsoft's System.CommandLine library to handle both shell and ingame commands (via the chat)
 
@@ -18,19 +18,18 @@ Join us on our [discord](https://discord.gg/XJgJcf6nPf)!
 View our [contributing guidelines](https://github.com/WeedwackerPS/Weedwacker/blob/main/README.md).
 
 ### Requirements:
-* .NET 6
+* .NET 7
 * [MongoDB](https://www.mongodb.com/try/download/community)
 
-* Proxy Daemon: [Fiddler Classic](https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe) (recommended), [mitmproxy](https://mitmproxy.org/) (mitmdump, recommended),  etc.
+* Proxy Daemon: [Fiddler Classic](https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe) (recommended), [mitmproxy](https://mitmproxy.org/) (mitmdump),  etc.
 
 * [mhypbase patch](https://github.com/Jx2f/mhypbase) _(Optional)_: if you want to enable **Server.Account.UsePassword**, you need to patch yor cilent according to mhypbase project.
 ### Building:
-any .NET 6 compatible compiler
+any .NET 7 compatible compiler
 
 ### Running:
 Weedwacker has 2 different executables. one for the HTTP web server, one for the UDP game server
-- 1) Download and put at the root of the project the [resources](https://git.crepe.moe/grasscutters/Grasscutter_Resources/-/tree/3.3) folder
-- 1b) Check out [DataParser](https://github.com/WeedwackerPS/DataParser) if you're interested.
+- 1) Download resource files, rename folders appropriately, and put in the resources folder. Currently we will not provide any links to compatible server resource files. For more information visit our discord.
 - 2) Run both the WebServer and the GameServer executables (also generates the configuration jsons if not present).
 - 2b) If you plan to host multiple game server instances, or run over a network, make the appropriate changes/additions to the  config jsons (each server should have its own MongoDB Database).
 
